@@ -5,7 +5,7 @@
  * No hyphens, no emojis, SF Bay Area
  */
 import { useState, useEffect, useRef } from "react";
-import { motion, useAnimation } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowDown, Github, Linkedin, Mail, MapPin, Download } from "lucide-react";
 
 const ROLES = ["Data Engineer", "Cloud Architect", "Software Engineer"];
@@ -74,21 +74,6 @@ function Sparkle({ x, y, delay }: { x: string; y: string; delay: number }) {
 
 export default function Hero() {
   const role = useTypewriter(ROLES);
-  const photoControls = useAnimation();
-  const glowControls = useAnimation();
-
-  useEffect(() => {
-    // Subtle continuous glow pulse on the photo border
-    glowControls.start({
-      boxShadow: [
-        "0 0 0px 0px rgba(201,168,76,0)",
-        "0 0 18px 4px rgba(201,168,76,0.35)",
-        "0 0 0px 0px rgba(201,168,76,0)",
-      ],
-      transition: { duration: 3.5, repeat: Infinity, ease: "easeInOut" },
-    });
-  }, [glowControls]);
-
   const sparkles = [
     { x: "8%", y: "12%", delay: 0 },
     { x: "82%", y: "8%", delay: 0.6 },
@@ -149,12 +134,12 @@ export default function Hero() {
               San Francisco Bay Area, CA
             </motion.div>
 
-            {/* Name + graduation photo inline */}
+            {/* Name */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              style={{ display: "flex", alignItems: "center", gap: "1.4rem", marginBottom: "0.75rem", flexWrap: "wrap" }}
+              style={{ marginBottom: "0.75rem" }}
             >
               <h1
                 style={{
@@ -169,74 +154,6 @@ export default function Hero() {
               >
                 Mansi Mengde
               </h1>
-
-              {/* Graduation photo beside name — animated */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.7, rotate: -6 }}
-                animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                transition={{ duration: 0.8, delay: 0.55, type: "spring", stiffness: 180, damping: 18 }}
-                whileHover={{ scale: 1.06, rotate: 2 }}
-                style={{ position: "relative", flexShrink: 0 }}
-              >
-                {/* Glow ring */}
-                <motion.div
-                  animate={glowControls}
-                  style={{
-                    position: "absolute",
-                    inset: "-3px",
-                    borderRadius: "50%",
-                    border: "2px solid rgba(201,168,76,0.5)",
-                    pointerEvents: "none",
-                    zIndex: 2,
-                  }}
-                />
-                <div
-                  style={{
-                    width: "clamp(72px, 9vw, 110px)",
-                    height: "clamp(72px, 9vw, 110px)",
-                    borderRadius: "50%",
-                    overflow: "hidden",
-                    border: "2.5px solid rgba(201,168,76,0.6)",
-                    position: "relative",
-                    zIndex: 1,
-                  }}
-                >
-                  <img
-                    src="/manus-storage/graduation-full_9ef06bf1.jpg"
-                    alt="Mansi Mengde at CSULB graduation, M.S. Information Systems"
-                    style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 30%" }}
-                  />
-                </div>
-                {/* Small sparkle burst on photo */}
-                {[0, 72, 144, 216, 288].map((deg, i) => (
-                  <motion.div
-                    key={i}
-                    style={{
-                      position: "absolute",
-                      top: "50%",
-                      left: "50%",
-                      width: "3px",
-                      height: "3px",
-                      borderRadius: "50%",
-                      background: "var(--gold)",
-                      pointerEvents: "none",
-                      zIndex: 3,
-                    }}
-                    animate={{
-                      x: [0, Math.cos((deg * Math.PI) / 180) * 52, 0],
-                      y: [0, Math.sin((deg * Math.PI) / 180) * 52, 0],
-                      opacity: [0, 0.9, 0],
-                      scale: [0, 1.2, 0],
-                    }}
-                    transition={{
-                      duration: 2.8,
-                      repeat: Infinity,
-                      delay: i * 0.22 + 0.6,
-                      ease: "easeOut",
-                    }}
-                  />
-                ))}
-              </motion.div>
             </motion.div>
 
             {/* Animated role title */}
@@ -381,7 +298,7 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Right: Professional headshot card */}
+          {/* Right: Graduation photo card */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
@@ -400,8 +317,8 @@ export default function Hero() {
               }}
             >
               <img
-                src="/manus-storage/headshot-pro2_cba6d073.webp"
-                alt="Mansi Mengde — Data Engineer, Cloud Architect"
+                src="/manus-storage/graduation-hero_d7b38a9a.webp"
+                alt="Mansi Mengde at CSULB graduation — M.S. Information Systems"
                 style={{ width: "100%", height: "auto", display: "block", objectFit: "contain" }}
               />
               <div
@@ -412,10 +329,10 @@ export default function Hero() {
                 }}
               >
                 <p style={{ fontFamily: "'Courier New', monospace", fontSize: "0.58rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--gold)", margin: 0 }}>
-                  Data Engineer · Cloud Architect
+                  M.S. Information Systems · CSULB
                 </p>
                 <p style={{ fontFamily: "'Georgia', serif", fontSize: "0.75rem", color: "#F5F0E8", margin: "3px 0 0" }}>
-                  San Francisco Bay Area, CA
+                  Graduated May 2026
                 </p>
               </div>
             </div>
