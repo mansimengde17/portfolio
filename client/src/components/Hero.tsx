@@ -1,11 +1,11 @@
 /*
  * PORTFOLIO — Hero Section
- * Animated rotating roles, graduation photo, professional neutral palette, no emojis
- * Location: San Francisco Bay Area, CA
- * No hyphens in compound words
+ * Graduation photo beside name with animated reveal
+ * Headshot card on right column
+ * No hyphens, no emojis, SF Bay Area
  */
 import { useState, useEffect, useRef } from "react";
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import { ArrowDown, Github, Linkedin, Mail, MapPin } from "lucide-react";
 
 const ROLES = ["Data Engineer", "Cloud Architect", "Software Engineer"];
@@ -43,8 +43,61 @@ const STATS = [
   { value: "AWS", label: "Certified Architect" },
 ];
 
+/* Floating sparkle particle */
+function Sparkle({ x, y, delay }: { x: string; y: string; delay: number }) {
+  return (
+    <motion.div
+      style={{
+        position: "absolute",
+        left: x,
+        top: y,
+        width: "4px",
+        height: "4px",
+        borderRadius: "50%",
+        background: "var(--gold)",
+        pointerEvents: "none",
+      }}
+      animate={{
+        opacity: [0, 1, 0],
+        scale: [0.5, 1.4, 0.5],
+        y: [0, -18, 0],
+      }}
+      transition={{
+        duration: 2.4,
+        repeat: Infinity,
+        delay,
+        ease: "easeInOut",
+      }}
+    />
+  );
+}
+
 export default function Hero() {
   const role = useTypewriter(ROLES);
+  const photoControls = useAnimation();
+  const glowControls = useAnimation();
+
+  useEffect(() => {
+    // Subtle continuous glow pulse on the photo border
+    glowControls.start({
+      boxShadow: [
+        "0 0 0px 0px rgba(201,168,76,0)",
+        "0 0 18px 4px rgba(201,168,76,0.35)",
+        "0 0 0px 0px rgba(201,168,76,0)",
+      ],
+      transition: { duration: 3.5, repeat: Infinity, ease: "easeInOut" },
+    });
+  }, [glowControls]);
+
+  const sparkles = [
+    { x: "8%", y: "12%", delay: 0 },
+    { x: "82%", y: "8%", delay: 0.6 },
+    { x: "92%", y: "55%", delay: 1.1 },
+    { x: "5%", y: "70%", delay: 0.3 },
+    { x: "50%", y: "5%", delay: 0.9 },
+    { x: "70%", y: "90%", delay: 1.5 },
+    { x: "20%", y: "88%", delay: 0.7 },
+  ];
 
   return (
     <section
@@ -64,6 +117,11 @@ export default function Hero() {
       {/* Background grid */}
       <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(201,168,76,0.022) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.022) 1px, transparent 1px)", backgroundSize: "100px 100px", pointerEvents: "none" }} />
       <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 80% 60% at 50% 50%, transparent 40%, #0D1117 100%)", pointerEvents: "none" }} />
+
+      {/* Floating sparkles */}
+      {sparkles.map((s, i) => (
+        <Sparkle key={i} x={s.x} y={s.y} delay={s.delay} />
+      ))}
 
       <div className="container relative" style={{ zIndex: 1 }}>
         {/* Main two-column layout */}
@@ -91,25 +149,97 @@ export default function Hero() {
               San Francisco Bay Area, CA
             </motion.div>
 
-            {/* Name */}
-            <motion.h1
+            {/* Name + graduation photo inline */}
+            <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              style={{
-                fontFamily: "'Times New Roman', Times, serif",
-                fontSize: "clamp(2.4rem, 5vw, 4.5rem)",
-                fontWeight: 700,
-                color: "#F5F0E8",
-                letterSpacing: "-0.03em",
-                lineHeight: 1.08,
-                margin: "0 0 0.75rem",
-              }}
+              style={{ display: "flex", alignItems: "center", gap: "1.4rem", marginBottom: "0.75rem", flexWrap: "wrap" }}
             >
-              Mansi Mengde
-            </motion.h1>
+              <h1
+                style={{
+                  fontFamily: "'Times New Roman', Times, serif",
+                  fontSize: "clamp(2.4rem, 5vw, 4.5rem)",
+                  fontWeight: 700,
+                  color: "#F5F0E8",
+                  letterSpacing: "-0.03em",
+                  lineHeight: 1.08,
+                  margin: 0,
+                }}
+              >
+                Mansi Mengde
+              </h1>
 
-            {/* Animated role title — fixed height to prevent overlap */}
+              {/* Graduation photo beside name — animated */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.7, rotate: -6 }}
+                animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                transition={{ duration: 0.8, delay: 0.55, type: "spring", stiffness: 180, damping: 18 }}
+                whileHover={{ scale: 1.06, rotate: 2 }}
+                style={{ position: "relative", flexShrink: 0 }}
+              >
+                {/* Glow ring */}
+                <motion.div
+                  animate={glowControls}
+                  style={{
+                    position: "absolute",
+                    inset: "-3px",
+                    borderRadius: "50%",
+                    border: "2px solid rgba(201,168,76,0.5)",
+                    pointerEvents: "none",
+                    zIndex: 2,
+                  }}
+                />
+                <div
+                  style={{
+                    width: "clamp(72px, 9vw, 110px)",
+                    height: "clamp(72px, 9vw, 110px)",
+                    borderRadius: "50%",
+                    overflow: "hidden",
+                    border: "2.5px solid rgba(201,168,76,0.6)",
+                    position: "relative",
+                    zIndex: 1,
+                  }}
+                >
+                  <img
+                    src="/manus-storage/graduation-full_9ef06bf1.jpg"
+                    alt="Mansi Mengde at CSULB graduation, M.S. Information Systems"
+                    style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 30%" }}
+                  />
+                </div>
+                {/* Small sparkle burst on photo */}
+                {[0, 72, 144, 216, 288].map((deg, i) => (
+                  <motion.div
+                    key={i}
+                    style={{
+                      position: "absolute",
+                      top: "50%",
+                      left: "50%",
+                      width: "3px",
+                      height: "3px",
+                      borderRadius: "50%",
+                      background: "var(--gold)",
+                      pointerEvents: "none",
+                      zIndex: 3,
+                    }}
+                    animate={{
+                      x: [0, Math.cos((deg * Math.PI) / 180) * 52, 0],
+                      y: [0, Math.sin((deg * Math.PI) / 180) * 52, 0],
+                      opacity: [0, 0.9, 0],
+                      scale: [0, 1.2, 0],
+                    }}
+                    transition={{
+                      duration: 2.8,
+                      repeat: Infinity,
+                      delay: i * 0.22 + 0.6,
+                      ease: "easeOut",
+                    }}
+                  />
+                ))}
+              </motion.div>
+            </motion.div>
+
+            {/* Animated role title */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -218,7 +348,7 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Right: Graduation photo */}
+          {/* Right: Professional headshot card */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
@@ -264,7 +394,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9, duration: 0.6 }}
-                      style={{ marginTop: "4rem", display: "grid", gridTemplateColumns: "repeat(4, 1fr)",
+          style={{ marginTop: "4rem", display: "grid", gridTemplateColumns: "repeat(4, 1fr)",
             borderTop: "1px solid rgba(201, 168, 76, 0.12)",
             borderLeft: "1px solid rgba(201, 168, 76, 0.12)",
           }}
