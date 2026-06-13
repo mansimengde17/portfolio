@@ -12,14 +12,11 @@ const EXPERIENCES = [
     title: "Cloud Data Engineer",
     company: "California State University, Long Beach",
     companyShort: "CSULB",
-    type: "Internship",
     period: "Sep 2024 — May 2026",
-    duration: "1 year 9 months",
     location: "Long Beach, CA",
-    mode: "On Site",
     logoColor: "#003DA5",
     logoBg: "#003DA515",
-    faviconDomain: "csulb.edu",
+    logoImg: "/manus-storage/logo-csulb-official_58b580b1.png",
     highlights: [
       "Optimized SQL data models and ETL workflows across 10+ datasets, reducing dashboard latency by 45% and achieving 99.9% data accuracy delivering near real time student performance insights to 12 academic departments and 300+ faculty advisors.",
       "Designed and deployed a Power BI and PostgreSQL analytics platform with RBAC, encryption, and FERPA/PII compliance controls, enabling self service data access for 150+ institutional users across student affairs and academic planning teams.",
@@ -31,11 +28,8 @@ const EXPERIENCES = [
     title: "Data and ML Pipeline Engineer",
     company: "Amazon Web Services (AWS)",
     companyShort: "AWS",
-    type: "Seasonal",
     period: "May 2025 — Jun 2025",
-    duration: "2 months",
     location: "Philadelphia, PA",
-    mode: "On Site",
     logoColor: "#FF9900",
     logoBg: "#FF990015",
     faviconDomain: "aws.amazon.com",
@@ -49,14 +43,11 @@ const EXPERIENCES = [
     title: "Data and Analytics Fellow",
     company: "McKinsey and Company",
     companyShort: "McK",
-    type: "Seasonal",
     period: "Apr 2025 — Jun 2025",
-    duration: "3 months",
     location: "United States",
-    mode: "Remote",
-    logoColor: "#1A1A2E",
-    logoBg: "#1A1A2E20",
-    faviconDomain: "mckinsey.com",
+    logoColor: "#4A90D9",
+    logoBg: "#4A90D920",
+    logoImg: "/manus-storage/logo-mckinsey-official_9ac08f6c.png",
     highlights: [
       "Applied structured problem solving frameworks to a digital transformation case study in financial services operations, collaborating with a cross functional team of 6 to deliver data backed recommendations.",
     ],
@@ -66,14 +57,11 @@ const EXPERIENCES = [
     title: "Data Engineer",
     company: "AtkinsRéalis",
     companyShort: "AR",
-    type: "Full Time",
     period: "Nov 2023 — May 2024",
-    duration: "7 months",
     location: "Pimpri Chinchwad, India",
-    mode: "On Site",
     logoColor: "#E31837",
     logoBg: "#E3183715",
-    faviconDomain: "atkinsrealis.com",
+    logoImg: "/manus-storage/logo-atkins-official_2a2e6283.png",
     highlights: [
       "Built and automated Python and SQL data pipelines ingesting 5M+ telemetry events per day, reducing false positive alerts by 35% and cutting SOC triage time by 30% through Grafana dashboards and AWS CloudWatch alerting.",
       "Designed an event driven AWS Lambda and API Gateway ingestion framework aligned to NIST and CIS benchmarks, improving incident response visibility across 15+ data sources and 3 production service environments.",
@@ -82,17 +70,14 @@ const EXPERIENCES = [
     skills: ["AWS", "Amazon RDS", "Grafana", "Python", "SQL", "NIST"],
   },
   {
-    title: "Data Engineer — ML Pipelines",
+    title: "Data Engineer, ML Pipelines",
     company: "AlgoSec",
     companyShort: "AS",
-    type: "Full Time",
     period: "Dec 2022 — Aug 2023",
-    duration: "9 months",
     location: "Pune, India",
-    mode: "Hybrid",
     logoColor: "#0066CC",
     logoBg: "#0066CC15",
-    faviconDomain: "algosec.com",
+    logoImg: "/manus-storage/logo-algosec-official_35c93e9f.png",
     highlights: [
       "Designed real time telemetry pipelines with Grafana to monitor model drift and inference performance across 1.2M+ user behavior logs, cutting drift detection latency from 24 hours to 2 minutes.",
       "Built and deployed Python and scikit learn ML models for churn prediction and anomaly detection at 86% accuracy, flagging approximately 2,500 at risk accounts per month and directly informing retention outreach by the customer success team.",
@@ -101,14 +86,11 @@ const EXPERIENCES = [
     skills: ["Machine Learning", "Data Science", "Python", "scikit-learn", "Grafana"],
   },
   {
-    title: "Data Engineer — Industrial Analytics",
+    title: "Data Engineer, Industrial Analytics",
     company: "HYT Engineering Company",
     companyShort: "HYT",
-    type: "Full Time",
     period: "Jun 2021 — Nov 2022",
-    duration: "1 year 6 months",
     location: "Pimpri Chinchwad, India",
-    mode: "On Site",
     logoColor: "#2D6A4F",
     logoBg: "#2D6A4F15",
     faviconDomain: "hytengineering.com",
@@ -121,8 +103,10 @@ const EXPERIENCES = [
   },
 ];
 
-function CompanyLogo({ short, color, bg, faviconDomain }: { short: string; color: string; bg: string; faviconDomain?: string }) {
+function CompanyLogo({ short, color, bg, faviconDomain, logoImg }: { short: string; color: string; bg: string; faviconDomain?: string; logoImg?: string }) {
   const [imgFailed, setImgFailed] = useState(false);
+  const src = logoImg || (faviconDomain ? `https://www.google.com/s2/favicons?domain=${faviconDomain}&sz=32` : null);
+  const isLarge = !!logoImg;
   return (
     <div
       style={{
@@ -136,14 +120,15 @@ function CompanyLogo({ short, color, bg, faviconDomain }: { short: string; color
         justifyContent: "center",
         flexShrink: 0,
         overflow: "hidden",
+        padding: isLarge ? "3px" : "0",
       }}
     >
-      {faviconDomain && !imgFailed ? (
+      {src && !imgFailed ? (
         <img
-          src={`https://www.google.com/s2/favicons?domain=${faviconDomain}&sz=32`}
+          src={src}
           alt={short}
           onError={() => setImgFailed(true)}
-          style={{ width: "24px", height: "24px", objectFit: "contain" }}
+          style={{ width: isLarge ? "38px" : "24px", height: isLarge ? "38px" : "24px", objectFit: "contain" }}
         />
       ) : (
         <span
@@ -271,7 +256,7 @@ export default function Experience() {
                       textAlign: "left",
                     }}
                   >
-                    <CompanyLogo short={exp.companyShort} color={exp.logoColor} bg={exp.logoBg} faviconDomain={exp.faviconDomain} />
+                    <CompanyLogo short={exp.companyShort} color={exp.logoColor} bg={exp.logoBg} faviconDomain={(exp as any).faviconDomain} logoImg={(exp as any).logoImg} />
 
                     <div style={{ flex: 1, minWidth: 0 }}>
                       <div style={{ display: "flex", alignItems: "baseline", gap: "0.5rem", flexWrap: "wrap" }}>
@@ -287,20 +272,7 @@ export default function Experience() {
                         >
                           {exp.title}
                         </h3>
-                        <span
-                          style={{
-                            fontFamily: "'Courier New', monospace",
-                            fontSize: "0.58rem",
-                            letterSpacing: "0.1em",
-                            textTransform: "uppercase",
-                            color: exp.logoColor,
-                            border: `1px solid ${exp.logoColor}30`,
-                            padding: "1px 6px",
-                            borderRadius: "2px",
-                          }}
-                        >
-                          {exp.type}
-                        </span>
+
                       </div>
                       <p
                         style={{
@@ -324,19 +296,7 @@ export default function Experience() {
                         >
                           {exp.period}
                         </span>
-                        <span style={{ color: "rgba(138,155,176,0.3)", fontSize: "0.6rem" }}>|</span>
-                        <span
-                          style={{
-                            fontFamily: "'Courier New', monospace",
-                            fontSize: "0.6rem",
-                            letterSpacing: "0.08em",
-                            color: "var(--slate)",
-                            opacity: 0.5,
-                          }}
-                        >
-                          {exp.duration}
-                        </span>
-                        <span style={{ color: "rgba(138,155,176,0.3)", fontSize: "0.6rem" }}>|</span>
+<span style={{ color: "rgba(138,155,176,0.3)", fontSize: "0.6rem" }}>|</span>
                         <span
                           style={{
                             display: "flex",
@@ -350,7 +310,7 @@ export default function Experience() {
                           }}
                         >
                           <MapPin size={9} />
-                          {exp.location} · {exp.mode}
+                          {exp.location}
                         </span>
                       </div>
                     </div>

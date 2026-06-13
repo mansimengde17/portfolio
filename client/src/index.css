@@ -58,9 +58,9 @@
   --charcoal: #111820;
   --ink: #0D1117;
   --ivory: #F5F0E8;
-  --ivory-dim: rgba(245, 240, 232, 0.65);
-  --slate: #8A9BB0;
-  --slate-dim: rgba(138, 155, 176, 0.35);
+  --ivory-dim: rgba(245, 240, 232, 0.80);
+  --slate: #B0BFD0;
+  --slate-dim: rgba(176, 191, 208, 0.35);
 
   /* Tailwind theme tokens */
   --radius: 2px;

@@ -58,7 +58,7 @@ export default function Navbar() {
           }}
           style={{
             fontFamily: "'Times New Roman', Times, serif",
-            fontSize: "1.05rem",
+            fontSize: "1.15rem",
             fontWeight: 700,
             color: "#F5F0E8",
             textDecoration: "none",
@@ -94,16 +94,17 @@ export default function Navbar() {
                 padding: "0 0.85rem",
                 height: "64px",
                 fontFamily: "'Courier New', monospace",
-                fontSize: "0.65rem",
-                letterSpacing: "0.14em",
+                fontSize: "0.72rem",
+                fontWeight: 600,
+                letterSpacing: "0.12em",
                 textTransform: "uppercase",
-                color: "var(--slate)",
+                color: "rgba(245,240,232,0.75)",
                 cursor: "pointer",
                 transition: "color 150ms ease",
                 position: "relative",
               }}
               onMouseEnter={(e) => (e.currentTarget.style.color = "var(--gold)")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "var(--slate)")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(245,240,232,0.75)")}
             >
               {label}
             </motion.button>

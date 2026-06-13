@@ -83,22 +83,20 @@ export default function About() {
               Grant to present research at AWS re:Invent 2025 in Las Vegas.
             </p>
 
-            {/* Graduation photos grid */}
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.75rem" }}>
-              <div className="photo-frame" style={{ height: "220px" }}>
-                <img
-                  src="/manus-storage/graduation-banner_305f96de.jpg"
-                  alt="Mansi Ganesh Mengde — M.S. Information Systems, CSULB graduation banner"
-                  style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }}
-                />
-              </div>
-              <div className="photo-frame" style={{ height: "220px" }}>
-                <img
-                  src="/manus-storage/graduation-diploma_80ae49dd.jpg"
-                  alt="Mansi Mengde holding CSULB diploma at graduation ceremony"
-                  style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }}
-                />
-              </div>
+            {/* Graduation photo — single feature image */}
+            <div
+              style={{
+                borderRadius: "6px",
+                overflow: "hidden",
+                border: "1px solid rgba(201,168,76,0.15)",
+                boxShadow: "0 8px 32px rgba(0,0,0,0.4)",
+              }}
+            >
+              <img
+                src="/manus-storage/graduation-diploma_80ae49dd.jpg"
+                alt="Mansi Mengde holding CSULB diploma at graduation ceremony, May 2026"
+                style={{ width: "100%", height: "260px", objectFit: "cover", objectPosition: "center 20%", display: "block" }}
+              />
             </div>
 
             <div style={{ marginTop: "1.5rem", display: "flex", gap: "1rem", flexWrap: "wrap" }}>

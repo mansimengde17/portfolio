@@ -37,10 +37,10 @@ function useTypewriter(words: string[], speed = 80, pause = 2000) {
 }
 
 const STATS = [
-  { value: "4+", label: "Years of Experience" },
   { value: "5M+", label: "Events Processed Daily" },
   { value: "99.9%", label: "Pipeline Uptime" },
   { value: "2x", label: "Hackathon Winner" },
+  { value: "AWS", label: "Certified Architect" },
 ];
 
 export default function Hero() {
@@ -144,10 +144,10 @@ export default function Hero() {
               transition={{ delay: 0.5, duration: 0.6 }}
               style={{
                 maxWidth: "520px",
-                color: "var(--slate)",
+                color: "#B8C8D8",
                 fontFamily: "'Georgia', serif",
-                fontSize: "0.98rem",
-                lineHeight: 1.75,
+                fontSize: "1rem",
+                lineHeight: 1.8,
                 margin: "0 0 2.5rem",
               }}
             >
@@ -237,9 +237,9 @@ export default function Hero() {
               }}
             >
               <img
-                src="/manus-storage/graduation-banner_305f96de.jpg"
-                alt="Mansi Mengde — CSULB Graduation, May 2026"
-                style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }}
+                src="/manus-storage/headshot-pro2_cba6d073.webp"
+                alt="Mansi Mengde — Data Engineer, Cloud Architect"
+                style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 15%" }}
               />
               <div
                 style={{
@@ -252,10 +252,10 @@ export default function Hero() {
                 }}
               >
                 <p style={{ fontFamily: "'Courier New', monospace", fontSize: "0.58rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--gold)", margin: 0 }}>
-                  M.S. Information Systems
+                  Data Engineer · Cloud Architect
                 </p>
                 <p style={{ fontFamily: "'Georgia', serif", fontSize: "0.75rem", color: "#F5F0E8", margin: "2px 0 0", opacity: 0.85 }}>
-                  California State University, Long Beach
+                  San Francisco Bay Area, CA
                 </p>
               </div>
             </div>
@@ -267,10 +267,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9, duration: 0.6 }}
-          style={{
-            marginTop: "4rem",
-            display: "grid",
-            gridTemplateColumns: "repeat(4, 1fr)",
+                      style={{ marginTop: "4rem", display: "grid", gridTemplateColumns: "repeat(4, 1fr)",
             borderTop: "1px solid rgba(201, 168, 76, 0.12)",
             borderLeft: "1px solid rgba(201, 168, 76, 0.12)",
           }}
