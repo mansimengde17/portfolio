@@ -6,7 +6,7 @@
  */
 import { useState, useEffect, useRef } from "react";
 import { motion, useAnimation } from "framer-motion";
-import { ArrowDown, Github, Linkedin, Mail, MapPin } from "lucide-react";
+import { ArrowDown, Github, Linkedin, Mail, MapPin, Download } from "lucide-react";
 
 const ROLES = ["Data Engineer", "Cloud Architect", "Software Engineer"];
 
@@ -125,7 +125,7 @@ export default function Hero() {
 
       <div className="container relative" style={{ zIndex: 1 }}>
         {/* Main two-column layout */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: "3rem", alignItems: "center" }}>
+        <div className="hero-grid" style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: "3rem", alignItems: "center" }}>
           {/* Left: Text content */}
           <div style={{ minWidth: 0 }}>
             {/* Overline label */}
@@ -307,6 +307,39 @@ export default function Hero() {
               >
                 View Work
               </a>
+              <a
+                href="/manus-storage/mansi-mengde-resume_113f1d54.pdf"
+                download="Mansi_Mengde_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "0.45rem",
+                  padding: "0.65rem 1.4rem",
+                  fontFamily: "'Courier New', monospace",
+                  fontSize: "0.68rem",
+                  letterSpacing: "0.14em",
+                  textTransform: "uppercase",
+                  color: "var(--gold)",
+                  border: "1px solid rgba(201,168,76,0.4)",
+                  borderRadius: "1px",
+                  textDecoration: "none",
+                  transition: "all 180ms ease",
+                  background: "transparent",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "rgba(201,168,76,0.08)";
+                  e.currentTarget.style.borderColor = "rgba(201,168,76,0.8)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = "transparent";
+                  e.currentTarget.style.borderColor = "rgba(201,168,76,0.4)";
+                }}
+              >
+                <Download size={13} />
+                Resume
+              </a>
             </motion.div>
 
             {/* Social links */}
@@ -394,6 +427,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9, duration: 0.6 }}
+          className="hero-stats-grid"
           style={{ marginTop: "4rem", display: "grid", gridTemplateColumns: "repeat(4, 1fr)",
             borderTop: "1px solid rgba(201, 168, 76, 0.12)",
             borderLeft: "1px solid rgba(201, 168, 76, 0.12)",

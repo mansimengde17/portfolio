@@ -114,7 +114,7 @@ export default function Awards() {
                   display: "grid",
                   gridTemplateColumns: i % 2 === 0 ? "1fr 360px" : "360px 1fr",
                 }}
-                className="awards-grid"
+                className="awards-grid award-card-grid"
               >
                 {/* Text content — always first in DOM for accessibility */}
                 <div

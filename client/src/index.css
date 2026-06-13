@@ -440,3 +440,131 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ─── Mobile Responsive Overrides ─────────────────────────────────────── */
+
+/* Hero section: stack columns on mobile */
+@media (max-width: 768px) {
+  /* Hero two-column → single column */
+  .hero-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+
+  /* Hero stats: 2x2 grid on mobile */
+  .hero-stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  /* About section: stack columns */
+  .about-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2.5rem !important;
+  }
+
+  /* Experience: reduce padding */
+  .exp-card {
+    padding: 1.25rem !important;
+  }
+
+  /* Skills: 2-column on mobile */
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  /* Certifications: single column */
+  .certs-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Contact: stack columns */
+  .contact-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+
+  /* Navbar: hide nav links, show hamburger area */
+  .nav-links-desktop {
+    display: none !important;
+  }
+
+  /* Hero CTA buttons: wrap nicely */
+  .hero-cta-row {
+    flex-wrap: wrap !important;
+    gap: 0.75rem !important;
+  }
+
+  /* Hero name + photo: wrap on very small screens */
+  .hero-name-row {
+    flex-wrap: wrap !important;
+    gap: 0.75rem !important;
+  }
+
+  /* Section padding reduction */
+  section {
+    padding-top: 3.5rem !important;
+    padding-bottom: 3.5rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Extra small: single column stats */
+  .hero-stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  /* Reduce font sizes for very small screens */
+  .hero-name {
+    font-size: clamp(1.8rem, 8vw, 2.8rem) !important;
+  }
+}
+
+/* ─── Experience card mobile padding ──────────────────────────────────── */
+@media (max-width: 768px) {
+  .exp-card-btn {
+    padding: 1rem !important;
+    gap: 0.75rem !important;
+  }
+
+  /* Awards: collapse photo column on mobile */
+  .award-card-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .award-card-grid > div {
+    order: unset !important;
+    min-height: 240px !important;
+  }
+
+  /* Entry screen title on mobile */
+  .entry-screen h1 {
+    font-size: clamp(2rem, 10vw, 3.5rem) !important;
+  }
+
+  /* Navbar mobile menu items */
+  .nav-mobile-item {
+    font-size: 1rem !important;
+    padding: 0.75rem 0 !important;
+  }
+
+  /* Skills bubble field height reduction */
+  .skills-bubble-field {
+    height: 280px !important;
+  }
+
+  /* Contact form inputs full width */
+  .contact-grid input,
+  .contact-grid textarea {
+    font-size: 16px !important; /* prevent iOS zoom */
+  }
+
+  /* Section headings scale down */
+  h2 {
+    font-size: clamp(1.6rem, 5vw, 2.5rem) !important;
+  }
+
+  /* Reduce section vertical padding */
+  section[id] {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+}

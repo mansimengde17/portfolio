@@ -65,7 +65,7 @@ export default function About() {
           </h2>
         </motion.div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4rem", alignItems: "start" }}>
+        <div className="about-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4rem", alignItems: "start" }}>
           {/* Left: Bio + graduation photos */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}

@@ -105,7 +105,7 @@ export default function Certifications() {
         </motion.div>
 
         {/* AWS Certs — featured with badges */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))", gap: "1.25rem", marginBottom: "1.25rem" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(340px, 100%), 1fr))", gap: "1.25rem", marginBottom: "1.25rem" }}>
           {CERTIFICATIONS.filter((c) => c.highlight).map((cert, i) => (
             <motion.div
               key={cert.name}
@@ -207,7 +207,7 @@ export default function Certifications() {
         </div>
 
         {/* Other Certs — text only, no badge images */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: "1rem" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(280px, 100%), 1fr))", gap: "1rem" }}>
           {CERTIFICATIONS.filter((c) => !c.highlight).map((cert, i) => (
             <motion.div
               key={cert.name}

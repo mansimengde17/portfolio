@@ -142,6 +142,7 @@ export default function Navbar() {
             <button
               key={href}
               onClick={() => scrollTo(href)}
+              className="nav-mobile-item"
               style={{
                 display: "block",
                 width: "100%",

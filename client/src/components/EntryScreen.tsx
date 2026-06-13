@@ -214,7 +214,7 @@ export default function EntryScreen({ onEnter }: EntryScreenProps) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.3 }}
-          style={{ fontFamily: "'Times New Roman', Times, serif", fontSize: "clamp(2.8rem, 8vw, 5.5rem)", fontWeight: 700, color: "#F5F0E8", letterSpacing: "-0.03em", lineHeight: 1, textAlign: "center", margin: 0 }}
+          style={{ fontFamily: "'Times New Roman', Times, serif", fontSize: "clamp(2rem, 10vw, 5.5rem)", fontWeight: 700, color: "#F5F0E8", letterSpacing: "-0.03em", lineHeight: 1, textAlign: "center", margin: 0 }}
         >
           Mansi Mengde
         </motion.h1>
@@ -224,7 +224,7 @@ export default function EntryScreen({ onEnter }: EntryScreenProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.7, duration: 0.6 }}
-          style={{ fontFamily: "'Courier New', monospace", fontSize: "0.65rem", letterSpacing: "0.28em", textTransform: "uppercase", color: "var(--gold)", marginTop: "0.6rem", display: "flex", gap: "1rem", alignItems: "center" }}
+          style={{ fontFamily: "'Courier New', monospace", fontSize: "0.65rem", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--gold)", marginTop: "0.6rem", display: "flex", gap: "0.6rem", alignItems: "center", flexWrap: "wrap", justifyContent: "center" }}
         >
           <span>Data Engineer</span>
           <span style={{ opacity: 0.4 }}>·</span>

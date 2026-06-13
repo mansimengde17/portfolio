@@ -244,6 +244,7 @@ export default function Experience() {
                   {/* Header — always visible */}
                   <button
                     onClick={() => setExpanded(expanded === i ? null : i)}
+                    className="exp-card-btn"
                     style={{
                       width: "100%",
                       padding: "1.25rem 1.5rem",
