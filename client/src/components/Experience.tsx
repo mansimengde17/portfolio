@@ -47,7 +47,7 @@ const EXPERIENCES = [
     location: "United States",
     logoColor: "#4A90D9",
     logoBg: "#4A90D920",
-    logoImg: "/manus-storage/logo-mckinsey-official_9ac08f6c.png",
+    logoImg: "/manus-storage/logo-atkins-official_2a2e6283.png",
     highlights: [
       "Applied structured problem solving frameworks to a digital transformation case study in financial services operations, collaborating with a cross functional team of 6 to deliver data backed recommendations.",
     ],
@@ -61,7 +61,7 @@ const EXPERIENCES = [
     location: "Pimpri Chinchwad, India",
     logoColor: "#E31837",
     logoBg: "#E3183715",
-    logoImg: "/manus-storage/logo-atkins-official_2a2e6283.png",
+    logoImg: "/manus-storage/logo-mckinsey-official_9ac08f6c.png",
     highlights: [
       "Built and automated Python and SQL data pipelines ingesting 5M+ telemetry events per day, reducing false positive alerts by 35% and cutting SOC triage time by 30% through Grafana dashboards and AWS CloudWatch alerting.",
       "Designed an event driven AWS Lambda and API Gateway ingestion framework aligned to NIST and CIS benchmarks, improving incident response visibility across 15+ data sources and 3 production service environments.",

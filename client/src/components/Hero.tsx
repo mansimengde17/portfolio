@@ -228,33 +228,30 @@ export default function Hero() {
           >
             <div
               style={{
-                width: "260px",
-                height: "380px",
+                width: "280px",
                 border: "1px solid rgba(201, 168, 76, 0.25)",
                 borderRadius: "2px",
                 overflow: "hidden",
                 position: "relative",
+                background: "#0D1117",
               }}
             >
               <img
                 src="/manus-storage/headshot-pro2_cba6d073.webp"
                 alt="Mansi Mengde — Data Engineer, Cloud Architect"
-                style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 15%" }}
+                style={{ width: "100%", height: "auto", display: "block", objectFit: "contain" }}
               />
               <div
                 style={{
-                  position: "absolute",
-                  bottom: 0,
-                  left: 0,
-                  right: 0,
-                  padding: "1.5rem 1rem 1rem",
-                  background: "linear-gradient(to top, rgba(13,17,23,0.92) 0%, transparent 100%)",
+                  padding: "0.85rem 1rem",
+                  background: "rgba(13,17,23,0.97)",
+                  borderTop: "1px solid rgba(201,168,76,0.18)",
                 }}
               >
                 <p style={{ fontFamily: "'Courier New', monospace", fontSize: "0.58rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--gold)", margin: 0 }}>
                   Data Engineer · Cloud Architect
                 </p>
-                <p style={{ fontFamily: "'Georgia', serif", fontSize: "0.75rem", color: "#F5F0E8", margin: "2px 0 0", opacity: 0.85 }}>
+                <p style={{ fontFamily: "'Georgia', serif", fontSize: "0.75rem", color: "#F5F0E8", margin: "3px 0 0" }}>
                   San Francisco Bay Area, CA
                 </p>
               </div>
