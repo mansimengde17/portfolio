@@ -1,214 +1,184 @@
 /*
- * MIDNIGHT DATA LAB — Contact Section
- * "Let's Get in Touch" with calendar, email, phone links
+ * PORTFOLIO — Contact Section
+ * Professional neutral palette, no emojis, calendar + email + phone
  */
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
+import { motion, useInView } from "framer-motion";
 import { Mail, Phone, Calendar, Github, Linkedin, Send, MapPin, ArrowRight } from "lucide-react";
 
 const contactOptions = [
   {
-    icon: <Calendar size={22} />,
+    icon: <Calendar size={20} />,
     title: "Schedule a Call",
-    description: "Book a 30-minute intro call to discuss opportunities",
+    description: "Book a 30-minute conversation to discuss opportunities",
     action: "Open Calendar",
     href: "https://calendly.com/mansimengde17",
-    color: "#8B5CF6",
-    primary: true,
+    featured: true,
   },
   {
-    icon: <Mail size={22} />,
+    icon: <Mail size={20} />,
     title: "Send an Email",
     description: "mansimengde17@gmail.com",
-    action: "Send Email",
+    action: "Compose Email",
     href: "mailto:mansimengde17@gmail.com",
-    color: "#00D4FF",
-    primary: false,
+    featured: false,
   },
   {
-    icon: <Phone size={22} />,
+    icon: <Phone size={20} />,
     title: "Call Directly",
     description: "+1 (562) 738-8473",
     action: "Call Now",
     href: "tel:+15627388473",
-    color: "#10B981",
-    primary: false,
-  },
-];
-
-const socialLinks = [
-  {
-    icon: <Github size={20} />,
-    label: "GitHub",
-    href: "https://github.com/mansimengde17",
-    username: "@mansimengde17",
-  },
-  {
-    icon: <Linkedin size={20} />,
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/in/mansi-mengde-b5b2951a2/",
-    username: "mansi-mengde",
-  },
-  {
-    icon: <Mail size={20} />,
-    label: "Email",
-    href: "mailto:mansimengde17@gmail.com",
-    username: "mansimengde17@gmail.com",
+    featured: false,
   },
 ];
 
 export default function Contact() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`Portfolio Contact from ${formData.name}`);
+    const subject = encodeURIComponent(`Portfolio Inquiry from ${formData.name}`);
     const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`);
     window.open(`mailto:mansimengde17@gmail.com?subject=${subject}&body=${body}`);
     setSubmitted(true);
     setTimeout(() => setSubmitted(false), 3000);
   };
 
+  const inputStyle = {
+    width: "100%",
+    padding: "0.75rem 1rem",
+    background: "rgba(13, 17, 23, 0.8)",
+    border: "1px solid rgba(201, 168, 76, 0.18)",
+    borderRadius: "2px",
+    color: "#F5F0E8",
+    fontFamily: "'Georgia', serif",
+    fontSize: "0.9rem",
+    outline: "none",
+    transition: "border-color 150ms ease",
+  };
+
   return (
-    <section id="contact" className="py-24 relative overflow-hidden" style={{ background: "#0D1B2A" }}>
-      {/* Background glow */}
-      <div
-        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-96 h-96 opacity-10 blur-3xl rounded-full"
-        style={{ background: "radial-gradient(circle, #00D4FF, transparent)" }}
-      />
-
-      <div className="section-divider max-w-4xl mb-16 relative z-10" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10" ref={ref}>
-        {/* Header */}
+    <section id="contact" ref={ref} style={{ padding: "6rem 0", background: "var(--charcoal)" }}>
+      <div className="container">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          style={{ marginBottom: "3.5rem" }}
         >
-          <span className="section-label">// 07. contact</span>
+          <span className="section-label">07. Contact</span>
           <h2
-            className="mt-3 text-4xl lg:text-6xl font-bold"
-            style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#E8F4FD" }}
+            style={{
+              fontFamily: "'Times New Roman', Times, serif",
+              fontSize: "clamp(2rem, 4vw, 3rem)",
+              fontWeight: 700,
+              color: "#F5F0E8",
+              marginTop: "0.5rem",
+              letterSpacing: "-0.02em",
+            }}
           >
             Let's{" "}
             <span className="gradient-text">Get in Touch</span>
           </h2>
-          <p className="mt-4 text-base max-w-2xl mx-auto" style={{ color: "#6B8FAB", fontFamily: "'DM Sans', sans-serif" }}>
-            If you're working on data infrastructure at a company doing something real — autonomous vehicles,
-            AI systems, or supply chain at scale — I want to hear about the hard parts.
+          <p style={{ marginTop: "0.75rem", maxWidth: "520px", color: "var(--slate)", fontFamily: "'Georgia', serif", fontSize: "1rem", lineHeight: 1.75 }}>
+            If you are working on data infrastructure at a company doing something meaningful —
+            I want to hear about the hard problems.
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4rem", alignItems: "start" }}>
           {/* Left: Contact options */}
-          <div className="space-y-5">
-            {contactOptions.map((opt, i) => (
-              <motion.a
-                key={opt.title}
-                href={opt.href}
-                target={opt.href.startsWith("http") ? "_blank" : undefined}
-                rel={opt.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                initial={{ opacity: 0, x: -30 }}
-                animate={isInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="flex items-center gap-5 p-5 rounded-2xl group transition-all duration-200 block"
-                style={{
-                  background: opt.primary
-                    ? `linear-gradient(135deg, ${opt.color}15, ${opt.color}08)`
-                    : "rgba(13, 27, 42, 0.8)",
-                  border: `1px solid ${opt.color}${opt.primary ? "40" : "20"}`,
-                  textDecoration: "none",
-                }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.borderColor = `${opt.color}60`;
-                  (e.currentTarget as HTMLElement).style.boxShadow = `0 0 24px ${opt.color}15`;
-                  (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)";
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.borderColor = `${opt.color}${opt.primary ? "40" : "20"}`;
-                  (e.currentTarget as HTMLElement).style.boxShadow = "none";
-                  (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
-                }}
-              >
-                <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
-                  style={{ background: `${opt.color}15`, border: `1px solid ${opt.color}30`, color: opt.color }}
+          <div>
+            <div style={{ display: "flex", flexDirection: "column", gap: "1rem", marginBottom: "2rem" }}>
+              {contactOptions.map((opt, i) => (
+                <motion.a
+                  key={opt.title}
+                  href={opt.href}
+                  target={opt.href.startsWith("http") ? "_blank" : undefined}
+                  rel={opt.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ delay: i * 0.1 }}
+                  className={opt.featured ? "card-gold" : "card-neutral"}
+                  style={{
+                    padding: "1.25rem 1.5rem",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "1rem",
+                    textDecoration: "none",
+                    transition: "transform 180ms ease, border-color 180ms ease",
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.transform = "translateX(4px)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.transform = "translateX(0)")}
                 >
-                  {opt.icon}
-                </div>
-                <div className="flex-1">
-                  <h3
-                    className="font-bold text-base"
-                    style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#E8F4FD" }}
+                  <div
+                    style={{
+                      width: "40px",
+                      height: "40px",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      background: "rgba(201, 168, 76, 0.08)",
+                      border: "1px solid rgba(201, 168, 76, 0.2)",
+                      borderRadius: "2px",
+                      color: "var(--gold)",
+                      flexShrink: 0,
+                    }}
                   >
-                    {opt.title}
-                  </h3>
-                  <p className="text-sm mt-0.5" style={{ color: "#6B8FAB", fontFamily: "'DM Sans', sans-serif" }}>
-                    {opt.description}
-                  </p>
-                </div>
-                <div
-                  className="flex items-center gap-1 text-sm font-medium transition-transform group-hover:translate-x-1"
-                  style={{ color: opt.color }}
-                >
-                  {opt.action}
-                  <ArrowRight size={14} />
-                </div>
-              </motion.a>
-            ))}
+                    {opt.icon}
+                  </div>
+                  <div style={{ flex: 1 }}>
+                    <h4 style={{ fontFamily: "'Times New Roman', Times, serif", fontSize: "0.95rem", fontWeight: 700, color: "#F5F0E8", margin: "0 0 0.15rem" }}>
+                      {opt.title}
+                    </h4>
+                    <p style={{ fontFamily: "'Georgia', serif", fontSize: "0.82rem", color: "var(--slate)", margin: 0 }}>
+                      {opt.description}
+                    </p>
+                  </div>
+                  <div style={{ display: "flex", alignItems: "center", gap: "0.3rem", fontFamily: "'Courier New', monospace", fontSize: "0.62rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--gold)", flexShrink: 0 }}>
+                    {opt.action}
+                    <ArrowRight size={12} />
+                  </div>
+                </motion.a>
+              ))}
+            </div>
 
-            {/* Location */}
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : {}}
               transition={{ delay: 0.4 }}
-              className="flex items-center gap-3 px-5 py-3 rounded-xl"
-              style={{ background: "rgba(107, 143, 171, 0.05)", border: "1px solid rgba(107, 143, 171, 0.1)" }}
+              style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "1.5rem" }}
             >
-              <MapPin size={16} style={{ color: "#6B8FAB" }} />
-              <span className="text-sm" style={{ color: "#6B8FAB", fontFamily: "'DM Sans', sans-serif" }}>
-                Los Angeles, CA · Open to Remote & Hybrid
+              <MapPin size={13} style={{ color: "var(--gold)" }} />
+              <span style={{ fontFamily: "'Courier New', monospace", fontSize: "0.68rem", letterSpacing: "0.1em", color: "var(--slate)" }}>
+                Los Angeles, CA — Open to Remote and Hybrid
               </span>
             </motion.div>
 
-            {/* Social links */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : {}}
               transition={{ delay: 0.5 }}
-              className="flex flex-wrap gap-3 pt-2"
+              style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}
             >
-              {socialLinks.map(({ icon, label, href, username }) => (
+              {[
+                { icon: <Github size={16} />, href: "https://github.com/mansimengde17", label: "GitHub" },
+                { icon: <Linkedin size={16} />, href: "https://www.linkedin.com/in/mansi-mengde-b5b2951a2/", label: "LinkedIn" },
+              ].map(({ icon, href, label }) => (
                 <a
                   key={href}
                   href={href}
-                  target={href.startsWith("http") ? "_blank" : undefined}
-                  rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm transition-all duration-150"
-                  style={{
-                    background: "rgba(0, 212, 255, 0.06)",
-                    border: "1px solid rgba(0, 212, 255, 0.15)",
-                    color: "#6B8FAB",
-                    fontFamily: "'DM Sans', sans-serif",
-                    textDecoration: "none",
-                  }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLElement).style.color = "#00D4FF";
-                    (e.currentTarget as HTMLElement).style.borderColor = "rgba(0, 212, 255, 0.35)";
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLElement).style.color = "#6B8FAB";
-                    (e.currentTarget as HTMLElement).style.borderColor = "rgba(0, 212, 255, 0.15)";
-                  }}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-ghost"
+                  style={{ fontSize: "0.68rem", padding: "0.45rem 1rem", gap: "0.4rem" }}
                 >
                   {icon}
-                  <span>{username}</span>
+                  {label}
                 </a>
               ))}
             </motion.div>
@@ -216,25 +186,20 @@ export default function Contact() {
 
           {/* Right: Contact form */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: 20 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="glow-card rounded-2xl p-6"
+            transition={{ delay: 0.2 }}
+            className="card-neutral"
+            style={{ padding: "2rem" }}
           >
-            <h3
-              className="text-xl font-bold mb-6"
-              style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#E8F4FD" }}
-            >
+            <h3 style={{ fontFamily: "'Times New Roman', Times, serif", fontSize: "1.1rem", fontWeight: 700, color: "#F5F0E8", marginBottom: "1.5rem", letterSpacing: "-0.01em" }}>
               Send a Message
             </h3>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
               <div>
-                <label
-                  className="block text-xs mb-1.5 font-mono"
-                  style={{ color: "#00D4FF" }}
-                >
-                  name
+                <label style={{ display: "block", fontFamily: "'Courier New', monospace", fontSize: "0.62rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--gold)", marginBottom: "0.4rem" }}>
+                  Name
                 </label>
                 <input
                   type="text"
@@ -242,24 +207,14 @@ export default function Contact() {
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   placeholder="Your name"
-                  className="w-full px-4 py-3 rounded-lg text-sm outline-none transition-all duration-150"
-                  style={{
-                    background: "rgba(5, 10, 20, 0.8)",
-                    border: "1px solid rgba(0, 212, 255, 0.2)",
-                    color: "#E8F4FD",
-                    fontFamily: "'DM Sans', sans-serif",
-                  }}
-                  onFocus={(e) => (e.target.style.borderColor = "rgba(0, 212, 255, 0.5)")}
-                  onBlur={(e) => (e.target.style.borderColor = "rgba(0, 212, 255, 0.2)")}
+                  style={inputStyle}
+                  onFocus={(e) => (e.target.style.borderColor = "rgba(201, 168, 76, 0.5)")}
+                  onBlur={(e) => (e.target.style.borderColor = "rgba(201, 168, 76, 0.18)")}
                 />
               </div>
-
               <div>
-                <label
-                  className="block text-xs mb-1.5 font-mono"
-                  style={{ color: "#00D4FF" }}
-                >
-                  email
+                <label style={{ display: "block", fontFamily: "'Courier New', monospace", fontSize: "0.62rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--gold)", marginBottom: "0.4rem" }}>
+                  Email
                 </label>
                 <input
                   type="email"
@@ -267,24 +222,14 @@ export default function Contact() {
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   placeholder="your@email.com"
-                  className="w-full px-4 py-3 rounded-lg text-sm outline-none transition-all duration-150"
-                  style={{
-                    background: "rgba(5, 10, 20, 0.8)",
-                    border: "1px solid rgba(0, 212, 255, 0.2)",
-                    color: "#E8F4FD",
-                    fontFamily: "'DM Sans', sans-serif",
-                  }}
-                  onFocus={(e) => (e.target.style.borderColor = "rgba(0, 212, 255, 0.5)")}
-                  onBlur={(e) => (e.target.style.borderColor = "rgba(0, 212, 255, 0.2)")}
+                  style={inputStyle}
+                  onFocus={(e) => (e.target.style.borderColor = "rgba(201, 168, 76, 0.5)")}
+                  onBlur={(e) => (e.target.style.borderColor = "rgba(201, 168, 76, 0.18)")}
                 />
               </div>
-
               <div>
-                <label
-                  className="block text-xs mb-1.5 font-mono"
-                  style={{ color: "#00D4FF" }}
-                >
-                  message
+                <label style={{ display: "block", fontFamily: "'Courier New', monospace", fontSize: "0.62rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--gold)", marginBottom: "0.4rem" }}>
+                  Message
                 </label>
                 <textarea
                   required
@@ -292,36 +237,20 @@ export default function Contact() {
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   placeholder="Tell me about the role or project..."
-                  className="w-full px-4 py-3 rounded-lg text-sm outline-none transition-all duration-150 resize-none"
-                  style={{
-                    background: "rgba(5, 10, 20, 0.8)",
-                    border: "1px solid rgba(0, 212, 255, 0.2)",
-                    color: "#E8F4FD",
-                    fontFamily: "'DM Sans', sans-serif",
-                  }}
-                  onFocus={(e) => (e.target.style.borderColor = "rgba(0, 212, 255, 0.5)")}
-                  onBlur={(e) => (e.target.style.borderColor = "rgba(0, 212, 255, 0.2)")}
+                  style={{ ...inputStyle, resize: "none" }}
+                  onFocus={(e) => (e.target.style.borderColor = "rgba(201, 168, 76, 0.5)")}
+                  onBlur={(e) => (e.target.style.borderColor = "rgba(201, 168, 76, 0.18)")}
                 />
               </div>
-
-              <button
-                type="submit"
-                className="btn-cyan w-full justify-center text-sm"
-              >
-                {submitted ? (
-                  "✓ Opening Email Client..."
-                ) : (
+              <button type="submit" className="btn-primary" style={{ justifyContent: "center" }}>
+                {submitted ? "Opening Email Client..." : (
                   <>
-                    <Send size={16} />
+                    <Send size={14} />
                     Send Message
                   </>
                 )}
               </button>
             </form>
-
-            <p className="mt-4 text-xs text-center" style={{ color: "#6B8FAB" }}>
-              This will open your email client with the message pre-filled.
-            </p>
           </motion.div>
         </div>
       </div>

@@ -1,224 +1,194 @@
 /*
- * MIDNIGHT DATA LAB — Certifications Section
- * Amber glow cards with certification badges
+ * PORTFOLIO — Certifications Section
+ * AWS badges first, real Credly badge images, professional neutral palette
  */
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { ExternalLink, Award, CheckCircle } from "lucide-react";
+import { motion, useInView } from "framer-motion";
+import { ExternalLink, Award } from "lucide-react";
 
 const certifications = [
   {
-    name: "AWS Certified Solutions Architect – Professional",
+    title: "AWS Certified Solutions Architect — Professional",
     issuer: "Amazon Web Services",
-    code: "SAP-C02",
-    year: "2024",
-    icon: "☁️",
-    color: "#F59E0B",
-    description: "Advanced cloud architecture design, high availability, fault tolerance, and cost optimization across AWS services.",
-    link: "https://www.linkedin.com/in/mansi-mengde-b5b2951a2/",
+    date: "May 28, 2026",
+    expires: "May 28, 2029",
+    level: "Advanced",
+    badgeImg: "/manus-storage/aws-sap-badge_9d9c70fc.png",
+    credlyUrl: "https://www.credly.com/badges/d74ecdc0-447f-4c88-94aa-ffa3ba935694/public_url",
     featured: true,
   },
   {
-    name: "Certified Data Scientist",
-    issuer: "Professional Certification",
-    code: "CDS",
-    year: "2023",
-    icon: "🔬",
-    color: "#8B5CF6",
-    description: "Data science methodologies, statistical analysis, machine learning, and data-driven decision making.",
-    link: "https://www.linkedin.com/in/mansi-mengde-b5b2951a2/",
-    featured: false,
-  },
-  {
-    name: "DevOps Development",
-    issuer: "Professional Certification",
-    code: "DevOps",
-    year: "2023",
-    icon: "⚙️",
-    color: "#10B981",
-    description: "CI/CD pipelines, containerization with Docker, infrastructure as code with Terraform, and automated deployments.",
-    link: "https://www.linkedin.com/in/mansi-mengde-b5b2951a2/",
-    featured: false,
-  },
-  {
-    name: "jQuery Course",
-    issuer: "Professional Certification",
-    code: "jQuery",
-    year: "2022",
-    icon: "💻",
-    color: "#00D4FF",
-    description: "JavaScript library for DOM manipulation, event handling, animations, and AJAX interactions.",
-    link: "https://www.linkedin.com/in/mansi-mengde-b5b2951a2/",
-    featured: false,
-  },
-  {
-    name: "Significance of Data Structures in IT",
-    issuer: "Professional Certification",
-    code: "DSA",
-    year: "2022",
-    icon: "🧮",
-    color: "#EF4444",
-    description: "Fundamental data structures, algorithms, time complexity analysis, and their practical applications in software engineering.",
-    link: "https://www.linkedin.com/in/mansi-mengde-b5b2951a2/",
-    featured: false,
-  },
-  {
-    name: "All Builders Welcome Grant",
-    issuer: "AWS re:Inforce 2025",
-    code: "AWS Grant",
-    year: "2025",
-    icon: "🏆",
-    color: "#F59E0B",
-    description: "Selected as one of ~50 early career engineers nationally for the AWS All Builders Welcome Grant at re:Inforce 2025.",
-    link: "https://www.linkedin.com/in/mansi-mengde-b5b2951a2/",
+    title: "AWS Certified Solutions Architect — Associate",
+    issuer: "Amazon Web Services",
+    date: "October 17, 2025",
+    expires: "May 28, 2029",
+    level: "Intermediate",
+    badgeImg: "/manus-storage/aws-saa-badge_3de03e45.png",
+    credlyUrl: "https://www.credly.com/badges/a85800f5-df2a-40dd-b51d-adabb07368f2/linked_in",
     featured: true,
+  },
+  {
+    title: "Certified Data Scientist",
+    issuer: "IBM / Coursera",
+    date: "2024",
+    expires: null,
+    level: "Professional",
+    badgeImg: null,
+    credlyUrl: null,
+    featured: false,
+  },
+  {
+    title: "DevOps Engineering Professional",
+    issuer: "AWS / Coursera",
+    date: "2024",
+    expires: null,
+    level: "Professional",
+    badgeImg: null,
+    credlyUrl: null,
+    featured: false,
+  },
+  {
+    title: "Google Data Analytics",
+    issuer: "Google / Coursera",
+    date: "2023",
+    expires: null,
+    level: "Professional",
+    badgeImg: null,
+    credlyUrl: null,
+    featured: false,
+  },
+  {
+    title: "Machine Learning Specialization",
+    issuer: "Stanford / Coursera",
+    date: "2023",
+    expires: null,
+    level: "Specialization",
+    badgeImg: null,
+    credlyUrl: null,
+    featured: false,
   },
 ];
 
 export default function Certifications() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="certifications" className="py-24 relative" style={{ background: "#0D1B2A" }}>
-      <div className="section-divider max-w-4xl mb-16" />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" ref={ref}>
+    <section id="certifications" ref={ref} style={{ padding: "6rem 0", background: "var(--charcoal)" }}>
+      <div className="container">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="mb-12"
+          style={{ marginBottom: "3.5rem" }}
         >
-          <span className="section-label">// 05. certifications</span>
+          <span className="section-label">05. Certifications</span>
           <h2
-            className="mt-3 text-4xl lg:text-5xl font-bold"
-            style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#E8F4FD" }}
+            style={{
+              fontFamily: "'Times New Roman', Times, serif",
+              fontSize: "clamp(2rem, 4vw, 3rem)",
+              fontWeight: 700,
+              color: "#F5F0E8",
+              marginTop: "0.5rem",
+              letterSpacing: "-0.02em",
+            }}
           >
             Credentials &{" "}
-            <span className="amber-gradient-text">Certifications</span>
+            <span className="gradient-text">Certifications</span>
           </h2>
-          <p className="mt-4 text-base max-w-2xl" style={{ color: "#6B8FAB", fontFamily: "'DM Sans', sans-serif" }}>
-            Verified expertise across cloud architecture, data science, and software engineering.
-          </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: "1.5rem" }}>
           {certifications.map((cert, i) => (
             <motion.div
-              key={cert.name}
-              initial={{ opacity: 0, y: 30 }}
+              key={cert.title}
+              initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="cert-badge flex flex-col h-full group"
+              transition={{ delay: i * 0.07 }}
+              className={cert.featured ? "card-gold" : "card-neutral"}
+              style={{ padding: "1.75rem", display: "flex", gap: "1.25rem", alignItems: "flex-start" }}
             >
-              {/* Header */}
-              <div className="flex items-start gap-3">
-                <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl flex-shrink-0"
-                  style={{ background: `${cert.color}15`, border: `1px solid ${cert.color}30` }}
-                >
-                  {cert.icon}
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <span
-                      className="text-xs font-mono px-1.5 py-0.5 rounded"
-                      style={{
-                        background: `${cert.color}15`,
-                        border: `1px solid ${cert.color}30`,
-                        color: cert.color,
-                      }}
-                    >
-                      {cert.code}
-                    </span>
-                    {cert.featured && (
-                      <CheckCircle size={14} style={{ color: "#F59E0B" }} />
-                    )}
-                  </div>
-                  <h3
-                    className="mt-1.5 font-bold text-sm leading-tight"
-                    style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#E8F4FD" }}
+              {/* Badge or icon */}
+              <div style={{ flexShrink: 0 }}>
+                {cert.badgeImg ? (
+                  <img
+                    src={cert.badgeImg}
+                    alt={cert.title}
+                    className="badge-img"
+                    style={{ width: "72px", height: "72px" }}
+                  />
+                ) : (
+                  <div
+                    style={{
+                      width: "72px",
+                      height: "72px",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      background: "rgba(201, 168, 76, 0.08)",
+                      border: "1px solid rgba(201, 168, 76, 0.2)",
+                      borderRadius: "2px",
+                    }}
                   >
-                    {cert.name}
-                  </h3>
+                    <Award size={28} style={{ color: "var(--gold)" }} />
+                  </div>
+                )}
+              </div>
+
+              {/* Content */}
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "0.5rem", marginBottom: "0.3rem" }}>
+                  <span
+                    style={{
+                      fontFamily: "'Courier New', monospace",
+                      fontSize: "0.6rem",
+                      letterSpacing: "0.12em",
+                      textTransform: "uppercase",
+                      color: cert.featured ? "var(--gold)" : "var(--slate)",
+                      background: cert.featured ? "rgba(201, 168, 76, 0.1)" : "rgba(138, 155, 176, 0.08)",
+                      border: `1px solid ${cert.featured ? "rgba(201, 168, 76, 0.25)" : "rgba(138, 155, 176, 0.15)"}`,
+                      padding: "0.15rem 0.5rem",
+                      borderRadius: "2px",
+                    }}
+                  >
+                    {cert.level}
+                  </span>
+                  {cert.credlyUrl && (
+                    <a
+                      href={cert.credlyUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ color: "var(--slate)", transition: "color 150ms ease", flexShrink: 0 }}
+                      onMouseEnter={(e) => (e.currentTarget.style.color = "var(--gold)")}
+                      onMouseLeave={(e) => (e.currentTarget.style.color = "var(--slate)")}
+                    >
+                      <ExternalLink size={13} />
+                    </a>
+                  )}
                 </div>
-              </div>
-
-              {/* Issuer & year */}
-              <div className="mt-3 flex items-center justify-between">
-                <span className="text-xs" style={{ color: cert.color }}>{cert.issuer}</span>
-                <span
-                  className="text-xs font-mono"
-                  style={{ color: "#6B8FAB" }}
+                <h3
+                  style={{
+                    fontFamily: "'Times New Roman', Times, serif",
+                    fontSize: "0.95rem",
+                    fontWeight: 700,
+                    color: "#F5F0E8",
+                    margin: "0 0 0.2rem",
+                    letterSpacing: "-0.01em",
+                    lineHeight: 1.3,
+                  }}
                 >
-                  {cert.year}
-                </span>
+                  {cert.title}
+                </h3>
+                <p style={{ fontFamily: "'Georgia', serif", fontSize: "0.82rem", color: "var(--slate)", margin: "0 0 0.3rem" }}>
+                  {cert.issuer}
+                </p>
+                <p style={{ fontFamily: "'Courier New', monospace", fontSize: "0.65rem", color: "var(--slate)", margin: 0, opacity: 0.7 }}>
+                  Issued {cert.date}{cert.expires ? ` · Expires ${cert.expires}` : ""}
+                </p>
               </div>
-
-              {/* Description */}
-              <p className="mt-2 text-xs leading-relaxed flex-1" style={{ color: "#6B8FAB", fontFamily: "'DM Sans', sans-serif" }}>
-                {cert.description}
-              </p>
-
-              {/* Link */}
-              <a
-                href={cert.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-4 flex items-center gap-1.5 text-xs transition-colors duration-150"
-                style={{ color: "#6B8FAB" }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = cert.color)}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "#6B8FAB")}
-              >
-                <ExternalLink size={12} />
-                View on LinkedIn
-              </a>
             </motion.div>
           ))}
         </div>
-
-        {/* AWS Badge highlight */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.7 }}
-          className="mt-10 glow-card rounded-2xl p-6 flex flex-col md:flex-row items-center gap-6"
-          style={{ borderColor: "rgba(245, 158, 11, 0.3)" }}
-        >
-          <div
-            className="w-20 h-20 rounded-2xl flex items-center justify-center text-4xl flex-shrink-0"
-            style={{ background: "rgba(245, 158, 11, 0.1)", border: "1px solid rgba(245, 158, 11, 0.3)" }}
-          >
-            ☁️
-          </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <Award size={16} style={{ color: "#F59E0B" }} />
-              <span className="text-xs font-mono" style={{ color: "#F59E0B" }}>AWS CERTIFIED</span>
-            </div>
-            <h3
-              className="mt-1 text-xl font-bold"
-              style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#E8F4FD" }}
-            >
-              AWS Solutions Architect – Professional (SAP-C02)
-            </h3>
-            <p className="mt-1 text-sm" style={{ color: "#6B8FAB", fontFamily: "'DM Sans', sans-serif" }}>
-              The highest-level AWS architecture certification, validating expertise in designing distributed systems,
-              multi-tier architectures, and enterprise cloud solutions on AWS.
-            </p>
-          </div>
-          <a
-            href="https://www.linkedin.com/in/mansi-mengde-b5b2951a2/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-cyber flex-shrink-0 text-sm"
-            style={{ borderColor: "#F59E0B", color: "#F59E0B" }}
-          >
-            <ExternalLink size={14} />
-            Verify
-          </a>
-        </motion.div>
       </div>
     </section>
   );

@@ -1,306 +1,156 @@
 /*
- * MIDNIGHT DATA LAB — Hero Section
- * Typewriter effect, animated stats, profile photo
- * Background: hero-bg.webp with overlay
+ * PORTFOLIO — Hero Section
+ * Animated rotating roles, graduation photo, professional neutral palette, no emojis
  */
 import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, Download, ChevronDown } from "lucide-react";
+import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 
-const TYPEWRITER_STRINGS = [
-  "Data Engineer",
-  "Cloud Architect",
-  "ML Pipeline Builder",
-  "AWS Certified",
-];
+const ROLES = ["Data Engineer", "Cloud Architect", "Software Engineer"];
 
-function useTypewriter(strings: string[], speed = 80, pause = 1800) {
-  const [displayed, setDisplayed] = useState("");
-  const [idx, setIdx] = useState(0);
+function useTypewriter(words: string[], speed = 80, pause = 2000) {
+  const [display, setDisplay] = useState("");
+  const [wordIdx, setWordIdx] = useState(0);
   const [charIdx, setCharIdx] = useState(0);
   const [deleting, setDeleting] = useState(false);
+  const timeout = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   useEffect(() => {
-    const current = strings[idx];
-    let timeout: ReturnType<typeof setTimeout>;
-
-    if (!deleting && charIdx < current.length) {
-      timeout = setTimeout(() => setCharIdx((c) => c + 1), speed);
-    } else if (!deleting && charIdx === current.length) {
-      timeout = setTimeout(() => setDeleting(true), pause);
+    const word = words[wordIdx];
+    if (!deleting && charIdx < word.length) {
+      timeout.current = setTimeout(() => setCharIdx((c) => c + 1), speed);
+    } else if (!deleting && charIdx === word.length) {
+      timeout.current = setTimeout(() => setDeleting(true), pause);
     } else if (deleting && charIdx > 0) {
-      timeout = setTimeout(() => setCharIdx((c) => c - 1), speed / 2);
+      timeout.current = setTimeout(() => setCharIdx((c) => c - 1), speed / 2);
     } else if (deleting && charIdx === 0) {
       setDeleting(false);
-      setIdx((i) => (i + 1) % strings.length);
+      setWordIdx((i) => (i + 1) % words.length);
     }
+    setDisplay(word.slice(0, charIdx));
+    return () => clearTimeout(timeout.current);
+  }, [charIdx, deleting, wordIdx, words, speed, pause]);
 
-    setDisplayed(current.slice(0, charIdx));
-    return () => clearTimeout(timeout);
-  }, [charIdx, deleting, idx, strings, speed, pause]);
-
-  return displayed;
+  return display;
 }
 
-const stats = [
-  { value: "4+", label: "Years Experience" },
-  { value: "5M+", label: "Events/Day Processed" },
-  { value: "99.9%", label: "Data Accuracy" },
+const STATS = [
+  { value: "4+", label: "Years of Experience" },
+  { value: "5M+", label: "Events Processed Daily" },
+  { value: "99.9%", label: "Pipeline Uptime" },
   { value: "2x", label: "Hackathon Winner" },
 ];
 
 export default function Hero() {
-  const role = useTypewriter(TYPEWRITER_STRINGS);
-  const [visible, setVisible] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setVisible(true), 200);
-    return () => clearTimeout(timer);
-  }, []);
+  const role = useTypewriter(ROLES);
 
   return (
     <section
-      id="hero"
-      className="relative min-h-screen flex items-center overflow-hidden"
-      style={{ background: "#050A14" }}
+      id="about"
+      style={{
+        minHeight: "100vh",
+        background: "#0D1117",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        paddingTop: "80px",
+        position: "relative",
+        overflow: "hidden",
+      }}
     >
-      {/* Background image */}
-      <div
-        className="absolute inset-0 z-0"
-        style={{
-          backgroundImage: `url(https://d2xsxph8kpxj0f.cloudfront.net/310519663753984391/cDgtwTJsWKHZodyaYRSVef/hero-bg-LpudKxrmFWZhd7XRmAzRXK.webp)`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          opacity: 0.35,
-        }}
-      />
-      {/* Gradient overlay */}
-      <div
-        className="absolute inset-0 z-0"
-        style={{
-          background:
-            "linear-gradient(135deg, rgba(5,10,20,0.95) 0%, rgba(5,10,20,0.7) 50%, rgba(5,10,20,0.9) 100%)",
-        }}
-      />
-      {/* Animated grid lines */}
-      <div
-        className="absolute inset-0 z-0 opacity-10"
-        style={{
-          backgroundImage: `
-            linear-gradient(rgba(0,212,255,0.3) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(0,212,255,0.3) 1px, transparent 1px)
-          `,
-          backgroundSize: "60px 60px",
-          animation: "gridMove 20s linear infinite",
-        }}
-      />
-      <style>{`
-        @keyframes gridMove {
-          0% { background-position: 0 0; }
-          100% { background-position: 60px 60px; }
-        }
-      `}</style>
+      <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(201,168,76,0.022) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.022) 1px, transparent 1px)", backgroundSize: "100px 100px", pointerEvents: "none" }} />
+      <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 80% 60% at 50% 50%, transparent 40%, #0D1117 100%)", pointerEvents: "none" }} />
 
-      {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-20">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left: Text content */}
+      <div className="container relative" style={{ zIndex: 1 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: "4rem", alignItems: "center" }}>
           <div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-            >
-              <span className="section-label">
-                &gt;_ Hello, World
-              </span>
+            <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }}
+              style={{ fontFamily: "'Courier New', monospace", fontSize: "0.68rem", letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--gold)", marginBottom: "1.2rem" }}>
+              M.S. Information Systems · CSULB, May 2026
             </motion.div>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.2, ease: [0.23, 1, 0.32, 1] }}
-              className="mt-4 text-5xl lg:text-7xl font-bold leading-tight"
-              style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#E8F4FD" }}
-            >
-              Mansi{" "}
-              <span className="gradient-text">Mengde</span>
+            <motion.h1 initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
+              style={{ fontFamily: "'Times New Roman', Times, serif", fontSize: "clamp(2.8rem, 5.5vw, 5rem)", fontWeight: 700, color: "#F5F0E8", letterSpacing: "-0.03em", lineHeight: 1.08, margin: 0 }}>
+              Mansi Mengde
             </motion.h1>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.35 }}
-              className="mt-4 flex items-center gap-2 text-2xl lg:text-3xl font-semibold"
-              style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#E8F4FD" }}
-            >
-              <span style={{ color: "#00D4FF" }}>{role}</span>
-              <span
-                className="cursor-blink inline-block w-0.5 h-8 ml-1"
-                style={{ background: "#00D4FF" }}
-              />
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}
+              style={{ marginTop: "0.75rem", height: "2.8rem", display: "flex", alignItems: "center" }}>
+              <span style={{ fontFamily: "'Times New Roman', Times, serif", fontSize: "clamp(1.2rem, 2.5vw, 1.75rem)", fontStyle: "italic", color: "var(--gold)", letterSpacing: "-0.01em" }}>
+                {role}
+              </span>
+              <span className="cursor-blink" />
             </motion.div>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className="mt-6 text-base lg:text-lg leading-relaxed max-w-lg"
-              style={{ color: "#6B8FAB", fontFamily: "'DM Sans', sans-serif" }}
-            >
-              4 years building production data pipelines that run at{" "}
-              <span style={{ color: "#00D4FF" }}>5M+ events/day</span>. AWS Certified.
-              M.S. Information Systems, CSULB. I design systems that operations teams,
-              security analysts, and executives actually rely on.
+            <motion.p initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5, duration: 0.6 }}
+              style={{ marginTop: "1.5rem", maxWidth: "520px", color: "var(--slate)", fontFamily: "'Georgia', serif", fontSize: "1rem", lineHeight: 1.75 }}>
+              Four years designing data systems that process millions of events daily.
+              AWS Certified Solutions Architect — Professional. I build infrastructure
+              that operations teams, security analysts, and executives rely on.
             </motion.p>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.65 }}
-              className="mt-8 flex flex-wrap gap-3"
-            >
-              <a href="#contact" className="btn-cyan" onClick={(e) => {
-                e.preventDefault();
-                document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
-              }}>
-                Let's Work Together
+            <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.65 }}
+              style={{ marginTop: "2.5rem", display: "flex", gap: "1rem", flexWrap: "wrap", alignItems: "center" }}>
+              <a href="#contact" className="btn-primary" onClick={(e) => { e.preventDefault(); document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" }); }}>
+                Let's Connect
               </a>
-              <a
-                href="https://github.com/mansimengde17"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-cyber"
-              >
-                <Github size={16} />
-                GitHub
+              <a href="#projects" className="btn-ghost" onClick={(e) => { e.preventDefault(); document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" }); }}>
+                View Work
               </a>
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
-              className="mt-6 flex items-center gap-4"
-            >
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8 }}
+              style={{ marginTop: "2rem", display: "flex", gap: "1.5rem", alignItems: "center" }}>
               {[
-                { icon: <Github size={18} />, href: "https://github.com/mansimengde17", label: "GitHub" },
-                { icon: <Linkedin size={18} />, href: "https://www.linkedin.com/in/mansi-mengde-b5b2951a2/", label: "LinkedIn" },
-                { icon: <Mail size={18} />, href: "mailto:mansimengde17@gmail.com", label: "Email" },
+                { icon: <Github size={17} />, href: "https://github.com/mansimengde17", label: "GitHub" },
+                { icon: <Linkedin size={17} />, href: "https://www.linkedin.com/in/mansi-mengde-b5b2951a2/", label: "LinkedIn" },
+                { icon: <Mail size={17} />, href: "mailto:mansimengde17@gmail.com", label: "Email" },
               ].map(({ icon, href, label }) => (
-                <a
-                  key={href}
-                  href={href}
-                  target={href.startsWith("http") ? "_blank" : undefined}
+                <a key={href} href={href} target={href.startsWith("http") ? "_blank" : undefined}
                   rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  className="flex items-center gap-2 text-sm transition-colors duration-150"
-                  style={{ color: "#6B8FAB" }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = "#00D4FF")}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = "#6B8FAB")}
-                >
+                  style={{ display: "flex", alignItems: "center", gap: "0.4rem", fontFamily: "'Courier New', monospace", fontSize: "0.68rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--slate)", textDecoration: "none", transition: "color 150ms ease" }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = "var(--gold)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = "var(--slate)")}>
                   {icon}
-                  <span style={{ fontFamily: "'DM Sans', sans-serif" }}>{label}</span>
+                  {label}
                 </a>
               ))}
             </motion.div>
           </div>
 
-          {/* Right: Profile card */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9, x: 40 }}
-            animate={{ opacity: 1, scale: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4, ease: [0.23, 1, 0.32, 1] }}
-            className="flex justify-center lg:justify-end"
-          >
-            <div className="relative">
-              {/* Glow ring */}
-              <div
-                className="absolute -inset-4 rounded-2xl opacity-30 blur-xl"
-                style={{ background: "radial-gradient(circle, rgba(0,212,255,0.4) 0%, transparent 70%)" }}
-              />
-              {/* Profile card */}
-              <div
-                className="relative glow-card rounded-2xl p-1 float-anim"
-                style={{ width: "320px" }}
-              >
-                <div className="rounded-xl overflow-hidden" style={{ height: "380px" }}>
-                  <img
-                    src="/manus-storage/profile-photo_015d6fb5.webp"
-                    alt="Mansi Mengde"
-                    className="w-full h-full object-cover object-top"
-                  />
-                </div>
-                {/* Card overlay info */}
-                <div
-                  className="absolute bottom-0 left-0 right-0 p-4 rounded-b-xl"
-                  style={{
-                    background: "linear-gradient(to top, rgba(5,10,20,0.95) 0%, transparent 100%)",
-                  }}
-                >
-                  <p className="font-bold text-lg" style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#E8F4FD" }}>
-                    Mansi Mengde
-                  </p>
-                  <p className="text-sm" style={{ color: "#00D4FF", fontFamily: "'JetBrains Mono', monospace" }}>
-                    Data Engineer · AWS Certified
-                  </p>
-                  <p className="text-xs mt-1" style={{ color: "#6B8FAB" }}>
-                    📍 Los Angeles, CA
-                  </p>
-                </div>
+          <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.3 }}
+            style={{ flexShrink: 0 }} className="hidden md:block">
+            <div style={{ width: "280px", height: "400px", border: "1px solid rgba(201, 168, 76, 0.25)", borderRadius: "2px", overflow: "hidden", position: "relative" }}>
+              <img src="/manus-storage/graduation-banner_305f96de.jpg" alt="Mansi Mengde — CSULB Graduation, May 2026"
+                style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }} />
+              <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "1.5rem 1rem 1rem", background: "linear-gradient(to top, rgba(13,17,23,0.92) 0%, transparent 100%)" }}>
+                <p style={{ fontFamily: "'Courier New', monospace", fontSize: "0.6rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--gold)", margin: 0 }}>M.S. Information Systems</p>
+                <p style={{ fontFamily: "'Georgia', serif", fontSize: "0.75rem", color: "#F5F0E8", margin: "2px 0 0", opacity: 0.85 }}>California State University, Long Beach — May 2026</p>
               </div>
             </div>
           </motion.div>
         </div>
 
-        {/* Stats row */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 1.0 }}
-          className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4"
-        >
-          {stats.map(({ value, label }, i) => (
-            <motion.div
-              key={label}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.0 + i * 0.1 }}
-              className="glow-card rounded-xl p-4 text-center"
-            >
-              <div
-                className="text-3xl font-bold"
-                style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#00D4FF" }}
-              >
-                {value}
-              </div>
-              <div className="text-xs mt-1" style={{ color: "#6B8FAB", fontFamily: "'DM Sans', sans-serif" }}>
-                {label}
-              </div>
-            </motion.div>
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9, duration: 0.6 }}
+          style={{ marginTop: "4rem", display: "grid", gridTemplateColumns: "repeat(4, 1fr)", borderTop: "1px solid rgba(201, 168, 76, 0.12)", borderLeft: "1px solid rgba(201, 168, 76, 0.12)" }}>
+          {STATS.map(({ value, label }, i) => (
+            <div key={label} style={{ padding: "1.5rem", borderRight: "1px solid rgba(201, 168, 76, 0.12)", borderBottom: "1px solid rgba(201, 168, 76, 0.12)" }}>
+              <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.0 + i * 0.08 }}>
+                <div style={{ fontFamily: "'Times New Roman', Times, serif", fontSize: "2rem", fontWeight: 700, color: "var(--gold)", lineHeight: 1 }}>{value}</div>
+                <div style={{ fontFamily: "'Courier New', monospace", fontSize: "0.6rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--slate)", marginTop: "0.4rem" }}>{label}</div>
+              </motion.div>
+            </div>
           ))}
         </motion.div>
-
-        {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5 }}
-          className="flex justify-center mt-12 pb-8"
-        >
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-            className="flex flex-col items-center gap-1 cursor-pointer"
-            onClick={() => document.querySelector("#about")?.scrollIntoView({ behavior: "smooth" })}
-          >
-            <span className="text-xs" style={{ color: "#6B8FAB", fontFamily: "'JetBrains Mono', monospace" }}>
-              scroll
-            </span>
-            <ChevronDown size={16} style={{ color: "#00D4FF" }} />
-          </motion.div>
-        </motion.div>
       </div>
+
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.4 }}
+        style={{ position: "absolute", bottom: "2rem", left: "50%", transform: "translateX(-50%)", display: "flex", flexDirection: "column", alignItems: "center", gap: "0.4rem" }}>
+        <motion.div animate={{ y: [0, 6, 0] }} transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}>
+          <ArrowDown size={14} style={{ color: "var(--slate)" }} />
+        </motion.div>
+        <span style={{ fontFamily: "'Courier New', monospace", fontSize: "0.58rem", letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--slate)" }}>Scroll</span>
+      </motion.div>
     </section>
   );
 }

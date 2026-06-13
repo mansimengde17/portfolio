@@ -1,6 +1,6 @@
 /*
- * MIDNIGHT DATA LAB — Home Page
- * Assembles all portfolio sections
+ * PORTFOLIO — Home Page
+ * Assembles all sections in order
  */
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
@@ -15,10 +15,7 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <div className="min-h-screen" style={{ background: "#050A14" }}>
-      {/* Noise texture overlay */}
-      <div className="noise-overlay" />
-
+    <div style={{ background: "#0D1117", minHeight: "100vh" }}>
       <Navbar />
       <Hero />
       <About />

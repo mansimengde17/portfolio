@@ -1,61 +1,51 @@
 /*
- * MIDNIGHT DATA LAB — Footer
+ * PORTFOLIO — Footer
+ * Professional neutral, no emojis
  */
 import { Github, Linkedin, Mail, Phone } from "lucide-react";
 
 export default function Footer() {
   return (
     <footer
-      className="py-10 relative"
-      style={{ background: "#050A14", borderTop: "1px solid rgba(0, 212, 255, 0.1)" }}
+      style={{
+        padding: "2.5rem 0",
+        background: "#0D1117",
+        borderTop: "1px solid rgba(201, 168, 76, 0.08)",
+      }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          {/* Brand */}
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-sm overflow-hidden">
-              <img
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663753984391/cDgtwTJsWKHZodyaYRSVef/logo-icon-MfLNQ99bHArveiBfNXM94K.webp"
-                alt="MM"
-                className="w-full h-full object-contain"
-              />
-            </div>
-            <div>
-              <p className="font-bold text-sm" style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#E8F4FD" }}>
-                Mansi Mengde
-              </p>
-              <p className="text-xs font-mono" style={{ color: "#00D4FF" }}>
-                Data Engineer · AWS Certified
-              </p>
-            </div>
-          </div>
-
-          {/* Links */}
-          <div className="flex items-center gap-4">
+      <div className="container">
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "1.5rem" }}>
+          <div style={{ display: "flex", gap: "1.5rem", alignItems: "center" }}>
             {[
-              { icon: <Github size={18} />, href: "https://github.com/mansimengde17" },
-              { icon: <Linkedin size={18} />, href: "https://www.linkedin.com/in/mansi-mengde-b5b2951a2/" },
-              { icon: <Mail size={18} />, href: "mailto:mansimengde17@gmail.com" },
-              { icon: <Phone size={18} />, href: "tel:+15627388473" },
+              { icon: <Github size={17} />, href: "https://github.com/mansimengde17" },
+              { icon: <Linkedin size={17} />, href: "https://www.linkedin.com/in/mansi-mengde-b5b2951a2/" },
+              { icon: <Mail size={17} />, href: "mailto:mansimengde17@gmail.com" },
+              { icon: <Phone size={17} />, href: "tel:+15627388473" },
             ].map(({ icon, href }) => (
               <a
                 key={href}
                 href={href}
                 target={href.startsWith("http") ? "_blank" : undefined}
                 rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-                className="p-2 rounded-lg transition-colors duration-150"
-                style={{ color: "#6B8FAB" }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "#00D4FF")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "#6B8FAB")}
+                style={{ color: "var(--slate)", transition: "color 150ms ease" }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--gold)")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "var(--slate)")}
               >
                 {icon}
               </a>
             ))}
           </div>
-
-          {/* Copyright */}
-          <p className="text-xs" style={{ color: "#6B8FAB", fontFamily: "'JetBrains Mono', monospace" }}>
-            © 2025 Mansi Mengde · Built with ❤️
+          <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+            <span style={{ fontFamily: "'Times New Roman', Times, serif", fontSize: "0.95rem", fontWeight: 700, color: "#F5F0E8" }}>
+              Mansi Mengde
+            </span>
+            <span style={{ width: "1px", height: "12px", background: "rgba(201, 168, 76, 0.2)" }} />
+            <span style={{ fontFamily: "'Courier New', monospace", fontSize: "0.62rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--gold)" }}>
+              Data Engineer · AWS Certified
+            </span>
+          </div>
+          <p style={{ fontFamily: "'Courier New', monospace", fontSize: "0.62rem", letterSpacing: "0.1em", color: "var(--slate)", opacity: 0.5, margin: 0 }}>
+            2026 — All rights reserved
           </p>
         </div>
       </div>
