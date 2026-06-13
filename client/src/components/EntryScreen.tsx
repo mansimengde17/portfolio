@@ -58,13 +58,25 @@ export default function EntryScreen({ onEnter }: EntryScreenProps) {
             }}
           />
 
-          <div className="flex flex-col items-center gap-10 relative z-10">
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: "2rem",
+              position: "relative",
+              zIndex: 10,
+              width: "100%",
+              maxWidth: "600px",
+              padding: "0 2rem",
+            }}
+          >
             {/* Vertical line that grows */}
             <motion.div
               initial={{ height: 0, opacity: 0 }}
               animate={phase !== "idle" ? { height: 80, opacity: 1 } : {}}
               transition={{ duration: 1.0, ease: [0.23, 1, 0.32, 1] }}
-              style={{ width: 1, background: "var(--gold)" }}
+              style={{ width: 1, background: "var(--gold)", flexShrink: 0 }}
             />
 
             {/* Name */}
@@ -72,7 +84,7 @@ export default function EntryScreen({ onEnter }: EntryScreenProps) {
               initial={{ opacity: 0, y: 12 }}
               animate={phase === "text" || phase === "ready" ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
-              className="text-center"
+              style={{ textAlign: "center" }}
             >
               <h1
                 style={{
@@ -93,13 +105,14 @@ export default function EntryScreen({ onEnter }: EntryScreenProps) {
                 transition={{ duration: 0.6, delay: 0.1 }}
                 style={{
                   fontFamily: "'Times New Roman', Times, serif",
-                  fontSize: "1.05rem",
+                  fontSize: "clamp(0.9rem, 2vw, 1.05rem)",
                   fontStyle: "italic",
                   color: "var(--gold)",
                   marginTop: "0.75rem",
+                  lineHeight: 1.5,
                 }}
               >
-                Data Engineer · Cloud Architect · Software Engineer
+                Data Engineer &nbsp;·&nbsp; Cloud Architect &nbsp;·&nbsp; Software Engineer
               </motion.p>
             </motion.div>
 
@@ -108,7 +121,7 @@ export default function EntryScreen({ onEnter }: EntryScreenProps) {
               initial={{ height: 0, opacity: 0 }}
               animate={phase !== "idle" ? { height: 80, opacity: 1 } : {}}
               transition={{ duration: 1.0, ease: [0.23, 1, 0.32, 1] }}
-              style={{ width: 1, background: "var(--gold)" }}
+              style={{ width: 1, background: "var(--gold)", flexShrink: 0 }}
             />
 
             {/* Enter prompt */}
@@ -116,13 +129,7 @@ export default function EntryScreen({ onEnter }: EntryScreenProps) {
               initial={{ opacity: 0 }}
               animate={phase === "ready" ? { opacity: 1 } : {}}
               transition={{ duration: 0.5, delay: 0.3 }}
-              style={{
-                position: "absolute",
-                bottom: "3rem",
-                left: "50%",
-                transform: "translateX(-50%)",
-                textAlign: "center",
-              }}
+              style={{ textAlign: "center" }}
             >
               <button
                 onClick={handleEnter}
@@ -132,7 +139,7 @@ export default function EntryScreen({ onEnter }: EntryScreenProps) {
                 Enter Portfolio
               </button>
               <p style={{ fontFamily: "'Courier New', monospace", fontSize: "0.58rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--slate)", opacity: 0.5, marginTop: "0.75rem" }}>
-                M.S. Information Systems · CSULB · May 2026
+                M.S. Information Systems &nbsp;·&nbsp; CSULB &nbsp;·&nbsp; May 2026
               </p>
             </motion.div>
           </div>

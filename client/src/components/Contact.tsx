@@ -8,11 +8,11 @@ import { Mail, Phone, Calendar, Github, Linkedin, Send, MapPin, ArrowRight } fro
 
 const contactOptions = [
   {
-    icon: <Calendar size={20} />,
-    title: "Schedule a Call",
-    description: "Book a 30-minute conversation to discuss opportunities",
-    action: "Open Calendar",
-    href: "https://calendly.com/mansimengde17",
+    icon: <Phone size={20} />,
+    title: "Connect on a Call",
+    description: "Call directly at +1 (562) 738-8473",
+    action: "Call Now",
+    href: "tel:+15627388473",
     featured: true,
   },
   {
@@ -24,11 +24,11 @@ const contactOptions = [
     featured: false,
   },
   {
-    icon: <Phone size={20} />,
-    title: "Call Directly",
-    description: "+1 (562) 738-8473",
-    action: "Call Now",
-    href: "tel:+15627388473",
+    icon: <Calendar size={20} />,
+    title: "Schedule a Meeting",
+    description: "Send a meeting request via email",
+    action: "Request Meeting",
+    href: "mailto:mansimengde17@gmail.com?subject=Meeting%20Request&body=Hi%20Mansi%2C%20I%20would%20like%20to%20schedule%20a%20call%20with%20you.",
     featured: false,
   },
 ];
@@ -155,7 +155,7 @@ export default function Contact() {
             >
               <MapPin size={13} style={{ color: "var(--gold)" }} />
               <span style={{ fontFamily: "'Courier New', monospace", fontSize: "0.68rem", letterSpacing: "0.1em", color: "var(--slate)" }}>
-                Los Angeles, CA — Open to Remote and Hybrid
+                San Francisco Bay Area, CA — Open to Remote and Hybrid
               </span>
             </motion.div>
 

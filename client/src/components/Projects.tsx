@@ -9,8 +9,8 @@ import { ExternalLink, Github } from "lucide-react";
 const projects = [
   {
     title: "Satellite Network Analytics Platform",
-    subtitle: "Production-Grade Data Engineering",
-    description: "Production-grade data engineering platform mirroring Starlink's WiFi analytics stack. Built with Kafka, Spark Structured Streaming, Python OOP transforms, IsolationForest anomaly detection, Apache Iceberg on S3, and Grafana dashboards.",
+    subtitle: "Production Grade Data Engineering",
+    description: "Production grade data engineering platform mirroring Starlink's WiFi analytics stack. Built with Kafka, Spark Structured Streaming, Python OOP transforms, IsolationForest anomaly detection, Apache Iceberg on S3, and Grafana dashboards.",
     tags: ["Kafka", "Spark", "Apache Iceberg", "S3", "Grafana", "Python", "scikit-learn"],
     github: "https://github.com/mansimengde17/satellite-network-analytics",
     year: "2026",
@@ -18,8 +18,8 @@ const projects = [
   },
   {
     title: "FraudShield",
-    subtitle: "Real-Time Fraud Detection System",
-    description: "End-to-end fraud detection pipeline with real-time scoring, feature engineering on transaction streams, and automated alerting. Processes thousands of transactions per second with sub-100ms latency.",
+    subtitle: "Real Time Fraud Detection System",
+    description: "End to end fraud detection pipeline with real time scoring, feature engineering on transaction streams, and automated alerting. Processes thousands of transactions per second with sub-100ms latency.",
     tags: ["Python", "Kafka", "ML", "FastAPI", "PostgreSQL"],
     github: "https://github.com/mansimengde17/FraudShield",
     year: "2025",
@@ -45,8 +45,8 @@ const projects = [
   },
   {
     title: "SoCal Datathon 2025",
-    subtitle: "Award-Winning Data Analysis",
-    description: "First-place winning submission at the SoCal Datathon hosted by CSUF. Analyzed real-world business datasets and delivered actionable insights with predictive modeling under a 24-hour constraint.",
+    subtitle: "Award Winning Data Analysis",
+    description: "First place winning submission at the SoCal Datathon hosted by CSUF. Analyzed real world business datasets and delivered actionable insights with predictive modeling under a 24 hour constraint.",
     tags: ["Python", "Pandas", "Matplotlib", "ML", "Tableau"],
     github: "https://github.com/mansimengde17/DATATHON-LMU-2025",
     year: "2025",
@@ -55,7 +55,7 @@ const projects = [
   {
     title: "GPT Model from Scratch",
     subtitle: "Deep Learning · NLP",
-    description: "Simplified GPT implementation from scratch for IS640 coursework. Includes data handling, transformer architecture, training logic, and text generation — built without high-level ML frameworks.",
+    description: "Simplified GPT implementation from scratch for IS640 coursework. Includes data handling, transformer architecture, training logic, and text generation — built without high level ML frameworks.",
     tags: ["Python", "PyTorch", "Transformers", "NLP"],
     github: "https://github.com/mansimengde17/is-640-gpt",
     year: "2024",

@@ -1,6 +1,8 @@
 /*
  * PORTFOLIO — About Section
- * Graduation photos, education timeline, professional neutral palette
+ * Correct education: B.Tech IT from IIIT, Diploma from MSBTE
+ * Location: San Francisco Bay Area, CA
+ * No hyphens in words
  */
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
@@ -11,20 +13,20 @@ const education = [
     degree: "M.S. Information Systems",
     school: "California State University, Long Beach",
     period: "Aug 2024 — May 2026",
-    note: "Graduated May 2026",
+    note: "Graduated May 2026 · College of Business",
     highlight: true,
   },
   {
-    degree: "B.E. Computer Engineering",
-    school: "IIIT Pune, India",
-    period: "2019 — 2023",
+    degree: "B.Tech in Information Technology",
+    school: "International Institute of Information Technology, Pune",
+    period: "Dec 2021 — Jul 2024",
     note: "First Class with Distinction",
     highlight: false,
   },
   {
-    degree: "Diploma in Computer Engineering",
-    school: "SVERI College of Engineering, Pandharpur",
-    period: "2016 — 2019",
+    degree: "High School Diploma in Information Technology",
+    school: "Maharashtra State Board of Technical Education",
+    period: "Jun 2018 — Aug 2021",
     note: "Top of Class",
     highlight: false,
   },
@@ -72,29 +74,29 @@ export default function About() {
           >
             <p style={{ color: "var(--slate)", fontFamily: "'Georgia', serif", fontSize: "1rem", lineHeight: 1.8, marginBottom: "1.5rem" }}>
               I am a Data Engineer and AWS Certified Solutions Architect with four years of
-              experience building production-grade data infrastructure. My work spans real-time
-              event processing, cloud-native architectures, and machine learning pipelines.
+              experience building production grade data infrastructure. My work spans real time
+              event processing, cloud native architectures, and machine learning pipelines.
             </p>
             <p style={{ color: "var(--slate)", fontFamily: "'Georgia', serif", fontSize: "1rem", lineHeight: 1.8, marginBottom: "2rem" }}>
               In May 2026, I completed my Master of Science in Information Systems at California
               State University, Long Beach — where I also received the AWS All Builders Welcome
-              Grant to attend re:Invent 2025 in Las Vegas.
+              Grant to present research at AWS re:Invent 2025 in Las Vegas.
             </p>
 
             {/* Graduation photos grid */}
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.75rem" }}>
               <div className="photo-frame" style={{ height: "220px" }}>
                 <img
-                  src="/manus-storage/graduation-diploma_80ae49dd.jpg"
-                  alt="Mansi Mengde holding CSULB diploma"
+                  src="/manus-storage/graduation-banner_305f96de.jpg"
+                  alt="Mansi Ganesh Mengde — M.S. Information Systems, CSULB graduation banner"
                   style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }}
                 />
               </div>
               <div className="photo-frame" style={{ height: "220px" }}>
                 <img
-                  src="/manus-storage/aws-reinvent-group_4cba1dab.jpeg"
-                  alt="Mansi Mengde at AWS re:Invent 2025"
-                  style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
+                  src="/manus-storage/graduation-diploma_80ae49dd.jpg"
+                  alt="Mansi Mengde holding CSULB diploma at graduation ceremony"
+                  style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }}
                 />
               </div>
             </div>
@@ -102,11 +104,11 @@ export default function About() {
             <div style={{ marginTop: "1.5rem", display: "flex", gap: "1rem", flexWrap: "wrap" }}>
               <div style={{ display: "flex", alignItems: "center", gap: "0.4rem", color: "var(--slate)", fontFamily: "'Courier New', monospace", fontSize: "0.72rem" }}>
                 <MapPin size={13} style={{ color: "var(--gold)" }} />
-                Los Angeles, CA
+                San Francisco Bay Area, CA
               </div>
               <div style={{ display: "flex", alignItems: "center", gap: "0.4rem", color: "var(--slate)", fontFamily: "'Courier New', monospace", fontSize: "0.72rem" }}>
                 <Award size={13} style={{ color: "var(--gold)" }} />
-                AWS Certified — Professional
+                AWS Certified Solutions Architect
               </div>
             </div>
           </motion.div>

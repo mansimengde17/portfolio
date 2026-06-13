@@ -360,6 +360,29 @@
   border-bottom: 1px solid rgba(201, 168, 76, 0.1);
 }
 
+/* ─── Awards Grid ─────────────────────────────────────────────────────── */
+.awards-grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+}
+
+@media (max-width: 768px) {
+  .awards-grid {
+    grid-template-columns: 1fr;
+  }
+  .awards-grid > div {
+    order: unset !important;
+  }
+}
+
+/* ─── Photo Frame ─────────────────────────────────────────────────────── */
+.photo-frame {
+  overflow: hidden;
+  border: 1px solid rgba(201, 168, 76, 0.15);
+  border-radius: 2px;
+  position: relative;
+}
+
 /* ─── Entry Screen ─────────────────────────────────────────────────────── */
 .entry-screen {
   position: fixed;
@@ -370,6 +393,8 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  overflow: hidden;
+  cursor: pointer;
 }
 
 /* ─── Animations ───────────────────────────────────────────────────────── */

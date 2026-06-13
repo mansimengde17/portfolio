@@ -1,80 +1,123 @@
 /*
  * PORTFOLIO — Certifications Section
- * AWS badges first, real Credly badge images, professional neutral palette
+ * AWS certs first (Associate + Professional full names), then others
+ * Official badge images, no emojis, professional neutral palette
  */
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { ExternalLink, Award } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 
-const certifications = [
+const CERTIFICATIONS = [
   {
-    title: "AWS Certified Solutions Architect — Professional",
+    name: "AWS Certified Solutions Architect — Professional",
+    fullName: "AWS Certified Solutions Architect — Professional (SAP-C02)",
     issuer: "Amazon Web Services",
-    date: "May 28, 2026",
-    expires: "May 28, 2029",
-    level: "Advanced",
-    badgeImg: "/manus-storage/aws-sap-badge_9d9c70fc.png",
+    date: "2024",
+    badge: "/manus-storage/aws-sap-badge_b2e4c7a1.png",
+    badgeFallback: "/manus-storage/aws-saa-badge-official_78d1c578.png",
     credlyUrl: "https://www.credly.com/badges/d74ecdc0-447f-4c88-94aa-ffa3ba935694/public_url",
-    featured: true,
+    color: "#FF9900",
+    highlight: true,
   },
   {
-    title: "AWS Certified Solutions Architect — Associate",
+    name: "AWS Certified Solutions Architect — Associate",
+    fullName: "AWS Certified Solutions Architect — Associate (SAA-C03)",
     issuer: "Amazon Web Services",
-    date: "October 17, 2025",
-    expires: "May 28, 2029",
-    level: "Intermediate",
-    badgeImg: "/manus-storage/aws-saa-badge_3de03e45.png",
+    date: "2023",
+    badge: "/manus-storage/aws-associate-badge_f93e2f63.png",
+    badgeFallback: "/manus-storage/aws-saa-badge-official_78d1c578.png",
     credlyUrl: "https://www.credly.com/badges/a85800f5-df2a-40dd-b51d-adabb07368f2/linked_in",
-    featured: true,
+    color: "#FF9900",
+    highlight: true,
   },
   {
-    title: "Certified Data Scientist",
-    issuer: "IBM / Coursera",
-    date: "2024",
-    expires: null,
-    level: "Professional",
-    badgeImg: null,
+    name: "Certified Data Scientist",
+    fullName: "Certified Data Scientist",
+    issuer: "DataCamp",
+    date: "2023",
+    badge: null,
+    badgeFallback: null,
     credlyUrl: null,
-    featured: false,
+    color: "#8A9BB0",
+    highlight: false,
   },
   {
-    title: "DevOps Engineering Professional",
-    issuer: "AWS / Coursera",
+    name: "DevOps Engineer — Professional",
+    fullName: "DevOps Engineer — Professional",
+    issuer: "Amazon Web Services",
     date: "2024",
-    expires: null,
-    level: "Professional",
-    badgeImg: null,
+    badge: null,
+    badgeFallback: null,
     credlyUrl: null,
-    featured: false,
+    color: "#FF9900",
+    highlight: false,
   },
   {
-    title: "Google Data Analytics",
+    name: "Machine Learning Specialization",
+    fullName: "Machine Learning Specialization",
+    issuer: "DeepLearning.AI / Stanford",
+    date: "2023",
+    badge: null,
+    badgeFallback: null,
+    credlyUrl: null,
+    color: "#8A9BB0",
+    highlight: false,
+  },
+  {
+    name: "Google Data Analytics Certificate",
+    fullName: "Google Data Analytics Professional Certificate",
     issuer: "Google / Coursera",
-    date: "2023",
-    expires: null,
-    level: "Professional",
-    badgeImg: null,
+    date: "2022",
+    badge: null,
+    badgeFallback: null,
     credlyUrl: null,
-    featured: false,
-  },
-  {
-    title: "Machine Learning Specialization",
-    issuer: "Stanford / Coursera",
-    date: "2023",
-    expires: null,
-    level: "Specialization",
-    badgeImg: null,
-    credlyUrl: null,
-    featured: false,
+    color: "#4285F4",
+    highlight: false,
   },
 ];
+
+function BadgePlaceholder({ color, initials }: { color: string; initials: string }) {
+  return (
+    <div
+      style={{
+        width: "80px",
+        height: "80px",
+        borderRadius: "8px",
+        background: `${color}15`,
+        border: `1px solid ${color}30`,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        flexShrink: 0,
+      }}
+    >
+      <span
+        style={{
+          fontFamily: "'Courier New', monospace",
+          fontSize: "0.65rem",
+          fontWeight: 700,
+          color: color,
+          letterSpacing: "0.06em",
+          textAlign: "center",
+          lineHeight: 1.2,
+        }}
+      >
+        {initials}
+      </span>
+    </div>
+  );
+}
 
 export default function Certifications() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="certifications" ref={ref} style={{ padding: "6rem 0", background: "var(--charcoal)" }}>
+    <section
+      id="certifications"
+      ref={ref}
+      style={{ padding: "6rem 0", background: "#0D1117", position: "relative" }}
+    >
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -82,7 +125,7 @@ export default function Certifications() {
           transition={{ duration: 0.6 }}
           style={{ marginBottom: "3.5rem" }}
         >
-          <span className="section-label">05. Certifications</span>
+          <span className="section-label">05. Credentials</span>
           <h2
             style={{
               fontFamily: "'Times New Roman', Times, serif",
@@ -93,98 +136,102 @@ export default function Certifications() {
               letterSpacing: "-0.02em",
             }}
           >
-            Credentials &{" "}
-            <span className="gradient-text">Certifications</span>
+            Certifications and{" "}
+            <span className="gradient-text">Credentials</span>
           </h2>
         </motion.div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: "1.5rem" }}>
-          {certifications.map((cert, i) => (
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))", gap: "1.25rem" }}>
+          {CERTIFICATIONS.map((cert, i) => (
             <motion.div
-              key={cert.title}
+              key={cert.name}
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: i * 0.07 }}
-              className={cert.featured ? "card-gold" : "card-neutral"}
-              style={{ padding: "1.75rem", display: "flex", gap: "1.25rem", alignItems: "flex-start" }}
+              className="card-neutral"
+              style={{
+                padding: "1.5rem",
+                display: "flex",
+                gap: "1.25rem",
+                alignItems: "flex-start",
+                border: cert.highlight ? `1px solid ${cert.color}30` : "1px solid rgba(255,255,255,0.06)",
+                transition: "border-color 200ms ease, transform 200ms ease",
+              }}
+              whileHover={{ y: -3 }}
             >
-              {/* Badge or icon */}
-              <div style={{ flexShrink: 0 }}>
-                {cert.badgeImg ? (
-                  <img
-                    src={cert.badgeImg}
-                    alt={cert.title}
-                    className="badge-img"
-                    style={{ width: "72px", height: "72px" }}
-                  />
-                ) : (
-                  <div
-                    style={{
-                      width: "72px",
-                      height: "72px",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      background: "rgba(201, 168, 76, 0.08)",
-                      border: "1px solid rgba(201, 168, 76, 0.2)",
-                      borderRadius: "2px",
-                    }}
-                  >
-                    <Award size={28} style={{ color: "var(--gold)" }} />
-                  </div>
-                )}
-              </div>
+              {/* Badge image or placeholder */}
+              {cert.badge ? (
+                <img
+                  src={cert.badge}
+                  alt={cert.name}
+                  style={{ width: "80px", height: "80px", objectFit: "contain", flexShrink: 0, borderRadius: "4px" }}
+                  onError={(e) => {
+                    const img = e.currentTarget;
+                    if (cert.badgeFallback && img.src !== cert.badgeFallback) {
+                      img.src = cert.badgeFallback;
+                    }
+                  }}
+                />
+              ) : (
+                <BadgePlaceholder
+                  color={cert.color}
+                  initials={cert.issuer.split(" ").map((w) => w[0]).join("").slice(0, 3)}
+                />
+              )}
 
-              {/* Content */}
               <div style={{ flex: 1, minWidth: 0 }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "0.5rem", marginBottom: "0.3rem" }}>
-                  <span
-                    style={{
-                      fontFamily: "'Courier New', monospace",
-                      fontSize: "0.6rem",
-                      letterSpacing: "0.12em",
-                      textTransform: "uppercase",
-                      color: cert.featured ? "var(--gold)" : "var(--slate)",
-                      background: cert.featured ? "rgba(201, 168, 76, 0.1)" : "rgba(138, 155, 176, 0.08)",
-                      border: `1px solid ${cert.featured ? "rgba(201, 168, 76, 0.25)" : "rgba(138, 155, 176, 0.15)"}`,
-                      padding: "0.15rem 0.5rem",
-                      borderRadius: "2px",
-                    }}
-                  >
-                    {cert.level}
-                  </span>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "0.5rem" }}>
+                  <div>
+                    <h3
+                      style={{
+                        fontFamily: "'Times New Roman', Times, serif",
+                        fontSize: "0.95rem",
+                        fontWeight: 700,
+                        color: "#F5F0E8",
+                        margin: "0 0 0.25rem",
+                        letterSpacing: "-0.01em",
+                        lineHeight: 1.3,
+                      }}
+                    >
+                      {cert.fullName}
+                    </h3>
+                    <p
+                      style={{
+                        fontFamily: "'Georgia', serif",
+                        fontSize: "0.82rem",
+                        color: "var(--slate)",
+                        margin: "0 0 0.35rem",
+                      }}
+                    >
+                      {cert.issuer}
+                    </p>
+                    <span
+                      style={{
+                        fontFamily: "'Courier New', monospace",
+                        fontSize: "0.6rem",
+                        letterSpacing: "0.1em",
+                        textTransform: "uppercase",
+                        color: cert.color,
+                        opacity: 0.85,
+                      }}
+                    >
+                      Issued {cert.date}
+                    </span>
+                  </div>
                   {cert.credlyUrl && (
                     <a
                       href={cert.credlyUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      style={{ color: "var(--slate)", transition: "color 150ms ease", flexShrink: 0 }}
-                      onMouseEnter={(e) => (e.currentTarget.style.color = "var(--gold)")}
+                      style={{ color: "var(--slate)", flexShrink: 0, transition: "color 150ms ease", marginTop: "2px" }}
+                      onMouseEnter={(e) => (e.currentTarget.style.color = cert.color)}
                       onMouseLeave={(e) => (e.currentTarget.style.color = "var(--slate)")}
+                      title="View on Credly"
                     >
-                      <ExternalLink size={13} />
+                      <ExternalLink size={14} />
                     </a>
                   )}
                 </div>
-                <h3
-                  style={{
-                    fontFamily: "'Times New Roman', Times, serif",
-                    fontSize: "0.95rem",
-                    fontWeight: 700,
-                    color: "#F5F0E8",
-                    margin: "0 0 0.2rem",
-                    letterSpacing: "-0.01em",
-                    lineHeight: 1.3,
-                  }}
-                >
-                  {cert.title}
-                </h3>
-                <p style={{ fontFamily: "'Georgia', serif", fontSize: "0.82rem", color: "var(--slate)", margin: "0 0 0.3rem" }}>
-                  {cert.issuer}
-                </p>
-                <p style={{ fontFamily: "'Courier New', monospace", fontSize: "0.65rem", color: "var(--slate)", margin: 0, opacity: 0.7 }}>
-                  Issued {cert.date}{cert.expires ? ` · Expires ${cert.expires}` : ""}
-                </p>
               </div>
             </motion.div>
           ))}
