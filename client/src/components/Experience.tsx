@@ -16,7 +16,7 @@ const EXPERIENCES = [
     location: "Long Beach, CA",
     logoColor: "#003DA5",
     logoBg: "#003DA515",
-    logoImg: "/manus-storage/logo-csulb-official_58b580b1.png",
+    logoImg: "assets/logo-csulb-official_58b580b1.png",
     highlights: [
       "Owned full data platform architecture for institutional analytics, designing BI oriented schemas, ETL pipelines and warehouse structures in Python, SQL and PostgreSQL, standardizing raw admissions, financial aid and academic records pulled from Excel exports, PDF reports and 25 upstream source systems into trusted, audit ready datasets for 2K+ non technical stakeholders, cutting analyst turnaround from 5 days to same day.",
       "Established data governance, integrity and standardization framework tracking schema drift, pipeline freshness and data quality across 25 source systems, implemented GitHub Actions CI/CD with automated test gates as deployment blockers before data reached production, and drove tool selection decisions that raised platform reliability to 99.9% accuracy across 3 reporting cycles.",
@@ -47,7 +47,7 @@ const EXPERIENCES = [
     location: "United States, Remote",
     logoColor: "#4A90D9",
     logoBg: "#4A90D920",
-    logoImg: "/manus-storage/logo-atkins-official_2a2e6283.png",
+    logoImg: "assets/logo-atkins-official_2a2e6283.png",
     highlights: [
       "Applied structured problem solving frameworks to a digital transformation case study in financial services operations, collaborating with a cross functional team of 6 to deliver data backed recommendations.",
     ],
@@ -61,7 +61,7 @@ const EXPERIENCES = [
     location: "Core Team: Mission Critical Asset Automation Group",
     logoColor: "#E31837",
     logoBg: "#E3183715",
-    logoImg: "/manus-storage/logo-mckinsey-official_9ac08f6c.png",
+    logoImg: "assets/logo-mckinsey-official_9ac08f6c.png",
     highlights: [
       "Architected and owned scalable data platform and ETL pipeline orchestration using PySpark on Databricks and AWS S3, ingesting 5M+ sensor readings per day from 20 source systems, driving schema design, data modeling and partition tuning decisions that cut pipeline runtime by 40% and sustained zero data outages over 6 months across nuclear and energy infrastructure reporting.",
       "Modernized data observability and quality standards for asset pipelines using Prometheus and Grafana, implemented anomaly detection via Isolation Forest over PySpark cutting false alerts by 28%, and provisioned pipeline infrastructure as code via Terraform and Jenkins CI/CD, enforcing governance gates across distributed engineering teams transitioning legacy systems to owned infrastructure.",
@@ -77,7 +77,7 @@ const EXPERIENCES = [
     location: "Hybrid",
     logoColor: "#E31837",
     logoBg: "#E3183715",
-    logoImg: "/manus-storage/logo-mckinsey-official_9ac08f6c.png",
+    logoImg: "assets/logo-mckinsey-official_9ac08f6c.png",
     highlights: [
       "Pioneered data quality and observability standards for global asset pipelines, partnering with senior engineers to deploy machine learning driven anomaly detection via Isolation Forest over PySpark, successfully mitigating false telemetry alerts by 28%.",
       "Provisioned and managed distributed pipeline environments using Terraform and Jenkins CI/CD, establishing strict automated validation gates that served as compliance blockers for international deployment squads.",
@@ -93,7 +93,7 @@ const EXPERIENCES = [
     location: "Pune, India",
     logoColor: "#0066CC",
     logoBg: "#0066CC15",
-    logoImg: "/manus-storage/logo-algosec-official_35c93e9f.png",
+    logoImg: "assets/logo-algosec-official_35c93e9f.png",
     highlights: [
       "Flagship Platform Ownership: Single handedly architected and managed the core data engine underpinning AlgoSec Horizon, serving as the sole engineer scaling real time application dependency mapping and zero touch security policy automation across 500+ global enterprise client environments.",
       "High Throughput Streaming Engine: Independently engineered a high velocity event streaming pipeline using Apache Kafka to ingest and process 1.2M+ multi cloud firewall and network security events daily, slashing micro segmentation analytical latency from 48 hours to under 60 seconds.",
@@ -179,8 +179,8 @@ export default function Experience() {
               letterSpacing: "-0.02em",
             }}
           >
-            Where I Have{" "}
-            <span className="gradient-text">Built and Delivered</span>
+            Work{" "}
+            <span className="gradient-text">Experience</span>
           </h2>
         </motion.div>
 

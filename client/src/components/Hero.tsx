@@ -226,7 +226,7 @@ export default function Hero() {
                 View Work
               </a>
               <a
-                href="/manus-storage/mansi-mengde-resume_113f1d54.pdf"
+                href="assets/Mansi_Mengde_Resume.pdf"
                 download="Mansi_Mengde_Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -318,7 +318,7 @@ export default function Hero() {
               }}
             >
               <img
-                src="/manus-storage/graduation-hero_d7b38a9a.webp"
+                src="assets/graduation-hero_d7b38a9a.webp"
                 alt="Mansi Mengde at CSULB graduation, M.S. Information Systems"
                 style={{ width: "100%", height: "auto", display: "block", objectFit: "contain" }}
               />
