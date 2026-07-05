@@ -157,7 +157,7 @@ export default function Skills() {
             <span className="gradient-text">Expertise</span>
           </h2>
           <p style={{ color: "var(--slate)", fontFamily: "'Georgia', serif", fontSize: "0.95rem", marginTop: "0.75rem", maxWidth: "540px", lineHeight: 1.7 }}>
-            A comprehensive stack spanning data engineering, cloud architecture, machine learning, and full software delivery — aligned with what FAANG and top tier engineering teams look for.
+            A comprehensive stack spanning data engineering, cloud architecture, machine learning, and full software delivery, aligned with what FAANG and top tier engineering teams look for.
           </p>
         </motion.div>
 

@@ -10,7 +10,7 @@ import { ExternalLink } from "lucide-react";
 
 const CERTIFICATIONS = [
   {
-    name: "AWS Certified Solutions Architect — Professional (SAP-C02)",
+    name: "AWS Certified Solutions Architect Professional (SAP-C02)",
     issuer: "Amazon Web Services (AWS)",
     issued: "May 2026",
     expires: "May 2029",
@@ -20,7 +20,7 @@ const CERTIFICATIONS = [
     highlight: true,
   },
   {
-    name: "AWS Certified Solutions Architect — Associate",
+    name: "AWS Certified Solutions Architect Associate",
     issuer: "Amazon Web Services (AWS)",
     issued: "Oct 2025",
     expires: "Oct 2028",

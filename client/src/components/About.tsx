@@ -12,21 +12,21 @@ const education = [
   {
     degree: "M.S. Information Systems",
     school: "California State University, Long Beach",
-    period: "Aug 2024 — May 2026",
+    period: "Aug 2024 to May 2026",
     note: "Graduated May 2026 · College of Business",
     highlight: true,
   },
   {
     degree: "B.Tech in Information Technology",
     school: "International Institute of Information Technology, Pune",
-    period: "Dec 2021 — Jul 2024",
+    period: "Dec 2021 to Jul 2024",
     note: "First Class with Distinction",
     highlight: false,
   },
   {
     degree: "High School Diploma in Information Technology",
     school: "Maharashtra State Board of Technical Education",
-    period: "Jun 2018 — Aug 2021",
+    period: "Jun 2018 to Aug 2021",
     note: "Top of Class",
     highlight: false,
   },
@@ -79,7 +79,7 @@ export default function About() {
             </p>
             <p style={{ color: "var(--slate)", fontFamily: "'Georgia', serif", fontSize: "1rem", lineHeight: 1.8, marginBottom: "2rem" }}>
               In May 2026, I completed my Master of Science in Information Systems at California
-              State University, Long Beach — where I also received the AWS All Builders Welcome
+              State University, Long Beach, where I also received the AWS All Builders Welcome
               Grant to present research at AWS re:Invent 2025 in Las Vegas.
             </p>
 

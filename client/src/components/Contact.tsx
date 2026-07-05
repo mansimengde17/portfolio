@@ -6,14 +6,24 @@ import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { Mail, Phone, Calendar, Github, Linkedin, Send, MapPin, ArrowRight } from "lucide-react";
 
+const CALENDLY_URL = "https://calendly.com/mansimengde17/15min";
+
 const contactOptions = [
+  {
+    icon: <Calendar size={20} />,
+    title: "Book a 15 Minute Call",
+    description: "Pick a slot on the live calendar below",
+    action: "Book Now",
+    href: CALENDLY_URL,
+    featured: true,
+  },
   {
     icon: <Phone size={20} />,
     title: "Connect on a Call",
     description: "Call directly at +1 (562) 738-8473",
     action: "Call Now",
     href: "tel:+15627388473",
-    featured: true,
+    featured: false,
   },
   {
     icon: <Mail size={20} />,
@@ -21,14 +31,6 @@ const contactOptions = [
     description: "mansimengde17@gmail.com",
     action: "Compose Email",
     href: "mailto:mansimengde17@gmail.com",
-    featured: false,
-  },
-  {
-    icon: <Calendar size={20} />,
-    title: "Schedule a Meeting",
-    description: "Send a meeting request via email",
-    action: "Request Meeting",
-    href: "mailto:mansimengde17@gmail.com?subject=Meeting%20Request&body=Hi%20Mansi%2C%20I%20would%20like%20to%20schedule%20a%20call%20with%20you.",
     featured: false,
   },
 ];
@@ -85,8 +87,9 @@ export default function Contact() {
             <span className="gradient-text">Get in Touch</span>
           </h2>
           <p style={{ marginTop: "0.75rem", maxWidth: "520px", color: "var(--slate)", fontFamily: "'Georgia', serif", fontSize: "1rem", lineHeight: 1.75 }}>
-            If you are working on data infrastructure at a company doing something meaningful —
-            I want to hear about the hard problems.
+            If you are building AI systems, data platforms or production software at a company
+            doing something meaningful, I want to hear about the hard problems. Book 15 minutes
+            on the live calendar and let us talk.
           </p>
         </motion.div>
 
@@ -155,7 +158,7 @@ export default function Contact() {
             >
               <MapPin size={13} style={{ color: "var(--gold)" }} />
               <span style={{ fontFamily: "'Courier New', monospace", fontSize: "0.68rem", letterSpacing: "0.1em", color: "var(--slate)" }}>
-                San Francisco Bay Area, CA — Open to Remote and Hybrid
+                San Francisco Bay Area, CA. Open to Remote and Hybrid
               </span>
             </motion.div>
 
@@ -253,6 +256,39 @@ export default function Contact() {
             </form>
           </motion.div>
         </div>
+
+        {/* Live booking calendar */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.35, duration: 0.6 }}
+          style={{ marginTop: "4rem" }}
+        >
+          <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "1.25rem" }}>
+            <Calendar size={16} style={{ color: "var(--gold)" }} />
+            <h3 style={{ fontFamily: "'Times New Roman', Times, serif", fontSize: "1.15rem", fontWeight: 700, color: "#F5F0E8", margin: 0, letterSpacing: "-0.01em" }}>
+              Book a 15 Minute Call
+            </h3>
+          </div>
+          <div
+            className="card-neutral"
+            style={{ padding: "0", overflow: "hidden", border: "1px solid rgba(201,168,76,0.2)" }}
+          >
+            <iframe
+              src={`${CALENDLY_URL}?hide_gdpr_banner=1&background_color=0d1117&text_color=f5f0e8&primary_color=c9a84c`}
+              title="Book a 15 minute call with Mansi Mengde"
+              style={{ width: "100%", height: "660px", border: "none", display: "block", background: "#0D1117" }}
+              loading="lazy"
+            />
+          </div>
+          <p style={{ fontFamily: "'Georgia', serif", fontSize: "0.8rem", color: "var(--slate)", marginTop: "0.75rem" }}>
+            If the calendar does not load,{" "}
+            <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" style={{ color: "var(--gold)" }}>
+              open the booking page directly
+            </a>
+            .
+          </p>
+        </motion.div>
       </div>
     </section>
   );

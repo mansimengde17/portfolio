@@ -8,6 +8,16 @@ import { ExternalLink, Github } from "lucide-react";
 
 const projects = [
   {
+    title: "Real Time Financial Intelligence Platform",
+    subtitle: "Shipped AI System · Live Demo",
+    description: "Production AI system for real time financial intelligence, streaming market signals through an event driven pipeline with ML driven anomaly detection and a live analytics interface. One of several shipped AI systems running end to end in production.",
+    tags: ["Python", "Kafka", "ML", "Streaming", "AI Systems"],
+    github: "https://github.com/mansimengde17/Real-Time-Financial-Intelligence-Platform",
+    live: "https://mansimengde17.github.io/Real-Time-Financial-Intelligence-Platform/",
+    year: "2026",
+    featured: true,
+  },
+  {
     title: "Satellite Network Analytics Platform",
     subtitle: "Production Grade Data Engineering",
     description: "Production grade data engineering platform mirroring Starlink's WiFi analytics stack. Built with Kafka, Spark Structured Streaming, Python OOP transforms, IsolationForest anomaly detection, Apache Iceberg on S3, and Grafana dashboards.",
@@ -55,7 +65,7 @@ const projects = [
   {
     title: "GPT Model from Scratch",
     subtitle: "Deep Learning · NLP",
-    description: "Simplified GPT implementation from scratch for IS640 coursework. Includes data handling, transformer architecture, training logic, and text generation — built without high level ML frameworks.",
+    description: "Simplified GPT implementation from scratch for IS640 coursework. Includes data handling, transformer architecture, training logic, and text generation, built without high level ML frameworks.",
     tags: ["Python", "PyTorch", "Transformers", "NLP"],
     github: "https://github.com/mansimengde17/is-640-gpt",
     year: "2024",
@@ -150,29 +160,54 @@ export default function Projects() {
                 ))}
               </div>
 
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "0.4rem",
-                  fontFamily: "'Courier New', monospace",
-                  fontSize: "0.68rem",
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase",
-                  color: "var(--slate)",
-                  textDecoration: "none",
-                  transition: "color 150ms ease",
-                  marginTop: "auto",
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--gold)")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "var(--slate)")}
-              >
-                <ExternalLink size={13} />
-                View on GitHub
-              </a>
+              <div style={{ display: "flex", gap: "1.25rem", marginTop: "auto", flexWrap: "wrap" }}>
+                {(project as any).live && (
+                  <a
+                    href={(project as any).live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "0.4rem",
+                      fontFamily: "'Courier New', monospace",
+                      fontSize: "0.68rem",
+                      letterSpacing: "0.1em",
+                      textTransform: "uppercase",
+                      color: "var(--gold)",
+                      textDecoration: "none",
+                      transition: "color 150ms ease",
+                    }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "#F5F0E8")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "var(--gold)")}
+                  >
+                    <ExternalLink size={13} />
+                    Live Demo
+                  </a>
+                )}
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "0.4rem",
+                    fontFamily: "'Courier New', monospace",
+                    fontSize: "0.68rem",
+                    letterSpacing: "0.1em",
+                    textTransform: "uppercase",
+                    color: "var(--slate)",
+                    textDecoration: "none",
+                    transition: "color 150ms ease",
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = "var(--gold)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = "var(--slate)")}
+                >
+                  <ExternalLink size={13} />
+                  View on GitHub
+                </a>
+              </div>
             </motion.div>
           ))}
         </div>
