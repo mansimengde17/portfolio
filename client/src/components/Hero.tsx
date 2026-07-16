@@ -1,11 +1,12 @@
 /*
  * PORTFOLIO — Hero Section
- * Graduation photo beside name with animated reveal
- * Headshot card on right column
- * No hyphens, no emojis, SF Bay Area
+ * 3D data constellation background (three.js), typewriter roles,
+ * 3D tilt photo card and stat cells. No hyphens, no emojis.
  */
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { motion } from "framer-motion";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import * as THREE from "three";
 import { ArrowDown, Github, Linkedin, Mail, MapPin, Download } from "lucide-react";
 
 const ROLES = ["AI Systems Engineer", "Data Engineer", "Software Engineer"];
@@ -43,46 +44,160 @@ const STATS = [
   { value: "500+", label: "Enterprise Environments Served Solo" },
 ];
 
-/* Floating sparkle particle */
-function Sparkle({ x, y, delay }: { x: string; y: string; delay: number }) {
+/* ---------- 3D data constellation ---------- */
+
+function Constellation() {
+  const NODES = 130;
+  const group = useRef<THREE.Group>(null);
+  const pointsRef = useRef<THREE.Points>(null);
+  const { pointer } = useThree();
+
+  const { nodePositions, linePositions, seeds } = useMemo(() => {
+    const nodePositions = new Float32Array(NODES * 3);
+    const seeds = new Float32Array(NODES);
+    const pts: THREE.Vector3[] = [];
+    for (let i = 0; i < NODES; i++) {
+      const r = 14 + Math.random() * 10;
+      const theta = Math.random() * Math.PI * 2;
+      const phi = Math.acos(2 * Math.random() - 1);
+      const v = new THREE.Vector3(
+        r * Math.sin(phi) * Math.cos(theta),
+        r * Math.sin(phi) * Math.sin(theta) * 0.55,
+        r * Math.cos(phi)
+      );
+      pts.push(v);
+      nodePositions[i * 3] = v.x;
+      nodePositions[i * 3 + 1] = v.y;
+      nodePositions[i * 3 + 2] = v.z;
+      seeds[i] = Math.random();
+    }
+    // connect near neighbours
+    const lines: number[] = [];
+    for (let i = 0; i < NODES; i++) {
+      for (let j = i + 1; j < NODES; j++) {
+        if (pts[i].distanceTo(pts[j]) < 6.5) {
+          lines.push(pts[i].x, pts[i].y, pts[i].z, pts[j].x, pts[j].y, pts[j].z);
+        }
+      }
+    }
+    return { nodePositions, linePositions: new Float32Array(lines), seeds };
+  }, []);
+
+  useFrame((state) => {
+    const t = state.clock.elapsedTime;
+    if (group.current) {
+      group.current.rotation.y = t * 0.045 + pointer.x * 0.25;
+      group.current.rotation.x = Math.sin(t * 0.08) * 0.06 - pointer.y * 0.15;
+    }
+    if (pointsRef.current) {
+      const mat = pointsRef.current.material as THREE.PointsMaterial;
+      mat.size = 0.22 + Math.sin(t * 1.4) * 0.045;
+    }
+  });
+
   return (
-    <motion.div
-      style={{
-        position: "absolute",
-        left: x,
-        top: y,
-        width: "4px",
-        height: "4px",
-        borderRadius: "50%",
-        background: "var(--gold)",
-        pointerEvents: "none",
-      }}
-      animate={{
-        opacity: [0, 1, 0],
-        scale: [0.5, 1.4, 0.5],
-        y: [0, -18, 0],
-      }}
-      transition={{
-        duration: 2.4,
-        repeat: Infinity,
-        delay,
-        ease: "easeInOut",
-      }}
-    />
+    <group ref={group}>
+      <points ref={pointsRef}>
+        <bufferGeometry>
+          <bufferAttribute attach="attributes-position" args={[nodePositions, 3]} />
+        </bufferGeometry>
+        <pointsMaterial size={0.22} color="#C9A84C" transparent opacity={0.85} sizeAttenuation depthWrite={false} blending={THREE.AdditiveBlending} />
+      </points>
+      <lineSegments>
+        <bufferGeometry>
+          <bufferAttribute attach="attributes-position" args={[linePositions, 3]} />
+        </bufferGeometry>
+        <lineBasicMaterial color="#C9A84C" transparent opacity={0.1} />
+      </lineSegments>
+      {/* orbiting data packets */}
+      <Packets seeds={seeds} />
+    </group>
   );
 }
 
+function Packets({ seeds }: { seeds: Float32Array }) {
+  const N = 24;
+  const ref = useRef<THREE.Points>(null);
+  const positions = useMemo(() => new Float32Array(N * 3), []);
+  useFrame((state) => {
+    if (!ref.current) return;
+    const t = state.clock.elapsedTime;
+    const pos = ref.current.geometry.attributes.position.array as Float32Array;
+    for (let i = 0; i < N; i++) {
+      const s = seeds[i % seeds.length];
+      const a = t * (0.25 + s * 0.35) + s * Math.PI * 2;
+      const r = 12 + s * 11;
+      pos[i * 3] = Math.cos(a) * r;
+      pos[i * 3 + 1] = Math.sin(a * 1.4 + s * 5) * 4.5;
+      pos[i * 3 + 2] = Math.sin(a) * r;
+    }
+    ref.current.geometry.attributes.position.needsUpdate = true;
+  });
+  return (
+    <points ref={ref}>
+      <bufferGeometry>
+        <bufferAttribute attach="attributes-position" args={[positions, 3]} />
+      </bufferGeometry>
+      <pointsMaterial size={0.34} color="#F5F0E8" transparent opacity={0.9} sizeAttenuation depthWrite={false} blending={THREE.AdditiveBlending} />
+    </points>
+  );
+}
+
+function HeroCanvas() {
+  const [ok, setOk] = useState(true);
+  useEffect(() => {
+    try {
+      const c = document.createElement("canvas");
+      if (!c.getContext("webgl2") && !c.getContext("webgl")) setOk(false);
+    } catch {
+      setOk(false);
+    }
+  }, []);
+  if (!ok) return null;
+  return (
+    <Canvas
+      camera={{ position: [0, 0, 26], fov: 55 }}
+      dpr={[1, 1.6]}
+      gl={{ antialias: false, powerPreference: "high-performance", alpha: true }}
+      style={{ position: "absolute", inset: 0, pointerEvents: "none" }}
+    >
+      <Constellation />
+    </Canvas>
+  );
+}
+
+/* ---------- 3D tilt wrapper ---------- */
+
+function Tilt({ children, max = 10, style }: { children: React.ReactNode; max?: number; style?: React.CSSProperties }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const onMove = (e: React.MouseEvent) => {
+    const el = ref.current;
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    const px = (e.clientX - r.left) / r.width - 0.5;
+    const py = (e.clientY - r.top) / r.height - 0.5;
+    el.style.transform = `perspective(800px) rotateY(${px * max}deg) rotateX(${-py * max}deg) translateZ(6px)`;
+  };
+  const onLeave = () => {
+    const el = ref.current;
+    if (el) el.style.transform = "perspective(800px) rotateY(0deg) rotateX(0deg) translateZ(0)";
+  };
+  return (
+    <div
+      ref={ref}
+      onMouseMove={onMove}
+      onMouseLeave={onLeave}
+      style={{ transition: "transform 200ms ease", transformStyle: "preserve-3d", willChange: "transform", ...style }}
+    >
+      {children}
+    </div>
+  );
+}
+
+/* ---------- Hero ---------- */
+
 export default function Hero() {
   const role = useTypewriter(ROLES);
-  const sparkles = [
-    { x: "8%", y: "12%", delay: 0 },
-    { x: "82%", y: "8%", delay: 0.6 },
-    { x: "92%", y: "55%", delay: 1.1 },
-    { x: "5%", y: "70%", delay: 0.3 },
-    { x: "50%", y: "5%", delay: 0.9 },
-    { x: "70%", y: "90%", delay: 1.5 },
-    { x: "20%", y: "88%", delay: 0.7 },
-  ];
 
   return (
     <section
@@ -99,21 +214,15 @@ export default function Hero() {
         overflow: "hidden",
       }}
     >
-      {/* Background grid */}
-      <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(201,168,76,0.022) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.022) 1px, transparent 1px)", backgroundSize: "100px 100px", pointerEvents: "none" }} />
-      <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 80% 60% at 50% 50%, transparent 40%, #0D1117 100%)", pointerEvents: "none" }} />
-
-      {/* Floating sparkles */}
-      {sparkles.map((s, i) => (
-        <Sparkle key={i} x={s.x} y={s.y} delay={s.delay} />
-      ))}
+      {/* 3D constellation background */}
+      <HeroCanvas />
+      <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 75% 65% at 50% 45%, transparent 30%, #0D1117 95%)", pointerEvents: "none" }} />
 
       <div className="container relative" style={{ zIndex: 1 }}>
         {/* Main two-column layout */}
         <div className="hero-grid" style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: "3rem", alignItems: "center" }}>
           {/* Left: Text content */}
           <div style={{ minWidth: 0 }}>
-            {/* Overline label */}
             <motion.div
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
@@ -134,11 +243,11 @@ export default function Hero() {
               San Francisco Bay Area, CA
             </motion.div>
 
-            {/* Name */}
+            {/* Name with per-letter reveal */}
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.4, delay: 0.15 }}
               style={{ marginBottom: "0.75rem" }}
             >
               <h1
@@ -150,9 +259,21 @@ export default function Hero() {
                   letterSpacing: "-0.03em",
                   lineHeight: 1.08,
                   margin: 0,
+                  display: "flex",
+                  flexWrap: "wrap",
                 }}
               >
-                Mansi Mengde
+                {"Mansi Mengde".split("").map((ch, i) => (
+                  <motion.span
+                    key={i}
+                    initial={{ opacity: 0, y: 30, rotateX: 90 }}
+                    animate={{ opacity: 1, y: 0, rotateX: 0 }}
+                    transition={{ delay: 0.25 + i * 0.045, duration: 0.55, ease: [0.23, 1, 0.32, 1] }}
+                    style={{ display: "inline-block", whiteSpace: "pre", transformOrigin: "bottom" }}
+                  >
+                    {ch}
+                  </motion.span>
+                ))}
               </h1>
             </motion.div>
 
@@ -160,14 +281,8 @@ export default function Hero() {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.4 }}
-              style={{
-                height: "2.5rem",
-                display: "flex",
-                alignItems: "center",
-                marginBottom: "1.5rem",
-                overflow: "hidden",
-              }}
+              transition={{ delay: 0.5 }}
+              style={{ height: "2.5rem", display: "flex", alignItems: "center", marginBottom: "1.5rem", overflow: "hidden" }}
             >
               <span
                 style={{
@@ -188,7 +303,7 @@ export default function Hero() {
             <motion.p
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.6 }}
+              transition={{ delay: 0.7, duration: 0.6 }}
               style={{
                 maxWidth: "520px",
                 color: "#B8C8D8",
@@ -208,7 +323,7 @@ export default function Hero() {
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.65 }}
+              transition={{ delay: 0.85 }}
               style={{ display: "flex", gap: "1rem", flexWrap: "wrap", alignItems: "center", marginBottom: "2rem" }}
             >
               <a
@@ -219,9 +334,9 @@ export default function Hero() {
                 Let's Connect
               </a>
               <a
-                href="#projects"
+                href="#systems"
                 className="btn-ghost"
-                onClick={(e) => { e.preventDefault(); document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" }); }}
+                onClick={(e) => { e.preventDefault(); document.querySelector("#systems")?.scrollIntoView({ behavior: "smooth" }); }}
               >
                 View Work
               </a>
@@ -264,7 +379,7 @@ export default function Hero() {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.8 }}
+              transition={{ delay: 1 }}
               style={{ display: "flex", gap: "1.5rem", alignItems: "center", flexWrap: "wrap" }}
             >
               {[
@@ -299,80 +414,82 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Right: Graduation photo card */}
+          {/* Right: Graduation photo card with 3D tilt */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
             style={{ flexShrink: 0 }}
             className="hidden md:block"
           >
-            <div
-              style={{
-                width: "280px",
-                border: "1px solid rgba(201, 168, 76, 0.25)",
-                borderRadius: "2px",
-                overflow: "hidden",
-                position: "relative",
-                background: "#0D1117",
-              }}
-            >
-              <img
-                src="assets/graduation-hero_d7b38a9a.webp"
-                alt="Mansi Mengde at CSULB graduation, M.S. Information Systems"
-                style={{ width: "100%", height: "auto", display: "block", objectFit: "contain" }}
-              />
+            <Tilt max={12}>
               <div
                 style={{
-                  padding: "0.85rem 1rem",
-                  background: "rgba(13,17,23,0.97)",
-                  borderTop: "1px solid rgba(201,168,76,0.18)",
+                  width: "280px",
+                  border: "1px solid rgba(201, 168, 76, 0.25)",
+                  borderRadius: "2px",
+                  overflow: "hidden",
+                  position: "relative",
+                  background: "#0D1117",
+                  boxShadow: "0 24px 60px rgba(0,0,0,0.5), 0 0 40px rgba(201,168,76,0.08)",
                 }}
               >
-                <p style={{ fontFamily: "'Courier New', monospace", fontSize: "0.58rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--gold)", margin: 0 }}>
-                  M.S. Information Systems · CSULB
-                </p>
-                <p style={{ fontFamily: "'Georgia', serif", fontSize: "0.75rem", color: "#F5F0E8", margin: "3px 0 0" }}>
-                  Graduated May 2026
-                </p>
+                <img
+                  src="assets/graduation-hero_d7b38a9a.webp"
+                  alt="Mansi Mengde at CSULB graduation, M.S. Information Systems"
+                  style={{ width: "100%", height: "auto", display: "block", objectFit: "contain" }}
+                />
+                <div
+                  style={{
+                    padding: "0.85rem 1rem",
+                    background: "rgba(13,17,23,0.97)",
+                    borderTop: "1px solid rgba(201,168,76,0.18)",
+                  }}
+                >
+                  <p style={{ fontFamily: "'Courier New', monospace", fontSize: "0.58rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--gold)", margin: 0 }}>
+                    M.S. Information Systems · CSULB
+                  </p>
+                  <p style={{ fontFamily: "'Georgia', serif", fontSize: "0.75rem", color: "#F5F0E8", margin: "3px 0 0" }}>
+                    Graduated May 2026
+                  </p>
+                </div>
               </div>
-            </div>
+            </Tilt>
           </motion.div>
         </div>
 
-        {/* Stats row */}
+        {/* Stats row with 3D tilt cells */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.9, duration: 0.6 }}
+          transition={{ delay: 1.1, duration: 0.6 }}
           className="hero-stats-grid"
-          style={{ marginTop: "4rem", display: "grid", gridTemplateColumns: "repeat(4, 1fr)",
-            borderTop: "1px solid rgba(201, 168, 76, 0.12)",
-            borderLeft: "1px solid rgba(201, 168, 76, 0.12)",
+          style={{
+            marginTop: "4rem",
+            display: "grid",
+            gridTemplateColumns: "repeat(4, 1fr)",
+            gap: "1px",
+            background: "rgba(201, 168, 76, 0.12)",
+            border: "1px solid rgba(201, 168, 76, 0.12)",
           }}
         >
           {STATS.map(({ value, label }, i) => (
-            <div
-              key={label}
-              style={{
-                padding: "1.5rem",
-                borderRight: "1px solid rgba(201, 168, 76, 0.12)",
-                borderBottom: "1px solid rgba(201, 168, 76, 0.12)",
-              }}
-            >
-              <motion.div
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.0 + i * 0.08 }}
-              >
-                <div style={{ fontFamily: "'Times New Roman', Times, serif", fontSize: "2rem", fontWeight: 700, color: "var(--gold)", lineHeight: 1 }}>
-                  {value}
-                </div>
-                <div style={{ fontFamily: "'Courier New', monospace", fontSize: "0.6rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--slate)", marginTop: "0.4rem" }}>
-                  {label}
-                </div>
-              </motion.div>
-            </div>
+            <Tilt key={label} max={7} style={{ background: "#0D1117" }}>
+              <div style={{ padding: "1.5rem", height: "100%" }}>
+                <motion.div
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.2 + i * 0.08 }}
+                >
+                  <div style={{ fontFamily: "'Times New Roman', Times, serif", fontSize: "2rem", fontWeight: 700, color: "var(--gold)", lineHeight: 1 }}>
+                    {value}
+                  </div>
+                  <div style={{ fontFamily: "'Courier New', monospace", fontSize: "0.6rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--slate)", marginTop: "0.4rem" }}>
+                    {label}
+                  </div>
+                </motion.div>
+              </div>
+            </Tilt>
           ))}
         </motion.div>
       </div>
@@ -381,7 +498,7 @@ export default function Hero() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.4 }}
+        transition={{ delay: 1.6 }}
         style={{
           position: "absolute",
           bottom: "2rem",
