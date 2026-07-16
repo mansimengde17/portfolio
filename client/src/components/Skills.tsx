@@ -23,7 +23,7 @@ const SKILL_CATEGORIES = [
   },
   {
     label: "Cloud Platforms",
-    color: "#94A3C4",
+    color: "#B9C4E8",
     skills: ["AWS", "Amazon S3", "AWS Glue", "Amazon Redshift", "AWS Lambda", "Amazon SageMaker", "Amazon Bedrock", "CloudWatch", "API Gateway", "AWS IAM", "Cloud WAN", "Azure", "GCP"],
   },
   {
@@ -38,7 +38,7 @@ const SKILL_CATEGORIES = [
   },
   {
     label: "Databases and Storage",
-    color: "#94A3C4",
+    color: "#B9C4E8",
     skills: ["PostgreSQL", "MySQL", "MongoDB", "DynamoDB", "Amazon RDS", "Redis", "Elasticsearch", "Snowflake", "BigQuery", "Cassandra", "ClickHouse", "Apache Hive"],
   },
   {
@@ -53,7 +53,7 @@ const SKILL_CATEGORIES = [
   },
   {
     label: "Security and Compliance",
-    color: "#94A3C4",
+    color: "#B9C4E8",
     skills: ["NIST Framework", "CIS Benchmarks", "Zero Trust", "FERPA", "PII Compliance", "RBAC", "IAM Policies", "GuardDuty", "CloudTrail", "Threat Detection", "SOC Workflows", "Encryption"],
   },
 ];
@@ -84,7 +84,7 @@ function FloatingBubble({ skill, color, delay, x, y, size }: { skill: string; co
         top: `${y}%`,
         transform: "translate(-50%, -50%)",
         padding: `${size * 0.18}rem ${size * 0.32}rem`,
-        background: `rgba(5,6,15,0.85)`,
+        background: `rgba(11,14,34,0.85)`,
         border: `1px solid ${color}40`,
         borderRadius: "100px",
         fontFamily: "'JetBrains Mono', monospace",
@@ -148,7 +148,7 @@ export default function Skills() {
               fontFamily: "'Space Grotesk', system-ui, sans-serif",
               fontSize: "clamp(2rem, 4vw, 3rem)",
               fontWeight: 700,
-              color: "#EEF2FF",
+              color: "#F2F5FF",
               marginTop: "0.5rem",
               letterSpacing: "-0.02em",
             }}
@@ -174,12 +174,12 @@ export default function Skills() {
               onClick={() => setActiveCategory(i)}
               style={{
                 fontFamily: "'JetBrains Mono', monospace",
-                fontSize: "0.62rem",
+                fontSize: "0.74rem",
                 letterSpacing: "0.1em",
                 textTransform: "uppercase",
                 padding: "0.4rem 0.9rem",
                 borderRadius: "12px",
-                border: `1px solid ${i === activeCategory ? cat.color : "rgba(148,163,196,0.2)"}`,
+                border: `1px solid ${i === activeCategory ? cat.color : "rgba(185,196,232,0.2)"}`,
                 background: i === activeCategory ? `${cat.color}15` : "transparent",
                 color: i === activeCategory ? cat.color : "var(--slate)",
                 cursor: "pointer",
@@ -193,7 +193,7 @@ export default function Skills() {
               }}
               onMouseLeave={(e) => {
                 if (i !== activeCategory) {
-                  e.currentTarget.style.borderColor = "rgba(148,163,196,0.2)";
+                  e.currentTarget.style.borderColor = "rgba(185,196,232,0.2)";
                   e.currentTarget.style.color = "var(--slate)";
                 }
               }}
@@ -216,7 +216,7 @@ export default function Skills() {
             border: "1px solid rgba(139,92,246,0.08)",
             borderRadius: "12px",
             overflow: "hidden",
-            background: "rgba(5,6,15,0.5)",
+            background: "rgba(11,14,34,0.5)",
           }}
         >
           {/* Subtle radial glow */}
@@ -245,7 +245,7 @@ export default function Skills() {
             bottom: "1rem",
             right: "1.25rem",
             fontFamily: "'Space Grotesk', system-ui, sans-serif",
-            fontSize: "0.7rem",
+            fontSize: "0.78rem",
             color: `${currentCat.color}30`,
             letterSpacing: "0.06em",
             fontStyle: "italic",
@@ -262,7 +262,7 @@ export default function Skills() {
           transition={{ delay: 0.5 }}
           style={{ marginTop: "2.5rem" }}
         >
-          <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.6rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--slate)", marginBottom: "1rem", opacity: 0.6 }}>
+          <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.8rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--slate)", marginBottom: "1rem", opacity: 0.6 }}>
             All Technologies
           </p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem" }}>
@@ -272,10 +272,10 @@ export default function Skills() {
                   key={s + cat.label}
                   style={{
                     fontFamily: "'JetBrains Mono', monospace",
-                    fontSize: "0.6rem",
+                    fontSize: "0.8rem",
                     letterSpacing: "0.06em",
                     color: "var(--slate)",
-                    border: "1px solid rgba(148,163,196,0.15)",
+                    border: "1px solid rgba(185,196,232,0.15)",
                     padding: "2px 7px",
                     borderRadius: "12px",
                     opacity: 0.75,

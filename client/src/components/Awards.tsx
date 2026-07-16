@@ -85,7 +85,7 @@ export default function Awards() {
               fontFamily: "'Space Grotesk', system-ui, sans-serif",
               fontSize: "clamp(2rem, 4vw, 3rem)",
               fontWeight: 700,
-              color: "#EEF2FF",
+              color: "#F2F5FF",
               marginTop: "0.5rem",
               letterSpacing: "-0.02em",
             }}
@@ -131,7 +131,7 @@ export default function Awards() {
                     <span
                       style={{
                         fontFamily: "'JetBrains Mono', monospace",
-                        fontSize: "0.58rem",
+                        fontSize: "0.8rem",
                         letterSpacing: "0.14em",
                         textTransform: "uppercase",
                         color: award.color,
@@ -145,7 +145,7 @@ export default function Awards() {
                     <span
                       style={{
                         fontFamily: "'JetBrains Mono', monospace",
-                        fontSize: "0.6rem",
+                        fontSize: "0.8rem",
                         letterSpacing: "0.1em",
                         textTransform: "uppercase",
                         color: "var(--slate)",
@@ -161,7 +161,7 @@ export default function Awards() {
                       fontFamily: "'Space Grotesk', system-ui, sans-serif",
                       fontSize: "1.2rem",
                       fontWeight: 700,
-                      color: "#EEF2FF",
+                      color: "#F2F5FF",
                       margin: "0 0 0.3rem",
                       letterSpacing: "-0.01em",
                       lineHeight: 1.25,
@@ -172,7 +172,7 @@ export default function Awards() {
                   <p
                     style={{
                       fontFamily: "'Inter', system-ui, sans-serif",
-                      fontSize: "0.88rem",
+                      fontSize: "0.97rem",
                       color: award.color,
                       margin: "0 0 0.5rem",
                       fontStyle: "italic",
@@ -183,7 +183,7 @@ export default function Awards() {
                   <p
                     style={{
                       fontFamily: "'JetBrains Mono', monospace",
-                      fontSize: "0.62rem",
+                      fontSize: "0.74rem",
                       letterSpacing: "0.06em",
                       color: "var(--slate)",
                       margin: "0 0 1rem",
@@ -195,9 +195,9 @@ export default function Awards() {
                   <p
                     style={{
                       fontFamily: "'Inter', system-ui, sans-serif",
-                      fontSize: "0.88rem",
+                      fontSize: "0.97rem",
                       color: "var(--slate)",
-                      lineHeight: 1.75,
+                      lineHeight: 1.8,
                       margin: 0,
                     }}
                   >
@@ -234,7 +234,7 @@ export default function Awards() {
                     style={{
                       position: "absolute",
                       inset: 0,
-                      background: `linear-gradient(${i % 2 === 0 ? "to right" : "to left"}, rgba(5,6,15,0.25) 0%, transparent 50%)`,
+                      background: `linear-gradient(${i % 2 === 0 ? "to right" : "to left"}, rgba(11,14,34,0.25) 0%, transparent 50%)`,
                       pointerEvents: "none",
                     }}
                   />
@@ -249,11 +249,11 @@ export default function Awards() {
                     <span
                       style={{
                         fontFamily: "'JetBrains Mono', monospace",
-                        fontSize: "0.58rem",
+                        fontSize: "0.8rem",
                         letterSpacing: "0.1em",
                         textTransform: "uppercase",
                         color: "rgba(245,240,232,0.7)",
-                        background: "rgba(5,6,15,0.6)",
+                        background: "rgba(11,14,34,0.6)",
                         padding: "3px 8px",
                         borderRadius: "12px",
                       }}

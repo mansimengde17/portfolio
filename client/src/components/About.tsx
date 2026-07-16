@@ -55,7 +55,7 @@ export default function About() {
               fontFamily: "'Space Grotesk', system-ui, sans-serif",
               fontSize: "clamp(2rem, 4vw, 3rem)",
               fontWeight: 700,
-              color: "#EEF2FF",
+              color: "#F2F5FF",
               marginTop: "0.5rem",
               letterSpacing: "-0.02em",
             }}
@@ -84,11 +84,11 @@ export default function About() {
             </p>
 
             <div style={{ marginTop: "1.5rem", display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: "0.4rem", color: "var(--slate)", fontFamily: "'JetBrains Mono', monospace", fontSize: "0.72rem" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "0.4rem", color: "var(--slate)", fontFamily: "'JetBrains Mono', monospace", fontSize: "0.8rem" }}>
                 <MapPin size={13} style={{ color: "var(--gold)" }} />
                 San Francisco Bay Area, CA
               </div>
-              <div style={{ display: "flex", alignItems: "center", gap: "0.4rem", color: "var(--slate)", fontFamily: "'JetBrains Mono', monospace", fontSize: "0.72rem" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "0.4rem", color: "var(--slate)", fontFamily: "'JetBrains Mono', monospace", fontSize: "0.8rem" }}>
                 <Award size={13} style={{ color: "var(--gold)" }} />
                 AWS Certified Solutions Architect
               </div>
@@ -106,7 +106,7 @@ export default function About() {
                 fontFamily: "'Space Grotesk', system-ui, sans-serif",
                 fontSize: "1.1rem",
                 fontWeight: 700,
-                color: "#EEF2FF",
+                color: "#F2F5FF",
                 marginBottom: "2rem",
                 letterSpacing: "-0.01em",
               }}
@@ -146,7 +146,7 @@ export default function About() {
                     <span
                       style={{
                         fontFamily: "'JetBrains Mono', monospace",
-                        fontSize: "0.62rem",
+                        fontSize: "0.74rem",
                         letterSpacing: "0.12em",
                         textTransform: "uppercase",
                         color: highlight ? "var(--gold)" : "var(--slate)",
@@ -160,14 +160,14 @@ export default function About() {
                       fontFamily: "'Space Grotesk', system-ui, sans-serif",
                       fontSize: "1rem",
                       fontWeight: 700,
-                      color: "#EEF2FF",
+                      color: "#F2F5FF",
                       margin: "0 0 0.2rem",
                     }}
                   >
                     {degree}
                   </h4>
-                  <p style={{ color: "var(--slate)", fontFamily: "'Inter', system-ui, sans-serif", fontSize: "0.85rem", margin: "0 0 0.2rem" }}>{school}</p>
-                  <p style={{ color: highlight ? "var(--gold)" : "var(--slate)", fontFamily: "'JetBrains Mono', monospace", fontSize: "0.68rem", margin: 0, opacity: 0.8 }}>{note}</p>
+                  <p style={{ color: "var(--slate)", fontFamily: "'Inter', system-ui, sans-serif", fontSize: "0.95rem", margin: "0 0 0.2rem" }}>{school}</p>
+                  <p style={{ color: highlight ? "var(--gold)" : "var(--slate)", fontFamily: "'JetBrains Mono', monospace", fontSize: "0.78rem", margin: 0, opacity: 0.8 }}>{note}</p>
                 </motion.div>
               ))}
             </div>

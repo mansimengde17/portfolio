@@ -61,7 +61,7 @@ export default function Navbar() {
             fontFamily: "'Space Grotesk', system-ui, sans-serif",
             fontSize: "1.15rem",
             fontWeight: 700,
-            color: "#EEF2FF",
+            color: "#F2F5FF",
             textDecoration: "none",
             letterSpacing: "-0.01em",
           }}
@@ -95,7 +95,7 @@ export default function Navbar() {
                 padding: "0 0.85rem",
                 height: "64px",
                 fontFamily: "'JetBrains Mono', monospace",
-                fontSize: "0.72rem",
+                fontSize: "0.8rem",
                 fontWeight: 600,
                 letterSpacing: "0.12em",
                 textTransform: "uppercase",
@@ -134,7 +134,7 @@ export default function Navbar() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.2 }}
           style={{
-            background: "rgba(5, 6, 15, 0.98)",
+            background: "rgba(11, 14, 34, 0.98)",
             borderTop: "1px solid rgba(139, 92, 246, 0.1)",
             padding: "1rem",
           }}
@@ -152,7 +152,7 @@ export default function Navbar() {
                 border: "none",
                 padding: "0.75rem 0",
                 fontFamily: "'JetBrains Mono', monospace",
-                fontSize: "0.72rem",
+                fontSize: "0.8rem",
                 letterSpacing: "0.14em",
                 textTransform: "uppercase",
                 color: "var(--slate)",

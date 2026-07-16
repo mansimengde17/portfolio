@@ -82,7 +82,7 @@ export default function Projects() {
               fontFamily: "'Space Grotesk', system-ui, sans-serif",
               fontSize: "clamp(2rem, 4vw, 3rem)",
               fontWeight: 700,
-              color: "#EEF2FF",
+              color: "#F2F5FF",
               marginTop: "0.5rem",
               letterSpacing: "-0.02em",
             }}
@@ -104,13 +104,13 @@ export default function Projects() {
             >
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
                 <div>
-                  <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.62rem", letterSpacing: "0.12em", textTransform: "uppercase", color: project.featured ? "var(--gold)" : "var(--slate)" }}>
+                  <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.74rem", letterSpacing: "0.12em", textTransform: "uppercase", color: project.featured ? "var(--gold)" : "var(--slate)" }}>
                     {project.year} {project.featured ? "· Featured" : ""}
                   </span>
-                  <h3 style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontSize: "1.05rem", fontWeight: 700, color: "#EEF2FF", margin: "0.3rem 0 0.15rem", letterSpacing: "-0.01em" }}>
+                  <h3 style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontSize: "1.05rem", fontWeight: 700, color: "#F2F5FF", margin: "0.3rem 0 0.15rem", letterSpacing: "-0.01em" }}>
                     {project.title}
                   </h3>
-                  <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.68rem", color: "var(--slate)", margin: 0, letterSpacing: "0.06em" }}>
+                  <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.78rem", color: "var(--slate)", margin: 0, letterSpacing: "0.06em" }}>
                     {project.subtitle}
                   </p>
                 </div>
@@ -126,7 +126,7 @@ export default function Projects() {
                 </a>
               </div>
 
-              <p style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: "0.88rem", color: "var(--slate)", lineHeight: 1.7, margin: 0, flex: 1 }}>
+              <p style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: "0.97rem", color: "var(--slate)", lineHeight: 1.78, margin: 0, flex: 1 }}>
                 {project.description}
               </p>
 
@@ -136,7 +136,7 @@ export default function Projects() {
                     key={tag}
                     style={{
                       fontFamily: "'JetBrains Mono', monospace",
-                      fontSize: "0.6rem",
+                      fontSize: "0.8rem",
                       letterSpacing: "0.08em",
                       padding: "0.18rem 0.55rem",
                       background: "rgba(139, 92, 246, 0.06)",
@@ -161,14 +161,14 @@ export default function Projects() {
                       alignItems: "center",
                       gap: "0.4rem",
                       fontFamily: "'JetBrains Mono', monospace",
-                      fontSize: "0.68rem",
+                      fontSize: "0.78rem",
                       letterSpacing: "0.1em",
                       textTransform: "uppercase",
                       color: "var(--gold)",
                       textDecoration: "none",
                       transition: "color 150ms ease",
                     }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = "#EEF2FF")}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "#F2F5FF")}
                     onMouseLeave={(e) => (e.currentTarget.style.color = "var(--gold)")}
                   >
                     <ExternalLink size={13} />
@@ -184,7 +184,7 @@ export default function Projects() {
                     alignItems: "center",
                     gap: "0.4rem",
                     fontFamily: "'JetBrains Mono', monospace",
-                    fontSize: "0.68rem",
+                    fontSize: "0.78rem",
                     letterSpacing: "0.1em",
                     textTransform: "uppercase",
                     color: "var(--slate)",

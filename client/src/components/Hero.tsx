@@ -9,7 +9,7 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 import { ArrowDown, Github, Linkedin, Mail, MapPin, Download } from "lucide-react";
 
-const ROLES = ["AI Systems Engineer", "Data Engineer", "Software Engineer"];
+const ROLES = ["AI Engineer", "Agentic Workflow Builder", "Data Platform Engineer", "Software Engineer"];
 
 function useTypewriter(words: string[], speed = 80, pause = 2000) {
   const [display, setDisplay] = useState("");
@@ -138,7 +138,7 @@ function Packets({ seeds }: { seeds: Float32Array }) {
       <bufferGeometry>
         <bufferAttribute attach="attributes-position" args={[positions, 3]} />
       </bufferGeometry>
-      <pointsMaterial size={0.34} color="#EEF2FF" transparent opacity={0.9} sizeAttenuation depthWrite={false} blending={THREE.AdditiveBlending} />
+      <pointsMaterial size={0.34} color="#F2F5FF" transparent opacity={0.9} sizeAttenuation depthWrite={false} blending={THREE.AdditiveBlending} />
     </points>
   );
 }
@@ -204,7 +204,7 @@ export default function Hero() {
       id="about"
       style={{
         minHeight: "100vh",
-        background: "#05060F",
+        background: "#0B0E22",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
@@ -216,7 +216,7 @@ export default function Hero() {
     >
       {/* 3D constellation background */}
       <HeroCanvas />
-      <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 75% 65% at 50% 45%, transparent 30%, #05060F 95%)", pointerEvents: "none" }} />
+      <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 75% 65% at 50% 45%, transparent 30%, #0B0E22 95%)", pointerEvents: "none" }} />
 
       <div className="container relative" style={{ zIndex: 1 }}>
         {/* Main two-column layout */}
@@ -229,65 +229,111 @@ export default function Hero() {
               transition={{ duration: 0.5, delay: 0.1 }}
               style={{
                 fontFamily: "'JetBrains Mono', monospace",
-                fontSize: "0.68rem",
+                fontSize: "0.78rem",
                 letterSpacing: "0.22em",
                 textTransform: "uppercase",
                 color: "var(--gold)",
-                marginBottom: "1.2rem",
+                marginBottom: "1.4rem",
                 display: "flex",
                 alignItems: "center",
-                gap: "0.5rem",
+                gap: "0.9rem",
+                flexWrap: "wrap",
               }}
             >
-              <MapPin size={11} />
-              San Francisco Bay Area, CA
+              <span
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "0.5rem",
+                  padding: "0.45rem 1.1rem",
+                  borderRadius: "999px",
+                  border: "1px solid rgba(74, 222, 128, 0.45)",
+                  background: "rgba(74, 222, 128, 0.10)",
+                  color: "#86EFAC",
+                }}
+              >
+                <motion.span
+                  animate={{ opacity: [1, 0.35, 1] }}
+                  transition={{ duration: 1.8, repeat: Infinity }}
+                  style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#4ADE80", display: "inline-block" }}
+                />
+                Open to AI Engineer Roles
+              </span>
+              <span style={{ display: "inline-flex", alignItems: "center", gap: "0.4rem", color: "var(--gold)" }}>
+                <MapPin size={12} />
+                SF Bay Area
+              </span>
             </motion.div>
 
-            {/* Name with per-letter reveal */}
+            {/* Headline with per-word reveal */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.4, delay: 0.15 }}
-              style={{ marginBottom: "0.75rem" }}
+              style={{ marginBottom: "1.1rem" }}
             >
               <h1
                 style={{
                   fontFamily: "'Space Grotesk', system-ui, sans-serif",
-                  fontSize: "clamp(2.4rem, 5vw, 4.5rem)",
+                  fontSize: "clamp(2.5rem, 5.2vw, 4.6rem)",
                   fontWeight: 700,
-                  color: "#EEF2FF",
+                  color: "#F2F5FF",
                   letterSpacing: "-0.03em",
-                  lineHeight: 1.08,
+                  lineHeight: 1.06,
                   margin: 0,
-                  display: "flex",
-                  flexWrap: "wrap",
                 }}
               >
-                {"Mansi Mengde".split("").map((ch, i) => (
+                {["I", "build", "AI", "systems"].map((w, i) => (
                   <motion.span
                     key={i}
-                    initial={{ opacity: 0, y: 30, rotateX: 90 }}
+                    initial={{ opacity: 0, y: 34, rotateX: 90 }}
                     animate={{ opacity: 1, y: 0, rotateX: 0 }}
-                    transition={{ delay: 0.25 + i * 0.045, duration: 0.55, ease: [0.23, 1, 0.32, 1] }}
+                    transition={{ delay: 0.25 + i * 0.09, duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
+                    style={{ display: "inline-block", whiteSpace: "pre", transformOrigin: "bottom" }}
+                    className={w === "AI" || w === "systems" ? "gradient-text" : undefined}
+                  >
+                    {w}{" "}
+                  </motion.span>
+                ))}
+                <br />
+                {["that", "ship", "to", "production."].map((w, i) => (
+                  <motion.span
+                    key={i}
+                    initial={{ opacity: 0, y: 34, rotateX: 90 }}
+                    animate={{ opacity: 1, y: 0, rotateX: 0 }}
+                    transition={{ delay: 0.62 + i * 0.09, duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
                     style={{ display: "inline-block", whiteSpace: "pre", transformOrigin: "bottom" }}
                   >
-                    {ch}
+                    {w}{" "}
                   </motion.span>
                 ))}
               </h1>
             </motion.div>
 
-            {/* Animated role title */}
+            {/* Name + animated role */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
-              style={{ height: "2.5rem", display: "flex", alignItems: "center", marginBottom: "1.5rem", overflow: "hidden" }}
+              transition={{ delay: 0.55 }}
+              style={{ height: "2.5rem", display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "1.5rem", overflow: "hidden", flexWrap: "wrap" }}
             >
               <span
                 style={{
                   fontFamily: "'Space Grotesk', system-ui, sans-serif",
-                  fontSize: "clamp(1.1rem, 2.2vw, 1.6rem)",
+                  fontSize: "clamp(1.15rem, 2.2vw, 1.55rem)",
+                  fontWeight: 600,
+                  color: "#F2F5FF",
+                  letterSpacing: "-0.01em",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                Mansi Mengde
+              </span>
+              <span style={{ color: "var(--slate)", opacity: 0.6 }}>/</span>
+              <span
+                style={{
+                  fontFamily: "'Space Grotesk', system-ui, sans-serif",
+                  fontSize: "clamp(1.05rem, 2vw, 1.4rem)",
                   fontStyle: "italic",
                   color: "var(--gold)",
                   letterSpacing: "-0.01em",
@@ -306,17 +352,17 @@ export default function Hero() {
               transition={{ delay: 0.7, duration: 0.6 }}
               style={{
                 maxWidth: "520px",
-                color: "#A5B4D4",
+                color: "#C6D0F0",
                 fontFamily: "'Inter', system-ui, sans-serif",
                 fontSize: "1rem",
                 lineHeight: 1.8,
                 margin: "0 0 2.5rem",
               }}
             >
-              One package of AI, Data and Software Engineering. Four years building
-              agentic AI workflows, streaming data platforms and production software
-              that enterprises, analysts and executives rely on every day.
-              AWS Certified Solutions Architect.
+              AI Engineer with a data platform backbone. Four years building agentic
+              workflows, ML pipelines and streaming systems that run in production
+              for real enterprises, from a 99.2% F1 PII redaction engine to anomaly
+              detection over millions of daily events. AWS Certified Solutions Architect.
             </motion.p>
 
             {/* CTA buttons */}
@@ -351,7 +397,7 @@ export default function Hero() {
                   gap: "0.45rem",
                   padding: "0.65rem 1.4rem",
                   fontFamily: "'JetBrains Mono', monospace",
-                  fontSize: "0.68rem",
+                  fontSize: "0.78rem",
                   letterSpacing: "0.14em",
                   textTransform: "uppercase",
                   color: "var(--gold)",
@@ -397,7 +443,7 @@ export default function Hero() {
                     alignItems: "center",
                     gap: "0.4rem",
                     fontFamily: "'JetBrains Mono', monospace",
-                    fontSize: "0.68rem",
+                    fontSize: "0.78rem",
                     letterSpacing: "0.1em",
                     textTransform: "uppercase",
                     color: "var(--slate)",
@@ -430,7 +476,7 @@ export default function Hero() {
                   borderRadius: "12px",
                   overflow: "hidden",
                   position: "relative",
-                  background: "#05060F",
+                  background: "#0B0E22",
                   boxShadow: "0 24px 60px rgba(0,0,0,0.5), 0 0 40px rgba(139,92,246,0.08)",
                 }}
               >
@@ -442,14 +488,14 @@ export default function Hero() {
                 <div
                   style={{
                     padding: "0.85rem 1rem",
-                    background: "rgba(5,6,15,0.97)",
+                    background: "rgba(11,14,34,0.97)",
                     borderTop: "1px solid rgba(139,92,246,0.18)",
                   }}
                 >
-                  <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.58rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--gold)", margin: 0 }}>
+                  <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.8rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--gold)", margin: 0 }}>
                     M.S. Information Systems · CSULB
                   </p>
-                  <p style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: "0.75rem", color: "#EEF2FF", margin: "3px 0 0" }}>
+                  <p style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: "0.95rem", color: "#F2F5FF", margin: "3px 0 0" }}>
                     Graduated May 2026
                   </p>
                 </div>
@@ -474,7 +520,7 @@ export default function Hero() {
           }}
         >
           {STATS.map(({ value, label }, i) => (
-            <Tilt key={label} max={7} style={{ background: "#05060F" }}>
+            <Tilt key={label} max={7} style={{ background: "#0B0E22" }}>
               <div style={{ padding: "1.5rem", height: "100%" }}>
                 <motion.div
                   initial={{ opacity: 0, y: 8 }}
@@ -484,7 +530,7 @@ export default function Hero() {
                   <div style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontSize: "2rem", fontWeight: 700, color: "var(--gold)", lineHeight: 1 }}>
                     {value}
                   </div>
-                  <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.6rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--slate)", marginTop: "0.4rem" }}>
+                  <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.8rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--slate)", marginTop: "0.4rem" }}>
                     {label}
                   </div>
                 </motion.div>
@@ -513,7 +559,7 @@ export default function Hero() {
         <motion.div animate={{ y: [0, 6, 0] }} transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}>
           <ArrowDown size={14} style={{ color: "var(--slate)" }} />
         </motion.div>
-        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.58rem", letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--slate)" }}>
+        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.8rem", letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--slate)" }}>
           Scroll
         </span>
       </motion.div>

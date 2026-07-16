@@ -36,7 +36,7 @@ const CERTIFICATIONS = [
     expires: null,
     badge: null,
     credlyUrl: null,
-    color: "#94A3C4",
+    color: "#B9C4E8",
     highlight: false,
   },
   {
@@ -46,7 +46,7 @@ const CERTIFICATIONS = [
     expires: null,
     badge: null,
     credlyUrl: null,
-    color: "#94A3C4",
+    color: "#B9C4E8",
     highlight: false,
   },
   {
@@ -79,7 +79,7 @@ export default function Certifications() {
     <section
       id="certifications"
       ref={ref}
-      style={{ padding: "6rem 0", background: "#05060F", position: "relative" }}
+      style={{ padding: "6rem 0", background: "#0B0E22", position: "relative" }}
     >
       <div className="container">
         <motion.div
@@ -94,7 +94,7 @@ export default function Certifications() {
               fontFamily: "'Space Grotesk', system-ui, sans-serif",
               fontSize: "clamp(2rem, 4vw, 3rem)",
               fontWeight: 700,
-              color: "#EEF2FF",
+              color: "#F2F5FF",
               marginTop: "0.5rem",
               letterSpacing: "-0.02em",
             }}
@@ -143,7 +143,7 @@ export default function Certifications() {
                       fontFamily: "'Space Grotesk', system-ui, sans-serif",
                       fontSize: "1rem",
                       fontWeight: 700,
-                      color: "#EEF2FF",
+                      color: "#F2F5FF",
                       margin: "0 0 0.4rem",
                       letterSpacing: "-0.01em",
                       lineHeight: 1.35,
@@ -179,7 +179,7 @@ export default function Certifications() {
                   <span
                     style={{
                       fontFamily: "'JetBrains Mono', monospace",
-                      fontSize: "0.62rem",
+                      fontSize: "0.74rem",
                       letterSpacing: "0.08em",
                       textTransform: "uppercase",
                       color: cert.color,
@@ -191,7 +191,7 @@ export default function Certifications() {
                     <span
                       style={{
                         fontFamily: "'JetBrains Mono', monospace",
-                        fontSize: "0.6rem",
+                        fontSize: "0.8rem",
                         letterSpacing: "0.06em",
                         color: "var(--slate)",
                         opacity: 0.6,
@@ -237,7 +237,7 @@ export default function Certifications() {
                   fontFamily: "'Space Grotesk', system-ui, sans-serif",
                   fontSize: "0.92rem",
                   fontWeight: 700,
-                  color: "#EEF2FF",
+                  color: "#F2F5FF",
                   margin: "0 0 0.3rem",
                   lineHeight: 1.35,
                 }}
@@ -257,7 +257,7 @@ export default function Certifications() {
               <span
                 style={{
                   fontFamily: "'JetBrains Mono', monospace",
-                  fontSize: "0.58rem",
+                  fontSize: "0.8rem",
                   letterSpacing: "0.08em",
                   textTransform: "uppercase",
                   color: cert.color,
