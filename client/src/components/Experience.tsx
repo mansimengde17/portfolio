@@ -159,7 +159,7 @@ export default function Experience() {
     <section
       id="experience"
       ref={ref}
-      style={{ padding: "6rem 0", background: "#05060F", position: "relative" }}
+      style={{ padding: "6rem 0", background: "#0B0E22", position: "relative" }}
     >
       <div className="container">
         <motion.div
@@ -174,7 +174,7 @@ export default function Experience() {
               fontFamily: "'Space Grotesk', system-ui, sans-serif",
               fontSize: "clamp(2rem, 4vw, 3rem)",
               fontWeight: 700,
-              color: "#EEF2FF",
+              color: "#F2F5FF",
               marginTop: "0.5rem",
               letterSpacing: "-0.02em",
             }}
@@ -267,7 +267,7 @@ export default function Experience() {
                             fontFamily: "'Space Grotesk', system-ui, sans-serif",
                             fontSize: "1rem",
                             fontWeight: 700,
-                            color: "#EEF2FF",
+                            color: "#F2F5FF",
                             margin: 0,
                             letterSpacing: "-0.01em",
                           }}
@@ -279,7 +279,7 @@ export default function Experience() {
                       <p
                         style={{
                           fontFamily: "'Inter', system-ui, sans-serif",
-                          fontSize: "0.85rem",
+                          fontSize: "0.95rem",
                           color: "var(--slate)",
                           margin: "0.15rem 0 0",
                         }}
@@ -290,7 +290,7 @@ export default function Experience() {
                         <span
                           style={{
                             fontFamily: "'JetBrains Mono', monospace",
-                            fontSize: "0.6rem",
+                            fontSize: "0.8rem",
                             letterSpacing: "0.08em",
                             color: "var(--slate)",
                             opacity: 0.7,
@@ -298,14 +298,14 @@ export default function Experience() {
                         >
                           {exp.period}
                         </span>
-<span style={{ color: "rgba(148,163,196,0.3)", fontSize: "0.6rem" }}>|</span>
+<span style={{ color: "rgba(185,196,232,0.3)", fontSize: "0.8rem" }}>|</span>
                         <span
                           style={{
                             display: "flex",
                             alignItems: "center",
                             gap: "3px",
                             fontFamily: "'JetBrains Mono', monospace",
-                            fontSize: "0.6rem",
+                            fontSize: "0.8rem",
                             letterSpacing: "0.08em",
                             color: "var(--slate)",
                             opacity: 0.6,
@@ -360,9 +360,9 @@ export default function Experience() {
                                 <p
                                   style={{
                                     fontFamily: "'Inter', system-ui, sans-serif",
-                                    fontSize: "0.88rem",
+                                    fontSize: "0.97rem",
                                     color: "var(--slate)",
-                                    lineHeight: 1.75,
+                                    lineHeight: 1.8,
                                     margin: 0,
                                   }}
                                 >
@@ -377,7 +377,7 @@ export default function Experience() {
                                 key={s}
                                 style={{
                                   fontFamily: "'JetBrains Mono', monospace",
-                                  fontSize: "0.58rem",
+                                  fontSize: "0.8rem",
                                   letterSpacing: "0.08em",
                                   textTransform: "uppercase",
                                   color: exp.logoColor,

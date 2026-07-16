@@ -53,12 +53,12 @@ export default function Contact() {
   const inputStyle = {
     width: "100%",
     padding: "0.75rem 1rem",
-    background: "rgba(5, 6, 15, 0.8)",
+    background: "rgba(11, 14, 34, 0.8)",
     border: "1px solid rgba(139, 92, 246, 0.18)",
     borderRadius: "12px",
-    color: "#EEF2FF",
+    color: "#F2F5FF",
     fontFamily: "'Inter', system-ui, sans-serif",
-    fontSize: "0.9rem",
+    fontSize: "0.97rem",
     outline: "none",
     transition: "border-color 150ms ease",
   };
@@ -78,7 +78,7 @@ export default function Contact() {
               fontFamily: "'Space Grotesk', system-ui, sans-serif",
               fontSize: "clamp(2rem, 4vw, 3rem)",
               fontWeight: 700,
-              color: "#EEF2FF",
+              color: "#F2F5FF",
               marginTop: "0.5rem",
               letterSpacing: "-0.02em",
             }}
@@ -135,14 +135,14 @@ export default function Contact() {
                     {opt.icon}
                   </div>
                   <div style={{ flex: 1 }}>
-                    <h4 style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontSize: "0.95rem", fontWeight: 700, color: "#EEF2FF", margin: "0 0 0.15rem" }}>
+                    <h4 style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontSize: "0.95rem", fontWeight: 700, color: "#F2F5FF", margin: "0 0 0.15rem" }}>
                       {opt.title}
                     </h4>
-                    <p style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: "0.82rem", color: "var(--slate)", margin: 0 }}>
+                    <p style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: "0.92rem", color: "var(--slate)", margin: 0 }}>
                       {opt.description}
                     </p>
                   </div>
-                  <div style={{ display: "flex", alignItems: "center", gap: "0.3rem", fontFamily: "'JetBrains Mono', monospace", fontSize: "0.62rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--gold)", flexShrink: 0 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: "0.3rem", fontFamily: "'JetBrains Mono', monospace", fontSize: "0.74rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--gold)", flexShrink: 0 }}>
                     {opt.action}
                     <ArrowRight size={12} />
                   </div>
@@ -157,7 +157,7 @@ export default function Contact() {
               style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "1.5rem" }}
             >
               <MapPin size={13} style={{ color: "var(--gold)" }} />
-              <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.68rem", letterSpacing: "0.1em", color: "var(--slate)" }}>
+              <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.78rem", letterSpacing: "0.1em", color: "var(--slate)" }}>
                 San Francisco Bay Area, CA. Open to Remote and Hybrid
               </span>
             </motion.div>
@@ -178,7 +178,7 @@ export default function Contact() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-ghost"
-                  style={{ fontSize: "0.68rem", padding: "0.45rem 1rem", gap: "0.4rem" }}
+                  style={{ fontSize: "0.78rem", padding: "0.45rem 1rem", gap: "0.4rem" }}
                 >
                   {icon}
                   {label}
@@ -195,13 +195,13 @@ export default function Contact() {
             className="card-neutral"
             style={{ padding: "2rem" }}
           >
-            <h3 style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontSize: "1.1rem", fontWeight: 700, color: "#EEF2FF", marginBottom: "1.5rem", letterSpacing: "-0.01em" }}>
+            <h3 style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontSize: "1.1rem", fontWeight: 700, color: "#F2F5FF", marginBottom: "1.5rem", letterSpacing: "-0.01em" }}>
               Send a Message
             </h3>
 
             <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
               <div>
-                <label style={{ display: "block", fontFamily: "'JetBrains Mono', monospace", fontSize: "0.62rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--gold)", marginBottom: "0.4rem" }}>
+                <label style={{ display: "block", fontFamily: "'JetBrains Mono', monospace", fontSize: "0.74rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--gold)", marginBottom: "0.4rem" }}>
                   Name
                 </label>
                 <input
@@ -216,7 +216,7 @@ export default function Contact() {
                 />
               </div>
               <div>
-                <label style={{ display: "block", fontFamily: "'JetBrains Mono', monospace", fontSize: "0.62rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--gold)", marginBottom: "0.4rem" }}>
+                <label style={{ display: "block", fontFamily: "'JetBrains Mono', monospace", fontSize: "0.74rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--gold)", marginBottom: "0.4rem" }}>
                   Email
                 </label>
                 <input
@@ -231,7 +231,7 @@ export default function Contact() {
                 />
               </div>
               <div>
-                <label style={{ display: "block", fontFamily: "'JetBrains Mono', monospace", fontSize: "0.62rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--gold)", marginBottom: "0.4rem" }}>
+                <label style={{ display: "block", fontFamily: "'JetBrains Mono', monospace", fontSize: "0.74rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--gold)", marginBottom: "0.4rem" }}>
                   Message
                 </label>
                 <textarea
@@ -266,7 +266,7 @@ export default function Contact() {
         >
           <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "1.25rem" }}>
             <Calendar size={16} style={{ color: "var(--gold)" }} />
-            <h3 style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontSize: "1.15rem", fontWeight: 700, color: "#EEF2FF", margin: 0, letterSpacing: "-0.01em" }}>
+            <h3 style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontSize: "1.15rem", fontWeight: 700, color: "#F2F5FF", margin: 0, letterSpacing: "-0.01em" }}>
               Book a 15 Minute Call
             </h3>
           </div>
@@ -277,7 +277,7 @@ export default function Contact() {
             <iframe
               src={`${CALENDLY_URL}?hide_gdpr_banner=1&background_color=0d1117&text_color=f5f0e8&primary_color=c9a84c`}
               title="Book a 15 minute call with Mansi Mengde"
-              style={{ width: "100%", height: "660px", border: "none", display: "block", background: "#05060F" }}
+              style={{ width: "100%", height: "660px", border: "none", display: "block", background: "#0B0E22" }}
               loading="lazy"
             />
           </div>

@@ -9,7 +9,7 @@ export default function Footer() {
     <footer
       style={{
         padding: "2.5rem 0",
-        background: "#05060F",
+        background: "#0B0E22",
         borderTop: "1px solid rgba(139, 92, 246, 0.08)",
       }}
     >
@@ -36,15 +36,15 @@ export default function Footer() {
             ))}
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-            <span style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontSize: "0.95rem", fontWeight: 700, color: "#EEF2FF" }}>
+            <span style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontSize: "0.95rem", fontWeight: 700, color: "#F2F5FF" }}>
               Mansi Mengde
             </span>
             <span style={{ width: "1px", height: "12px", background: "rgba(139, 92, 246, 0.2)" }} />
-            <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.62rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--gold)" }}>
+            <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.74rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--gold)" }}>
               Data Engineer · AWS Certified
             </span>
           </div>
-          <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.62rem", letterSpacing: "0.1em", color: "var(--slate)", opacity: 0.5, margin: 0 }}>
+          <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.74rem", letterSpacing: "0.1em", color: "var(--slate)", opacity: 0.5, margin: 0 }}>
             2026. All rights reserved
           </p>
         </div>

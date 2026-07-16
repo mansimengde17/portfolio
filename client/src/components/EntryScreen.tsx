@@ -72,7 +72,7 @@ function ParticleName({ onFormed }: { onFormed: () => void }) {
   const colors = useMemo(() => {
     const c = new Float32Array(COUNT * 3);
     const gold = new THREE.Color("#8B5CF6");
-    const cream = new THREE.Color("#EEF2FF");
+    const cream = new THREE.Color("#F2F5FF");
     const amber = new THREE.Color("#22D3EE");
     for (let i = 0; i < COUNT; i++) {
       const pick = seeds[i] < 0.72 ? gold : seeds[i] < 0.92 ? amber : cream;
@@ -158,7 +158,7 @@ function Dust() {
       <bufferGeometry>
         <bufferAttribute attach="attributes-position" args={[positions, 3]} />
       </bufferGeometry>
-      <pointsMaterial size={0.09} color="#94A3C4" transparent opacity={0.35} sizeAttenuation depthWrite={false} />
+      <pointsMaterial size={0.09} color="#B9C4E8" transparent opacity={0.35} sizeAttenuation depthWrite={false} />
     </points>
   );
 }
@@ -187,7 +187,7 @@ export default function EntryScreen({ onEnter }: { onEnter: () => void }) {
       style={{
         position: "fixed",
         inset: 0,
-        background: "#05060F",
+        background: "#0B0E22",
         zIndex: 100,
         overflow: "hidden",
       }}
@@ -204,14 +204,14 @@ export default function EntryScreen({ onEnter }: { onEnter: () => void }) {
         </Canvas>
       ) : (
         <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <h1 style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontSize: "clamp(2rem, 7vw, 4.5rem)", color: "#EEF2FF", fontWeight: 700, letterSpacing: "-0.02em" }}>
+          <h1 style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontSize: "clamp(2rem, 7vw, 4.5rem)", color: "#F2F5FF", fontWeight: 700, letterSpacing: "-0.02em" }}>
             Mansi Mengde
           </h1>
         </div>
       )}
 
       {/* Vignette */}
-      <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 70% 60% at 50% 45%, transparent 50%, rgba(5,6,15,0.9) 100%)", pointerEvents: "none" }} />
+      <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 70% 60% at 50% 45%, transparent 50%, rgba(11,14,34,0.9) 100%)", pointerEvents: "none" }} />
 
       {/* Overlay content */}
       <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "flex-end", paddingBottom: "13vh", pointerEvents: "none" }}>
@@ -225,7 +225,7 @@ export default function EntryScreen({ onEnter }: { onEnter: () => void }) {
             >
               <div style={{ display: "flex", alignItems: "center", gap: "0.9rem" }}>
                 <span style={{ width: "44px", height: "1px", background: "linear-gradient(to right, transparent, #8B5CF6)" }} />
-                <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.68rem", letterSpacing: "0.3em", textTransform: "uppercase", color: "#8B5CF6", whiteSpace: "nowrap" }}>
+                <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.78rem", letterSpacing: "0.3em", textTransform: "uppercase", color: "#8B5CF6", whiteSpace: "nowrap" }}>
                   AI · Data · Software Engineer
                 </span>
                 <span style={{ width: "44px", height: "1px", background: "linear-gradient(to left, transparent, #8B5CF6)" }} />
@@ -236,10 +236,10 @@ export default function EntryScreen({ onEnter }: { onEnter: () => void }) {
                 whileTap={{ scale: 0.97 }}
                 style={{
                   fontFamily: "'JetBrains Mono', monospace",
-                  fontSize: "0.75rem",
+                  fontSize: "0.95rem",
                   letterSpacing: "0.24em",
                   textTransform: "uppercase",
-                  color: "#05060F",
+                  color: "#0B0E22",
                   background: "linear-gradient(120deg, #8B5CF6, #22D3EE 50%, #8B5CF6)",
                   backgroundSize: "200% 100%",
                   border: "none",
