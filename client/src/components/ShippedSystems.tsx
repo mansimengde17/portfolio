@@ -29,7 +29,7 @@ export default function ShippedSystems() {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="systems" ref={ref} style={{ padding: "6rem 0", background: "#0D1117", position: "relative", overflow: "hidden" }}>
+    <section id="systems" ref={ref} style={{ padding: "6rem 0", background: "#05060F", position: "relative", overflow: "hidden" }}>
       {/* Subtle animated glow */}
       <motion.div
         animate={{ opacity: [0.15, 0.3, 0.15] }}
@@ -41,7 +41,7 @@ export default function ShippedSystems() {
           transform: "translateX(-50%)",
           width: "600px",
           height: "300px",
-          background: "radial-gradient(ellipse, rgba(201,168,76,0.12) 0%, transparent 70%)",
+          background: "radial-gradient(ellipse, rgba(139,92,246,0.12) 0%, transparent 70%)",
           pointerEvents: "none",
         }}
       />
@@ -56,10 +56,10 @@ export default function ShippedSystems() {
           <span className="section-label">03. Shipped AI Systems</span>
           <h2
             style={{
-              fontFamily: "'Times New Roman', Times, serif",
+              fontFamily: "'Space Grotesk', system-ui, sans-serif",
               fontSize: "clamp(2rem, 4vw, 3rem)",
               fontWeight: 700,
-              color: "#F5F0E8",
+              color: "#EEF2FF",
               marginTop: "0.5rem",
               letterSpacing: "-0.02em",
             }}
@@ -67,7 +67,7 @@ export default function ShippedSystems() {
             AI Systems Running{" "}
             <span className="gradient-text">in Production</span>
           </h2>
-          <p style={{ marginTop: "0.75rem", maxWidth: "560px", color: "var(--slate)", fontFamily: "'Georgia', serif", fontSize: "1rem", lineHeight: 1.75 }}>
+          <p style={{ marginTop: "0.75rem", maxWidth: "560px", color: "var(--slate)", fontFamily: "'Inter', system-ui, sans-serif", fontSize: "1rem", lineHeight: 1.75 }}>
             Beyond pipelines and dashboards, these are complete AI systems I have designed,
             built and shipped, running live for anyone to try.
           </p>
@@ -89,16 +89,16 @@ export default function ShippedSystems() {
                 transition={{ duration: 2, repeat: Infinity }}
                 style={{ width: "7px", height: "7px", borderRadius: "50%", background: "#4ADE80", display: "inline-block" }}
               />
-              <span style={{ fontFamily: "'Courier New', monospace", fontSize: "0.62rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "#4ADE80" }}>
+              <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.62rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "#4ADE80" }}>
                 {sys.status}
               </span>
             </div>
 
-            <h3 style={{ fontFamily: "'Times New Roman', Times, serif", fontSize: "clamp(1.3rem, 2.5vw, 1.8rem)", fontWeight: 700, color: "#F5F0E8", margin: "0 0 1rem", letterSpacing: "-0.01em" }}>
+            <h3 style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontSize: "clamp(1.3rem, 2.5vw, 1.8rem)", fontWeight: 700, color: "#EEF2FF", margin: "0 0 1rem", letterSpacing: "-0.01em" }}>
               {sys.title}
             </h3>
 
-            <p style={{ fontFamily: "'Georgia', serif", fontSize: "0.95rem", color: "var(--slate)", lineHeight: 1.8, maxWidth: "680px", margin: "0 0 1.5rem" }}>
+            <p style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: "0.95rem", color: "var(--slate)", lineHeight: 1.8, maxWidth: "680px", margin: "0 0 1.5rem" }}>
               {sys.description}
             </p>
 
@@ -107,7 +107,7 @@ export default function ShippedSystems() {
               {sys.metrics.map((m) => (
                 <div key={m.label} style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--gold)" }}>
                   {m.icon}
-                  <span style={{ fontFamily: "'Courier New', monospace", fontSize: "0.65rem", letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--slate)" }}>
+                  <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.65rem", letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--slate)" }}>
                     {m.label}
                   </span>
                 </div>
@@ -120,13 +120,13 @@ export default function ShippedSystems() {
                 <span
                   key={tag}
                   style={{
-                    fontFamily: "'Courier New', monospace",
+                    fontFamily: "'JetBrains Mono', monospace",
                     fontSize: "0.6rem",
                     letterSpacing: "0.08em",
                     padding: "0.18rem 0.55rem",
-                    background: "rgba(201, 168, 76, 0.06)",
-                    border: "1px solid rgba(201, 168, 76, 0.18)",
-                    borderRadius: "2px",
+                    background: "rgba(139, 92, 246, 0.06)",
+                    border: "1px solid rgba(139, 92, 246, 0.18)",
+                    borderRadius: "12px",
                     color: "var(--gold)",
                   }}
                 >

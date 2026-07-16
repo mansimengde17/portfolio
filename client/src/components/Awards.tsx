@@ -43,7 +43,7 @@ const AWARDS = [
     photo: "assets/datathon-win_8d0c11a5.webp",
     photoAlt: "Mansi Mengde and team receiving the SoCal Datathon winner check at CSUF",
     photoCaption: "SoCal Datathon, CSUF, October 2024",
-    color: "#C9A84C",
+    color: "#8B5CF6",
     tag: "Datathon",
   },
   {
@@ -56,7 +56,7 @@ const AWARDS = [
     photo: "assets/code-fiesta-award_e29a5068.webp",
     photoAlt: "Mansi Mengde receiving the Code FIESTA Excellence Award",
     photoCaption: "Code FIESTA, 1st Rank, March 2023",
-    color: "#C9A84C",
+    color: "#8B5CF6",
     tag: "Hackathon",
   },
 
@@ -82,10 +82,10 @@ export default function Awards() {
           <span className="section-label">07. Recognition</span>
           <h2
             style={{
-              fontFamily: "'Times New Roman', Times, serif",
+              fontFamily: "'Space Grotesk', system-ui, sans-serif",
               fontSize: "clamp(2rem, 4vw, 3rem)",
               fontWeight: 700,
-              color: "#F5F0E8",
+              color: "#EEF2FF",
               marginTop: "0.5rem",
               letterSpacing: "-0.02em",
             }}
@@ -130,21 +130,21 @@ export default function Awards() {
                   <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "0.75rem", flexWrap: "wrap" }}>
                     <span
                       style={{
-                        fontFamily: "'Courier New', monospace",
+                        fontFamily: "'JetBrains Mono', monospace",
                         fontSize: "0.58rem",
                         letterSpacing: "0.14em",
                         textTransform: "uppercase",
                         color: award.color,
                         border: `1px solid ${award.color}35`,
                         padding: "2px 8px",
-                        borderRadius: "2px",
+                        borderRadius: "12px",
                       }}
                     >
                       {award.tag}
                     </span>
                     <span
                       style={{
-                        fontFamily: "'Courier New', monospace",
+                        fontFamily: "'JetBrains Mono', monospace",
                         fontSize: "0.6rem",
                         letterSpacing: "0.1em",
                         textTransform: "uppercase",
@@ -158,10 +158,10 @@ export default function Awards() {
 
                   <h3
                     style={{
-                      fontFamily: "'Times New Roman', Times, serif",
+                      fontFamily: "'Space Grotesk', system-ui, sans-serif",
                       fontSize: "1.2rem",
                       fontWeight: 700,
-                      color: "#F5F0E8",
+                      color: "#EEF2FF",
                       margin: "0 0 0.3rem",
                       letterSpacing: "-0.01em",
                       lineHeight: 1.25,
@@ -171,7 +171,7 @@ export default function Awards() {
                   </h3>
                   <p
                     style={{
-                      fontFamily: "'Georgia', serif",
+                      fontFamily: "'Inter', system-ui, sans-serif",
                       fontSize: "0.88rem",
                       color: award.color,
                       margin: "0 0 0.5rem",
@@ -182,7 +182,7 @@ export default function Awards() {
                   </p>
                   <p
                     style={{
-                      fontFamily: "'Courier New', monospace",
+                      fontFamily: "'JetBrains Mono', monospace",
                       fontSize: "0.62rem",
                       letterSpacing: "0.06em",
                       color: "var(--slate)",
@@ -194,7 +194,7 @@ export default function Awards() {
                   </p>
                   <p
                     style={{
-                      fontFamily: "'Georgia', serif",
+                      fontFamily: "'Inter', system-ui, sans-serif",
                       fontSize: "0.88rem",
                       color: "var(--slate)",
                       lineHeight: 1.75,
@@ -234,7 +234,7 @@ export default function Awards() {
                     style={{
                       position: "absolute",
                       inset: 0,
-                      background: `linear-gradient(${i % 2 === 0 ? "to right" : "to left"}, rgba(13,17,23,0.25) 0%, transparent 50%)`,
+                      background: `linear-gradient(${i % 2 === 0 ? "to right" : "to left"}, rgba(5,6,15,0.25) 0%, transparent 50%)`,
                       pointerEvents: "none",
                     }}
                   />
@@ -248,14 +248,14 @@ export default function Awards() {
                   >
                     <span
                       style={{
-                        fontFamily: "'Courier New', monospace",
+                        fontFamily: "'JetBrains Mono', monospace",
                         fontSize: "0.58rem",
                         letterSpacing: "0.1em",
                         textTransform: "uppercase",
                         color: "rgba(245,240,232,0.7)",
-                        background: "rgba(13,17,23,0.6)",
+                        background: "rgba(5,6,15,0.6)",
                         padding: "3px 8px",
-                        borderRadius: "2px",
+                        borderRadius: "12px",
                       }}
                     >
                       {award.photoCaption}

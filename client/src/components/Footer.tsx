@@ -9,8 +9,8 @@ export default function Footer() {
     <footer
       style={{
         padding: "2.5rem 0",
-        background: "#0D1117",
-        borderTop: "1px solid rgba(201, 168, 76, 0.08)",
+        background: "#05060F",
+        borderTop: "1px solid rgba(139, 92, 246, 0.08)",
       }}
     >
       <div className="container">
@@ -36,15 +36,15 @@ export default function Footer() {
             ))}
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-            <span style={{ fontFamily: "'Times New Roman', Times, serif", fontSize: "0.95rem", fontWeight: 700, color: "#F5F0E8" }}>
+            <span style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontSize: "0.95rem", fontWeight: 700, color: "#EEF2FF" }}>
               Mansi Mengde
             </span>
-            <span style={{ width: "1px", height: "12px", background: "rgba(201, 168, 76, 0.2)" }} />
-            <span style={{ fontFamily: "'Courier New', monospace", fontSize: "0.62rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--gold)" }}>
+            <span style={{ width: "1px", height: "12px", background: "rgba(139, 92, 246, 0.2)" }} />
+            <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.62rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--gold)" }}>
               Data Engineer · AWS Certified
             </span>
           </div>
-          <p style={{ fontFamily: "'Courier New', monospace", fontSize: "0.62rem", letterSpacing: "0.1em", color: "var(--slate)", opacity: 0.5, margin: 0 }}>
+          <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.62rem", letterSpacing: "0.1em", color: "var(--slate)", opacity: 0.5, margin: 0 }}>
             2026. All rights reserved
           </p>
         </div>

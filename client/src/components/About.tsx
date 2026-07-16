@@ -52,10 +52,10 @@ export default function About() {
           <span className="section-label">01. About</span>
           <h2
             style={{
-              fontFamily: "'Times New Roman', Times, serif",
+              fontFamily: "'Space Grotesk', system-ui, sans-serif",
               fontSize: "clamp(2rem, 4vw, 3rem)",
               fontWeight: 700,
-              color: "#F5F0E8",
+              color: "#EEF2FF",
               marginTop: "0.5rem",
               letterSpacing: "-0.02em",
             }}
@@ -72,23 +72,23 @@ export default function About() {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.1 }}
           >
-            <p style={{ color: "var(--slate)", fontFamily: "'Georgia', serif", fontSize: "1rem", lineHeight: 1.8, marginBottom: "1.5rem" }}>
+            <p style={{ color: "var(--slate)", fontFamily: "'Inter', system-ui, sans-serif", fontSize: "1rem", lineHeight: 1.8, marginBottom: "1.5rem" }}>
               I am a Data Engineer and AWS Certified Solutions Architect with four years of
               experience building production grade data infrastructure. My work spans real time
               event processing, cloud native architectures, and machine learning pipelines.
             </p>
-            <p style={{ color: "var(--slate)", fontFamily: "'Georgia', serif", fontSize: "1rem", lineHeight: 1.8, marginBottom: "2rem" }}>
+            <p style={{ color: "var(--slate)", fontFamily: "'Inter', system-ui, sans-serif", fontSize: "1rem", lineHeight: 1.8, marginBottom: "2rem" }}>
               In May 2026, I completed my Master of Science in Information Systems at California
               State University, Long Beach, where I also received the AWS All Builders Welcome
               Grant to present research at AWS re:Invent 2025 in Las Vegas.
             </p>
 
             <div style={{ marginTop: "1.5rem", display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: "0.4rem", color: "var(--slate)", fontFamily: "'Courier New', monospace", fontSize: "0.72rem" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "0.4rem", color: "var(--slate)", fontFamily: "'JetBrains Mono', monospace", fontSize: "0.72rem" }}>
                 <MapPin size={13} style={{ color: "var(--gold)" }} />
                 San Francisco Bay Area, CA
               </div>
-              <div style={{ display: "flex", alignItems: "center", gap: "0.4rem", color: "var(--slate)", fontFamily: "'Courier New', monospace", fontSize: "0.72rem" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "0.4rem", color: "var(--slate)", fontFamily: "'JetBrains Mono', monospace", fontSize: "0.72rem" }}>
                 <Award size={13} style={{ color: "var(--gold)" }} />
                 AWS Certified Solutions Architect
               </div>
@@ -103,10 +103,10 @@ export default function About() {
           >
             <h3
               style={{
-                fontFamily: "'Times New Roman', Times, serif",
+                fontFamily: "'Space Grotesk', system-ui, sans-serif",
                 fontSize: "1.1rem",
                 fontWeight: 700,
-                color: "#F5F0E8",
+                color: "#EEF2FF",
                 marginBottom: "2rem",
                 letterSpacing: "-0.01em",
               }}
@@ -124,7 +124,7 @@ export default function About() {
                   style={{
                     marginBottom: "2rem",
                     paddingBottom: "2rem",
-                    borderBottom: i < education.length - 1 ? "1px solid rgba(201,168,76,0.08)" : "none",
+                    borderBottom: i < education.length - 1 ? "1px solid rgba(139,92,246,0.08)" : "none",
                     position: "relative",
                   }}
                 >
@@ -145,7 +145,7 @@ export default function About() {
                     <GraduationCap size={14} style={{ color: highlight ? "var(--gold)" : "var(--slate)", flexShrink: 0 }} />
                     <span
                       style={{
-                        fontFamily: "'Courier New', monospace",
+                        fontFamily: "'JetBrains Mono', monospace",
                         fontSize: "0.62rem",
                         letterSpacing: "0.12em",
                         textTransform: "uppercase",
@@ -157,17 +157,17 @@ export default function About() {
                   </div>
                   <h4
                     style={{
-                      fontFamily: "'Times New Roman', Times, serif",
+                      fontFamily: "'Space Grotesk', system-ui, sans-serif",
                       fontSize: "1rem",
                       fontWeight: 700,
-                      color: "#F5F0E8",
+                      color: "#EEF2FF",
                       margin: "0 0 0.2rem",
                     }}
                   >
                     {degree}
                   </h4>
-                  <p style={{ color: "var(--slate)", fontFamily: "'Georgia', serif", fontSize: "0.85rem", margin: "0 0 0.2rem" }}>{school}</p>
-                  <p style={{ color: highlight ? "var(--gold)" : "var(--slate)", fontFamily: "'Courier New', monospace", fontSize: "0.68rem", margin: 0, opacity: 0.8 }}>{note}</p>
+                  <p style={{ color: "var(--slate)", fontFamily: "'Inter', system-ui, sans-serif", fontSize: "0.85rem", margin: "0 0 0.2rem" }}>{school}</p>
+                  <p style={{ color: highlight ? "var(--gold)" : "var(--slate)", fontFamily: "'JetBrains Mono', monospace", fontSize: "0.68rem", margin: 0, opacity: 0.8 }}>{note}</p>
                 </motion.div>
               ))}
             </div>

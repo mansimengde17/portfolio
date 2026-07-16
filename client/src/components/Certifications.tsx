@@ -36,7 +36,7 @@ const CERTIFICATIONS = [
     expires: null,
     badge: null,
     credlyUrl: null,
-    color: "#8A9BB0",
+    color: "#94A3C4",
     highlight: false,
   },
   {
@@ -46,7 +46,7 @@ const CERTIFICATIONS = [
     expires: null,
     badge: null,
     credlyUrl: null,
-    color: "#8A9BB0",
+    color: "#94A3C4",
     highlight: false,
   },
   {
@@ -79,7 +79,7 @@ export default function Certifications() {
     <section
       id="certifications"
       ref={ref}
-      style={{ padding: "6rem 0", background: "#0D1117", position: "relative" }}
+      style={{ padding: "6rem 0", background: "#05060F", position: "relative" }}
     >
       <div className="container">
         <motion.div
@@ -91,10 +91,10 @@ export default function Certifications() {
           <span className="section-label">06. Credentials</span>
           <h2
             style={{
-              fontFamily: "'Times New Roman', Times, serif",
+              fontFamily: "'Space Grotesk', system-ui, sans-serif",
               fontSize: "clamp(2rem, 4vw, 3rem)",
               fontWeight: 700,
-              color: "#F5F0E8",
+              color: "#EEF2FF",
               marginTop: "0.5rem",
               letterSpacing: "-0.02em",
             }}
@@ -132,7 +132,7 @@ export default function Certifications() {
                   height: "88px",
                   objectFit: "contain",
                   flexShrink: 0,
-                  borderRadius: "4px",
+                  borderRadius: "12px",
                   filter: "drop-shadow(0 2px 8px rgba(255,153,0,0.2))",
                 }}
               />
@@ -140,10 +140,10 @@ export default function Certifications() {
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "0.5rem" }}>
                   <h3
                     style={{
-                      fontFamily: "'Times New Roman', Times, serif",
+                      fontFamily: "'Space Grotesk', system-ui, sans-serif",
                       fontSize: "1rem",
                       fontWeight: 700,
-                      color: "#F5F0E8",
+                      color: "#EEF2FF",
                       margin: "0 0 0.4rem",
                       letterSpacing: "-0.01em",
                       lineHeight: 1.35,
@@ -167,7 +167,7 @@ export default function Certifications() {
                 </div>
                 <p
                   style={{
-                    fontFamily: "'Georgia', serif",
+                    fontFamily: "'Inter', system-ui, sans-serif",
                     fontSize: "0.84rem",
                     color: "var(--slate)",
                     margin: "0 0 0.5rem",
@@ -178,7 +178,7 @@ export default function Certifications() {
                 <div style={{ display: "flex", flexDirection: "column", gap: "0.2rem" }}>
                   <span
                     style={{
-                      fontFamily: "'Courier New', monospace",
+                      fontFamily: "'JetBrains Mono', monospace",
                       fontSize: "0.62rem",
                       letterSpacing: "0.08em",
                       textTransform: "uppercase",
@@ -190,7 +190,7 @@ export default function Certifications() {
                   {cert.expires && (
                     <span
                       style={{
-                        fontFamily: "'Courier New', monospace",
+                        fontFamily: "'JetBrains Mono', monospace",
                         fontSize: "0.6rem",
                         letterSpacing: "0.06em",
                         color: "var(--slate)",
@@ -227,17 +227,17 @@ export default function Certifications() {
                   width: "3px",
                   height: "28px",
                   background: cert.color,
-                  borderRadius: "2px",
+                  borderRadius: "12px",
                   marginBottom: "0.85rem",
                   opacity: 0.7,
                 }}
               />
               <h3
                 style={{
-                  fontFamily: "'Times New Roman', Times, serif",
+                  fontFamily: "'Space Grotesk', system-ui, sans-serif",
                   fontSize: "0.92rem",
                   fontWeight: 700,
-                  color: "#F5F0E8",
+                  color: "#EEF2FF",
                   margin: "0 0 0.3rem",
                   lineHeight: 1.35,
                 }}
@@ -246,7 +246,7 @@ export default function Certifications() {
               </h3>
               <p
                 style={{
-                  fontFamily: "'Georgia', serif",
+                  fontFamily: "'Inter', system-ui, sans-serif",
                   fontSize: "0.8rem",
                   color: "var(--slate)",
                   margin: "0 0 0.4rem",
@@ -256,7 +256,7 @@ export default function Certifications() {
               </p>
               <span
                 style={{
-                  fontFamily: "'Courier New', monospace",
+                  fontFamily: "'JetBrains Mono', monospace",
                   fontSize: "0.58rem",
                   letterSpacing: "0.08em",
                   textTransform: "uppercase",

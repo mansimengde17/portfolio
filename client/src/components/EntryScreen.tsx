@@ -21,10 +21,10 @@ function sampleTextPoints(text: string, count: number): Float32Array {
   ctx.fillStyle = "#fff";
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
-  ctx.font = "700 120px 'Times New Roman', serif";
+  ctx.font = "700 120px 'Space Grotesk', system-ui, sans-serif";
   const measured = ctx.measureText(text).width;
   const fontSize = Math.floor(120 * Math.min(1, (W * 0.94) / measured));
-  ctx.font = `700 ${fontSize}px 'Times New Roman', serif`;
+  ctx.font = `700 ${fontSize}px 'Space Grotesk', system-ui, sans-serif`;
   ctx.fillText(text, W / 2, H / 2);
   const data = ctx.getImageData(0, 0, W, H).data;
   const pts: number[] = [];
@@ -71,9 +71,9 @@ function ParticleName({ onFormed }: { onFormed: () => void }) {
   const positions = useMemo(() => new Float32Array(start), [start]);
   const colors = useMemo(() => {
     const c = new Float32Array(COUNT * 3);
-    const gold = new THREE.Color("#C9A84C");
-    const cream = new THREE.Color("#F5F0E8");
-    const amber = new THREE.Color("#E8C97A");
+    const gold = new THREE.Color("#8B5CF6");
+    const cream = new THREE.Color("#EEF2FF");
+    const amber = new THREE.Color("#22D3EE");
     for (let i = 0; i < COUNT; i++) {
       const pick = seeds[i] < 0.72 ? gold : seeds[i] < 0.92 ? amber : cream;
       c[i * 3] = pick.r;
@@ -158,7 +158,7 @@ function Dust() {
       <bufferGeometry>
         <bufferAttribute attach="attributes-position" args={[positions, 3]} />
       </bufferGeometry>
-      <pointsMaterial size={0.09} color="#8A9BB0" transparent opacity={0.35} sizeAttenuation depthWrite={false} />
+      <pointsMaterial size={0.09} color="#94A3C4" transparent opacity={0.35} sizeAttenuation depthWrite={false} />
     </points>
   );
 }
@@ -187,7 +187,7 @@ export default function EntryScreen({ onEnter }: { onEnter: () => void }) {
       style={{
         position: "fixed",
         inset: 0,
-        background: "#0D1117",
+        background: "#05060F",
         zIndex: 100,
         overflow: "hidden",
       }}
@@ -204,14 +204,14 @@ export default function EntryScreen({ onEnter }: { onEnter: () => void }) {
         </Canvas>
       ) : (
         <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <h1 style={{ fontFamily: "'Times New Roman', serif", fontSize: "clamp(2rem, 7vw, 4.5rem)", color: "#F5F0E8", fontWeight: 700, letterSpacing: "-0.02em" }}>
+          <h1 style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontSize: "clamp(2rem, 7vw, 4.5rem)", color: "#EEF2FF", fontWeight: 700, letterSpacing: "-0.02em" }}>
             Mansi Mengde
           </h1>
         </div>
       )}
 
       {/* Vignette */}
-      <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 70% 60% at 50% 45%, transparent 50%, rgba(13,17,23,0.9) 100%)", pointerEvents: "none" }} />
+      <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 70% 60% at 50% 45%, transparent 50%, rgba(5,6,15,0.9) 100%)", pointerEvents: "none" }} />
 
       {/* Overlay content */}
       <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "flex-end", paddingBottom: "13vh", pointerEvents: "none" }}>
@@ -224,30 +224,30 @@ export default function EntryScreen({ onEnter }: { onEnter: () => void }) {
               style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "1.6rem", pointerEvents: "auto", textAlign: "center", padding: "0 1.5rem" }}
             >
               <div style={{ display: "flex", alignItems: "center", gap: "0.9rem" }}>
-                <span style={{ width: "44px", height: "1px", background: "linear-gradient(to right, transparent, #C9A84C)" }} />
-                <span style={{ fontFamily: "'Courier New', monospace", fontSize: "0.68rem", letterSpacing: "0.3em", textTransform: "uppercase", color: "#C9A84C", whiteSpace: "nowrap" }}>
+                <span style={{ width: "44px", height: "1px", background: "linear-gradient(to right, transparent, #8B5CF6)" }} />
+                <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.68rem", letterSpacing: "0.3em", textTransform: "uppercase", color: "#8B5CF6", whiteSpace: "nowrap" }}>
                   AI · Data · Software Engineer
                 </span>
-                <span style={{ width: "44px", height: "1px", background: "linear-gradient(to left, transparent, #C9A84C)" }} />
+                <span style={{ width: "44px", height: "1px", background: "linear-gradient(to left, transparent, #8B5CF6)" }} />
               </div>
               <motion.button
                 onClick={onEnter}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.97 }}
                 style={{
-                  fontFamily: "'Courier New', monospace",
+                  fontFamily: "'JetBrains Mono', monospace",
                   fontSize: "0.75rem",
                   letterSpacing: "0.24em",
                   textTransform: "uppercase",
-                  color: "#0D1117",
-                  background: "linear-gradient(120deg, #C9A84C, #E8C97A 50%, #C9A84C)",
+                  color: "#05060F",
+                  background: "linear-gradient(120deg, #8B5CF6, #22D3EE 50%, #8B5CF6)",
                   backgroundSize: "200% 100%",
                   border: "none",
                   padding: "0.95rem 2.6rem",
                   cursor: "pointer",
-                  borderRadius: "2px",
+                  borderRadius: "12px",
                   fontWeight: 700,
-                  boxShadow: "0 0 34px rgba(201,168,76,0.35)",
+                  boxShadow: "0 0 34px rgba(139,92,246,0.35)",
                   animation: "entryShimmer 2.5s linear infinite",
                 }}
               >
