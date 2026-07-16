@@ -9,8 +9,8 @@ export default function Footer() {
     <footer
       style={{
         padding: "2.5rem 0",
-        background: "#0B0E22",
-        borderTop: "1px solid rgba(139, 92, 246, 0.08)",
+        background: "#F6F4EE",
+        borderTop: "1px solid rgba(79, 70, 229, 0.08)",
       }}
     >
       <div className="container">
@@ -36,10 +36,10 @@ export default function Footer() {
             ))}
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-            <span style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontSize: "0.95rem", fontWeight: 700, color: "#F2F5FF" }}>
+            <span style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontSize: "0.95rem", fontWeight: 700, color: "#14120E" }}>
               Mansi Mengde
             </span>
-            <span style={{ width: "1px", height: "12px", background: "rgba(139, 92, 246, 0.2)" }} />
+            <span style={{ width: "1px", height: "12px", background: "rgba(79, 70, 229, 0.2)" }} />
             <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.74rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--gold)" }}>
               Data Engineer · AWS Certified
             </span>

@@ -18,42 +18,42 @@ interface SkillBubble {
 const SKILL_CATEGORIES = [
   {
     label: "Data Engineering",
-    color: "#8B5CF6",
+    color: "#4F46E5",
     skills: ["Apache Spark", "Apache Kafka", "Apache Airflow", "dbt", "ETL Pipelines", "Data Modeling", "Streaming", "Batch Processing", "Data Warehousing", "Delta Lake", "Apache Flink", "Data Quality"],
   },
   {
     label: "Cloud Platforms",
-    color: "#B9C4E8",
+    color: "#6B6558",
     skills: ["AWS", "Amazon S3", "AWS Glue", "Amazon Redshift", "AWS Lambda", "Amazon SageMaker", "Amazon Bedrock", "CloudWatch", "API Gateway", "AWS IAM", "Cloud WAN", "Azure", "GCP"],
   },
   {
     label: "Machine Learning and AI",
-    color: "#A8C5DA",
+    color: "#0E7490",
     skills: ["scikit-learn", "TensorFlow", "PyTorch", "Anomaly Detection", "Churn Prediction", "NLP", "Generative AI", "LLMs", "Prompt Engineering", "Model Drift Detection", "MLOps", "Feature Engineering"],
   },
   {
     label: "Languages and Frameworks",
-    color: "#8B5CF6",
+    color: "#4F46E5",
     skills: ["Python", "SQL", "PySpark", "Scala", "Java", "Bash", "TypeScript", "JavaScript", "REST APIs", "GraphQL", "FastAPI", "Flask"],
   },
   {
     label: "Databases and Storage",
-    color: "#B9C4E8",
+    color: "#6B6558",
     skills: ["PostgreSQL", "MySQL", "MongoDB", "DynamoDB", "Amazon RDS", "Redis", "Elasticsearch", "Snowflake", "BigQuery", "Cassandra", "ClickHouse", "Apache Hive"],
   },
   {
     label: "DevOps and Observability",
-    color: "#A8C5DA",
+    color: "#0E7490",
     skills: ["Docker", "Kubernetes", "Terraform", "CI/CD", "GitHub Actions", "Grafana", "Prometheus", "Datadog", "Splunk", "Git", "Agile", "JIRA"],
   },
   {
     label: "Analytics and Visualization",
-    color: "#8B5CF6",
+    color: "#4F46E5",
     skills: ["Tableau", "Power BI", "Looker", "Matplotlib", "Seaborn", "Plotly", "Pandas", "NumPy", "Excel", "Google Analytics", "Metabase", "Apache Superset"],
   },
   {
     label: "Security and Compliance",
-    color: "#B9C4E8",
+    color: "#6B6558",
     skills: ["NIST Framework", "CIS Benchmarks", "Zero Trust", "FERPA", "PII Compliance", "RBAC", "IAM Policies", "GuardDuty", "CloudTrail", "Threat Detection", "SOC Workflows", "Encryption"],
   },
 ];
@@ -84,8 +84,8 @@ function FloatingBubble({ skill, color, delay, x, y, size }: { skill: string; co
         top: `${y}%`,
         transform: "translate(-50%, -50%)",
         padding: `${size * 0.18}rem ${size * 0.32}rem`,
-        background: `rgba(11,14,34,0.85)`,
-        border: `1px solid ${color}40`,
+        background: "#FFFFFF",
+        border: `2px solid ${color}`,
         borderRadius: "100px",
         fontFamily: "'JetBrains Mono', monospace",
         fontSize: `${0.55 + size * 0.012}rem`,
@@ -95,7 +95,7 @@ function FloatingBubble({ skill, color, delay, x, y, size }: { skill: string; co
         whiteSpace: "nowrap",
         cursor: "default",
         backdropFilter: "blur(8px)",
-        boxShadow: `0 0 ${size * 0.4}px ${color}18, inset 0 1px 0 ${color}15`,
+        boxShadow: `3px 3px 0 ${color}55`,
         zIndex: 1,
       }}
     >
@@ -148,7 +148,7 @@ export default function Skills() {
               fontFamily: "'Space Grotesk', system-ui, sans-serif",
               fontSize: "clamp(2rem, 4vw, 3rem)",
               fontWeight: 700,
-              color: "#F2F5FF",
+              color: "#14120E",
               marginTop: "0.5rem",
               letterSpacing: "-0.02em",
             }}
@@ -179,7 +179,7 @@ export default function Skills() {
                 textTransform: "uppercase",
                 padding: "0.4rem 0.9rem",
                 borderRadius: "12px",
-                border: `1px solid ${i === activeCategory ? cat.color : "rgba(185,196,232,0.2)"}`,
+                border: `1px solid ${i === activeCategory ? cat.color : "rgba(107,101,88,0.2)"}`,
                 background: i === activeCategory ? `${cat.color}15` : "transparent",
                 color: i === activeCategory ? cat.color : "var(--slate)",
                 cursor: "pointer",
@@ -193,7 +193,7 @@ export default function Skills() {
               }}
               onMouseLeave={(e) => {
                 if (i !== activeCategory) {
-                  e.currentTarget.style.borderColor = "rgba(185,196,232,0.2)";
+                  e.currentTarget.style.borderColor = "rgba(107,101,88,0.2)";
                   e.currentTarget.style.color = "var(--slate)";
                 }
               }}
@@ -213,10 +213,10 @@ export default function Skills() {
           style={{
             position: "relative",
             height: "380px",
-            border: "1px solid rgba(139,92,246,0.08)",
+            border: "2px solid #14120E",
             borderRadius: "12px",
             overflow: "hidden",
-            background: "rgba(11,14,34,0.5)",
+            background: "#FFFFFF", boxShadow: "6px 6px 0 rgba(20,18,14,0.92)",
           }}
         >
           {/* Subtle radial glow */}
@@ -275,7 +275,7 @@ export default function Skills() {
                     fontSize: "0.8rem",
                     letterSpacing: "0.06em",
                     color: "var(--slate)",
-                    border: "1px solid rgba(185,196,232,0.15)",
+                    border: "1px solid rgba(107,101,88,0.15)",
                     padding: "2px 7px",
                     borderRadius: "12px",
                     opacity: 0.75,

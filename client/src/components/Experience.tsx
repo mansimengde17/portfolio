@@ -159,7 +159,7 @@ export default function Experience() {
     <section
       id="experience"
       ref={ref}
-      style={{ padding: "6rem 0", background: "#0B0E22", position: "relative" }}
+      style={{ padding: "6rem 0", background: "#F6F4EE", position: "relative" }}
     >
       <div className="container">
         <motion.div
@@ -174,7 +174,7 @@ export default function Experience() {
               fontFamily: "'Space Grotesk', system-ui, sans-serif",
               fontSize: "clamp(2rem, 4vw, 3rem)",
               fontWeight: 700,
-              color: "#F2F5FF",
+              color: "#14120E",
               marginTop: "0.5rem",
               letterSpacing: "-0.02em",
             }}
@@ -193,7 +193,7 @@ export default function Experience() {
               top: "22px",
               bottom: "22px",
               width: "1px",
-              background: "linear-gradient(to bottom, rgba(139,92,246,0.4) 0%, rgba(139,92,246,0.08) 100%)",
+              background: "linear-gradient(to bottom, rgba(79,70,229,0.4) 0%, rgba(79,70,229,0.08) 100%)",
             }}
           />
 
@@ -220,14 +220,14 @@ export default function Experience() {
                   }}
                 >
                   <motion.div
-                    animate={expanded === i ? { scale: 1.2, backgroundColor: exp.logoColor } : { scale: 1, backgroundColor: "rgba(139,92,246,0.3)" }}
+                    animate={expanded === i ? { scale: 1.2, backgroundColor: exp.logoColor } : { scale: 1, backgroundColor: "rgba(79,70,229,0.3)" }}
                     transition={{ duration: 0.2 }}
                     style={{
                       width: "10px",
                       height: "10px",
                       borderRadius: "50%",
                       border: `1px solid ${exp.logoColor}60`,
-                      background: "rgba(139,92,246,0.3)",
+                      background: "rgba(79,70,229,0.3)",
                     }}
                   />
                 </div>
@@ -238,7 +238,7 @@ export default function Experience() {
                   style={{
                     flex: 1,
                     overflow: "hidden",
-                    border: expanded === i ? `1px solid ${exp.logoColor}25` : "1px solid rgba(255,255,255,0.06)",
+                    border: expanded === i ? `1px solid ${exp.logoColor}25` : "1px solid rgba(20,18,14,0.06)",
                     transition: "border-color 200ms ease",
                   }}
                 >
@@ -267,7 +267,7 @@ export default function Experience() {
                             fontFamily: "'Space Grotesk', system-ui, sans-serif",
                             fontSize: "1rem",
                             fontWeight: 700,
-                            color: "#F2F5FF",
+                            color: "#14120E",
                             margin: 0,
                             letterSpacing: "-0.01em",
                           }}
@@ -298,7 +298,7 @@ export default function Experience() {
                         >
                           {exp.period}
                         </span>
-<span style={{ color: "rgba(185,196,232,0.3)", fontSize: "0.8rem" }}>|</span>
+<span style={{ color: "rgba(107,101,88,0.3)", fontSize: "0.8rem" }}>|</span>
                         <span
                           style={{
                             display: "flex",
@@ -337,7 +337,7 @@ export default function Experience() {
                         transition={{ duration: 0.25, ease: [0.23, 1, 0.32, 1] }}
                         style={{ overflow: "hidden" }}
                       >
-                        <div style={{ padding: "0 1.5rem 1.5rem", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
+                        <div style={{ padding: "0 1.5rem 1.5rem", borderTop: "1px solid rgba(20,18,14,0.05)" }}>
                           <ul style={{ margin: "1.25rem 0 1.25rem", padding: 0, listStyle: "none", display: "flex", flexDirection: "column", gap: "0.75rem" }}>
                             {exp.highlights.map((h, hi) => (
                               <motion.li

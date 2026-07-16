@@ -61,7 +61,7 @@ export default function Navbar() {
             fontFamily: "'Space Grotesk', system-ui, sans-serif",
             fontSize: "1.15rem",
             fontWeight: 700,
-            color: "#F2F5FF",
+            color: "#14120E",
             textDecoration: "none",
             letterSpacing: "-0.01em",
           }}
@@ -99,13 +99,13 @@ export default function Navbar() {
                 fontWeight: 600,
                 letterSpacing: "0.12em",
                 textTransform: "uppercase",
-                color: "rgba(245,240,232,0.75)",
+                color: "rgba(20,18,14,0.75)",
                 cursor: "pointer",
                 transition: "color 150ms ease",
                 position: "relative",
               }}
               onMouseEnter={(e) => (e.currentTarget.style.color = "var(--gold)")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(245,240,232,0.75)")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(20,18,14,0.75)")}
             >
               {label}
             </motion.button>
@@ -134,8 +134,8 @@ export default function Navbar() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.2 }}
           style={{
-            background: "rgba(11, 14, 34, 0.98)",
-            borderTop: "1px solid rgba(139, 92, 246, 0.1)",
+            background: "rgba(246, 244, 238, 0.98)",
+            borderTop: "1px solid rgba(79, 70, 229, 0.1)",
             padding: "1rem",
           }}
         >
@@ -156,7 +156,7 @@ export default function Navbar() {
                 letterSpacing: "0.14em",
                 textTransform: "uppercase",
                 color: "var(--slate)",
-                borderBottom: "1px solid rgba(139, 92, 246, 0.06)",
+                borderBottom: "1px solid rgba(79, 70, 229, 0.06)",
                 cursor: "pointer",
               }}
             >

@@ -36,7 +36,7 @@ const CERTIFICATIONS = [
     expires: null,
     badge: null,
     credlyUrl: null,
-    color: "#B9C4E8",
+    color: "#6B6558",
     highlight: false,
   },
   {
@@ -46,7 +46,7 @@ const CERTIFICATIONS = [
     expires: null,
     badge: null,
     credlyUrl: null,
-    color: "#B9C4E8",
+    color: "#6B6558",
     highlight: false,
   },
   {
@@ -79,7 +79,7 @@ export default function Certifications() {
     <section
       id="certifications"
       ref={ref}
-      style={{ padding: "6rem 0", background: "#0B0E22", position: "relative" }}
+      style={{ padding: "6rem 0", background: "#F6F4EE", position: "relative" }}
     >
       <div className="container">
         <motion.div
@@ -94,7 +94,7 @@ export default function Certifications() {
               fontFamily: "'Space Grotesk', system-ui, sans-serif",
               fontSize: "clamp(2rem, 4vw, 3rem)",
               fontWeight: 700,
-              color: "#F2F5FF",
+              color: "#14120E",
               marginTop: "0.5rem",
               letterSpacing: "-0.02em",
             }}
@@ -143,7 +143,7 @@ export default function Certifications() {
                       fontFamily: "'Space Grotesk', system-ui, sans-serif",
                       fontSize: "1rem",
                       fontWeight: 700,
-                      color: "#F2F5FF",
+                      color: "#14120E",
                       margin: "0 0 0.4rem",
                       letterSpacing: "-0.01em",
                       lineHeight: 1.35,
@@ -217,7 +217,7 @@ export default function Certifications() {
               className="card-neutral"
               style={{
                 padding: "1.25rem 1.5rem",
-                border: "1px solid rgba(255,255,255,0.06)",
+                border: "1px solid rgba(20,18,14,0.06)",
                 transition: "border-color 200ms ease, transform 200ms ease",
               }}
               whileHover={{ y: -2 }}
@@ -237,7 +237,7 @@ export default function Certifications() {
                   fontFamily: "'Space Grotesk', system-ui, sans-serif",
                   fontSize: "0.92rem",
                   fontWeight: 700,
-                  color: "#F2F5FF",
+                  color: "#14120E",
                   margin: "0 0 0.3rem",
                   lineHeight: 1.35,
                 }}
