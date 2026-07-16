@@ -82,7 +82,7 @@ export default function Projects() {
               fontFamily: "'Space Grotesk', system-ui, sans-serif",
               fontSize: "clamp(2rem, 4vw, 3rem)",
               fontWeight: 700,
-              color: "#F2F5FF",
+              color: "#14120E",
               marginTop: "0.5rem",
               letterSpacing: "-0.02em",
             }}
@@ -107,7 +107,7 @@ export default function Projects() {
                   <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.74rem", letterSpacing: "0.12em", textTransform: "uppercase", color: project.featured ? "var(--gold)" : "var(--slate)" }}>
                     {project.year} {project.featured ? "· Featured" : ""}
                   </span>
-                  <h3 style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontSize: "1.05rem", fontWeight: 700, color: "#F2F5FF", margin: "0.3rem 0 0.15rem", letterSpacing: "-0.01em" }}>
+                  <h3 style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontSize: "1.05rem", fontWeight: 700, color: "#14120E", margin: "0.3rem 0 0.15rem", letterSpacing: "-0.01em" }}>
                     {project.title}
                   </h3>
                   <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.78rem", color: "var(--slate)", margin: 0, letterSpacing: "0.06em" }}>
@@ -139,8 +139,8 @@ export default function Projects() {
                       fontSize: "0.8rem",
                       letterSpacing: "0.08em",
                       padding: "0.18rem 0.55rem",
-                      background: "rgba(139, 92, 246, 0.06)",
-                      border: "1px solid rgba(139, 92, 246, 0.18)",
+                      background: "rgba(79, 70, 229, 0.06)",
+                      border: "1px solid rgba(79, 70, 229, 0.18)",
                       borderRadius: "12px",
                       color: "var(--gold)",
                     }}
@@ -168,7 +168,7 @@ export default function Projects() {
                       textDecoration: "none",
                       transition: "color 150ms ease",
                     }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = "#F2F5FF")}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "#14120E")}
                     onMouseLeave={(e) => (e.currentTarget.style.color = "var(--gold)")}
                   >
                     <ExternalLink size={13} />

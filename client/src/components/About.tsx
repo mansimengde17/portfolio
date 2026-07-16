@@ -55,7 +55,7 @@ export default function About() {
               fontFamily: "'Space Grotesk', system-ui, sans-serif",
               fontSize: "clamp(2rem, 4vw, 3rem)",
               fontWeight: 700,
-              color: "#F2F5FF",
+              color: "#14120E",
               marginTop: "0.5rem",
               letterSpacing: "-0.02em",
             }}
@@ -106,7 +106,7 @@ export default function About() {
                 fontFamily: "'Space Grotesk', system-ui, sans-serif",
                 fontSize: "1.1rem",
                 fontWeight: 700,
-                color: "#F2F5FF",
+                color: "#14120E",
                 marginBottom: "2rem",
                 letterSpacing: "-0.01em",
               }}
@@ -124,7 +124,7 @@ export default function About() {
                   style={{
                     marginBottom: "2rem",
                     paddingBottom: "2rem",
-                    borderBottom: i < education.length - 1 ? "1px solid rgba(139,92,246,0.08)" : "none",
+                    borderBottom: i < education.length - 1 ? "1px solid rgba(79,70,229,0.08)" : "none",
                     position: "relative",
                   }}
                 >
@@ -160,7 +160,7 @@ export default function About() {
                       fontFamily: "'Space Grotesk', system-ui, sans-serif",
                       fontSize: "1rem",
                       fontWeight: 700,
-                      color: "#F2F5FF",
+                      color: "#14120E",
                       margin: "0 0 0.2rem",
                     }}
                   >

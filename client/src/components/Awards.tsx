@@ -43,7 +43,7 @@ const AWARDS = [
     photo: "assets/datathon-win_8d0c11a5.webp",
     photoAlt: "Mansi Mengde and team receiving the SoCal Datathon winner check at CSUF",
     photoCaption: "SoCal Datathon, CSUF, October 2024",
-    color: "#8B5CF6",
+    color: "#4F46E5",
     tag: "Datathon",
   },
   {
@@ -56,7 +56,7 @@ const AWARDS = [
     photo: "assets/code-fiesta-award_e29a5068.webp",
     photoAlt: "Mansi Mengde receiving the Code FIESTA Excellence Award",
     photoCaption: "Code FIESTA, 1st Rank, March 2023",
-    color: "#8B5CF6",
+    color: "#4F46E5",
     tag: "Hackathon",
   },
 
@@ -85,7 +85,7 @@ export default function Awards() {
               fontFamily: "'Space Grotesk', system-ui, sans-serif",
               fontSize: "clamp(2rem, 4vw, 3rem)",
               fontWeight: 700,
-              color: "#F2F5FF",
+              color: "#14120E",
               marginTop: "0.5rem",
               letterSpacing: "-0.02em",
             }}
@@ -161,7 +161,7 @@ export default function Awards() {
                       fontFamily: "'Space Grotesk', system-ui, sans-serif",
                       fontSize: "1.2rem",
                       fontWeight: 700,
-                      color: "#F2F5FF",
+                      color: "#14120E",
                       margin: "0 0 0.3rem",
                       letterSpacing: "-0.01em",
                       lineHeight: 1.25,
@@ -234,7 +234,7 @@ export default function Awards() {
                     style={{
                       position: "absolute",
                       inset: 0,
-                      background: `linear-gradient(${i % 2 === 0 ? "to right" : "to left"}, rgba(11,14,34,0.25) 0%, transparent 50%)`,
+                      background: `linear-gradient(${i % 2 === 0 ? "to right" : "to left"}, rgba(246,244,238,0.25) 0%, transparent 50%)`,
                       pointerEvents: "none",
                     }}
                   />
@@ -252,8 +252,8 @@ export default function Awards() {
                         fontSize: "0.8rem",
                         letterSpacing: "0.1em",
                         textTransform: "uppercase",
-                        color: "rgba(245,240,232,0.7)",
-                        background: "rgba(11,14,34,0.6)",
+                        color: "#14120E",
+                        background: "rgba(246,244,238,0.85)",
                         padding: "3px 8px",
                         borderRadius: "12px",
                       }}

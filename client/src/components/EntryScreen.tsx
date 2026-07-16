@@ -71,9 +71,9 @@ function ParticleName({ onFormed }: { onFormed: () => void }) {
   const positions = useMemo(() => new Float32Array(start), [start]);
   const colors = useMemo(() => {
     const c = new Float32Array(COUNT * 3);
-    const gold = new THREE.Color("#8B5CF6");
-    const cream = new THREE.Color("#F2F5FF");
-    const amber = new THREE.Color("#22D3EE");
+    const gold = new THREE.Color("#4F46E5");
+    const cream = new THREE.Color("#14120E");
+    const amber = new THREE.Color("#FF5A36");
     for (let i = 0; i < COUNT; i++) {
       const pick = seeds[i] < 0.72 ? gold : seeds[i] < 0.92 ? amber : cream;
       c[i * 3] = pick.r;
@@ -130,7 +130,7 @@ function ParticleName({ onFormed }: { onFormed: () => void }) {
           opacity={0.95}
           sizeAttenuation
           depthWrite={false}
-          blending={THREE.AdditiveBlending}
+          blending={THREE.NormalBlending}
         />
       </points>
     </group>
@@ -158,7 +158,7 @@ function Dust() {
       <bufferGeometry>
         <bufferAttribute attach="attributes-position" args={[positions, 3]} />
       </bufferGeometry>
-      <pointsMaterial size={0.09} color="#B9C4E8" transparent opacity={0.35} sizeAttenuation depthWrite={false} />
+      <pointsMaterial size={0.09} color="#6B6558" transparent opacity={0.35} sizeAttenuation depthWrite={false} />
     </points>
   );
 }
@@ -187,7 +187,7 @@ export default function EntryScreen({ onEnter }: { onEnter: () => void }) {
       style={{
         position: "fixed",
         inset: 0,
-        background: "#0B0E22",
+        background: "#F6F4EE",
         zIndex: 100,
         overflow: "hidden",
       }}
@@ -204,14 +204,14 @@ export default function EntryScreen({ onEnter }: { onEnter: () => void }) {
         </Canvas>
       ) : (
         <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <h1 style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontSize: "clamp(2rem, 7vw, 4.5rem)", color: "#F2F5FF", fontWeight: 700, letterSpacing: "-0.02em" }}>
+          <h1 style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontSize: "clamp(2rem, 7vw, 4.5rem)", color: "#14120E", fontWeight: 700, letterSpacing: "-0.02em" }}>
             Mansi Mengde
           </h1>
         </div>
       )}
 
       {/* Vignette */}
-      <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 70% 60% at 50% 45%, transparent 50%, rgba(11,14,34,0.9) 100%)", pointerEvents: "none" }} />
+      <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 70% 60% at 50% 45%, transparent 50%, rgba(246,244,238,0.9) 100%)", pointerEvents: "none" }} />
 
       {/* Overlay content */}
       <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "flex-end", paddingBottom: "13vh", pointerEvents: "none" }}>
@@ -224,11 +224,11 @@ export default function EntryScreen({ onEnter }: { onEnter: () => void }) {
               style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "1.6rem", pointerEvents: "auto", textAlign: "center", padding: "0 1.5rem" }}
             >
               <div style={{ display: "flex", alignItems: "center", gap: "0.9rem" }}>
-                <span style={{ width: "44px", height: "1px", background: "linear-gradient(to right, transparent, #8B5CF6)" }} />
-                <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.78rem", letterSpacing: "0.3em", textTransform: "uppercase", color: "#8B5CF6", whiteSpace: "nowrap" }}>
+                <span style={{ width: "44px", height: "1px", background: "linear-gradient(to right, transparent, #4F46E5)" }} />
+                <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.78rem", letterSpacing: "0.3em", textTransform: "uppercase", color: "#4F46E5", whiteSpace: "nowrap" }}>
                   AI · Data · Software Engineer
                 </span>
-                <span style={{ width: "44px", height: "1px", background: "linear-gradient(to left, transparent, #8B5CF6)" }} />
+                <span style={{ width: "44px", height: "1px", background: "linear-gradient(to left, transparent, #4F46E5)" }} />
               </div>
               <motion.button
                 onClick={onEnter}
@@ -239,15 +239,15 @@ export default function EntryScreen({ onEnter }: { onEnter: () => void }) {
                   fontSize: "0.95rem",
                   letterSpacing: "0.24em",
                   textTransform: "uppercase",
-                  color: "#0B0E22",
-                  background: "linear-gradient(120deg, #8B5CF6, #22D3EE 50%, #8B5CF6)",
+                  color: "#F6F4EE",
+                  background: "linear-gradient(120deg, #4F46E5, #FF5A36 50%, #4F46E5)",
                   backgroundSize: "200% 100%",
                   border: "none",
                   padding: "0.95rem 2.6rem",
                   cursor: "pointer",
                   borderRadius: "12px",
                   fontWeight: 700,
-                  boxShadow: "0 0 34px rgba(139,92,246,0.35)",
+                  boxShadow: "0 0 34px rgba(79,70,229,0.35)",
                   animation: "entryShimmer 2.5s linear infinite",
                 }}
               >

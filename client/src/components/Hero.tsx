@@ -101,13 +101,13 @@ function Constellation() {
         <bufferGeometry>
           <bufferAttribute attach="attributes-position" args={[nodePositions, 3]} />
         </bufferGeometry>
-        <pointsMaterial size={0.22} color="#8B5CF6" transparent opacity={0.85} sizeAttenuation depthWrite={false} blending={THREE.AdditiveBlending} />
+        <pointsMaterial size={0.22} color="#4F46E5" transparent opacity={0.85} sizeAttenuation depthWrite={false} blending={THREE.NormalBlending} />
       </points>
       <lineSegments>
         <bufferGeometry>
           <bufferAttribute attach="attributes-position" args={[linePositions, 3]} />
         </bufferGeometry>
-        <lineBasicMaterial color="#8B5CF6" transparent opacity={0.1} />
+        <lineBasicMaterial color="#4F46E5" transparent opacity={0.1} />
       </lineSegments>
       {/* orbiting data packets */}
       <Packets seeds={seeds} />
@@ -138,7 +138,7 @@ function Packets({ seeds }: { seeds: Float32Array }) {
       <bufferGeometry>
         <bufferAttribute attach="attributes-position" args={[positions, 3]} />
       </bufferGeometry>
-      <pointsMaterial size={0.34} color="#F2F5FF" transparent opacity={0.9} sizeAttenuation depthWrite={false} blending={THREE.AdditiveBlending} />
+      <pointsMaterial size={0.34} color="#14120E" transparent opacity={0.9} sizeAttenuation depthWrite={false} blending={THREE.NormalBlending} />
     </points>
   );
 }
@@ -204,7 +204,7 @@ export default function Hero() {
       id="about"
       style={{
         minHeight: "100vh",
-        background: "#0B0E22",
+        background: "#F6F4EE",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
@@ -216,7 +216,7 @@ export default function Hero() {
     >
       {/* 3D constellation background */}
       <HeroCanvas />
-      <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 75% 65% at 50% 45%, transparent 30%, #0B0E22 95%)", pointerEvents: "none" }} />
+      <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 75% 65% at 50% 45%, transparent 30%, #F6F4EE 95%)", pointerEvents: "none" }} />
 
       <div className="container relative" style={{ zIndex: 1 }}>
         {/* Main two-column layout */}
@@ -248,8 +248,8 @@ export default function Hero() {
                   padding: "0.45rem 1.1rem",
                   borderRadius: "999px",
                   border: "1px solid rgba(74, 222, 128, 0.45)",
-                  background: "rgba(74, 222, 128, 0.10)",
-                  color: "#86EFAC",
+                  background: "rgba(74, 222, 128, 0.18)",
+                  color: "#166534",
                 }}
               >
                 <motion.span
@@ -277,7 +277,7 @@ export default function Hero() {
                   fontFamily: "'Space Grotesk', system-ui, sans-serif",
                   fontSize: "clamp(2.5rem, 5.2vw, 4.6rem)",
                   fontWeight: 700,
-                  color: "#F2F5FF",
+                  color: "#14120E",
                   letterSpacing: "-0.03em",
                   lineHeight: 1.06,
                   margin: 0,
@@ -322,7 +322,7 @@ export default function Hero() {
                   fontFamily: "'Space Grotesk', system-ui, sans-serif",
                   fontSize: "clamp(1.15rem, 2.2vw, 1.55rem)",
                   fontWeight: 600,
-                  color: "#F2F5FF",
+                  color: "#14120E",
                   letterSpacing: "-0.01em",
                   whiteSpace: "nowrap",
                 }}
@@ -352,7 +352,7 @@ export default function Hero() {
               transition={{ delay: 0.7, duration: 0.6 }}
               style={{
                 maxWidth: "520px",
-                color: "#C6D0F0",
+                color: "#44403A",
                 fontFamily: "'Inter', system-ui, sans-serif",
                 fontSize: "1rem",
                 lineHeight: 1.8,
@@ -401,19 +401,19 @@ export default function Hero() {
                   letterSpacing: "0.14em",
                   textTransform: "uppercase",
                   color: "var(--gold)",
-                  border: "1px solid rgba(139,92,246,0.4)",
+                  border: "1px solid rgba(79,70,229,0.4)",
                   borderRadius: "10px",
                   textDecoration: "none",
                   transition: "all 180ms ease",
                   background: "transparent",
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = "rgba(139,92,246,0.08)";
-                  e.currentTarget.style.borderColor = "rgba(139,92,246,0.8)";
+                  e.currentTarget.style.background = "rgba(79,70,229,0.08)";
+                  e.currentTarget.style.borderColor = "rgba(79,70,229,0.8)";
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.background = "transparent";
-                  e.currentTarget.style.borderColor = "rgba(139,92,246,0.4)";
+                  e.currentTarget.style.borderColor = "rgba(79,70,229,0.4)";
                 }}
               >
                 <Download size={13} />
@@ -472,12 +472,12 @@ export default function Hero() {
               <div
                 style={{
                   width: "280px",
-                  border: "1px solid rgba(139, 92, 246, 0.25)",
+                  border: "1px solid rgba(79, 70, 229, 0.25)",
                   borderRadius: "12px",
                   overflow: "hidden",
                   position: "relative",
-                  background: "#0B0E22",
-                  boxShadow: "0 24px 60px rgba(0,0,0,0.5), 0 0 40px rgba(139,92,246,0.08)",
+                  background: "#F6F4EE",
+                  boxShadow: "0 24px 60px rgba(0,0,0,0.5), 0 0 40px rgba(79,70,229,0.08)",
                 }}
               >
                 <img
@@ -488,14 +488,14 @@ export default function Hero() {
                 <div
                   style={{
                     padding: "0.85rem 1rem",
-                    background: "rgba(11,14,34,0.97)",
-                    borderTop: "1px solid rgba(139,92,246,0.18)",
+                    background: "rgba(246,244,238,0.97)",
+                    borderTop: "1px solid rgba(79,70,229,0.18)",
                   }}
                 >
                   <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.8rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--gold)", margin: 0 }}>
                     M.S. Information Systems · CSULB
                   </p>
-                  <p style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: "0.95rem", color: "#F2F5FF", margin: "3px 0 0" }}>
+                  <p style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: "0.95rem", color: "#14120E", margin: "3px 0 0" }}>
                     Graduated May 2026
                   </p>
                 </div>
@@ -515,12 +515,12 @@ export default function Hero() {
             display: "grid",
             gridTemplateColumns: "repeat(4, 1fr)",
             gap: "1px",
-            background: "rgba(139, 92, 246, 0.12)",
-            border: "1px solid rgba(139, 92, 246, 0.12)",
+            background: "rgba(79, 70, 229, 0.12)",
+            border: "1px solid rgba(79, 70, 229, 0.12)",
           }}
         >
           {STATS.map(({ value, label }, i) => (
-            <Tilt key={label} max={7} style={{ background: "#0B0E22" }}>
+            <Tilt key={label} max={7} style={{ background: "#F6F4EE" }}>
               <div style={{ padding: "1.5rem", height: "100%" }}>
                 <motion.div
                   initial={{ opacity: 0, y: 8 }}

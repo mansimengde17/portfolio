@@ -53,10 +53,10 @@ export default function Contact() {
   const inputStyle = {
     width: "100%",
     padding: "0.75rem 1rem",
-    background: "rgba(11, 14, 34, 0.8)",
-    border: "1px solid rgba(139, 92, 246, 0.18)",
+    background: "rgba(246, 244, 238, 0.8)",
+    border: "1px solid rgba(79, 70, 229, 0.18)",
     borderRadius: "12px",
-    color: "#F2F5FF",
+    color: "#14120E",
     fontFamily: "'Inter', system-ui, sans-serif",
     fontSize: "0.97rem",
     outline: "none",
@@ -78,7 +78,7 @@ export default function Contact() {
               fontFamily: "'Space Grotesk', system-ui, sans-serif",
               fontSize: "clamp(2rem, 4vw, 3rem)",
               fontWeight: 700,
-              color: "#F2F5FF",
+              color: "#14120E",
               marginTop: "0.5rem",
               letterSpacing: "-0.02em",
             }}
@@ -125,8 +125,8 @@ export default function Contact() {
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      background: "rgba(139, 92, 246, 0.08)",
-                      border: "1px solid rgba(139, 92, 246, 0.2)",
+                      background: "rgba(79, 70, 229, 0.08)",
+                      border: "1px solid rgba(79, 70, 229, 0.2)",
                       borderRadius: "12px",
                       color: "var(--gold)",
                       flexShrink: 0,
@@ -135,7 +135,7 @@ export default function Contact() {
                     {opt.icon}
                   </div>
                   <div style={{ flex: 1 }}>
-                    <h4 style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontSize: "0.95rem", fontWeight: 700, color: "#F2F5FF", margin: "0 0 0.15rem" }}>
+                    <h4 style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontSize: "0.95rem", fontWeight: 700, color: "#14120E", margin: "0 0 0.15rem" }}>
                       {opt.title}
                     </h4>
                     <p style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: "0.92rem", color: "var(--slate)", margin: 0 }}>
@@ -195,7 +195,7 @@ export default function Contact() {
             className="card-neutral"
             style={{ padding: "2rem" }}
           >
-            <h3 style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontSize: "1.1rem", fontWeight: 700, color: "#F2F5FF", marginBottom: "1.5rem", letterSpacing: "-0.01em" }}>
+            <h3 style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontSize: "1.1rem", fontWeight: 700, color: "#14120E", marginBottom: "1.5rem", letterSpacing: "-0.01em" }}>
               Send a Message
             </h3>
 
@@ -211,8 +211,8 @@ export default function Contact() {
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   placeholder="Your name"
                   style={inputStyle}
-                  onFocus={(e) => (e.target.style.borderColor = "rgba(139, 92, 246, 0.5)")}
-                  onBlur={(e) => (e.target.style.borderColor = "rgba(139, 92, 246, 0.18)")}
+                  onFocus={(e) => (e.target.style.borderColor = "rgba(79, 70, 229, 0.5)")}
+                  onBlur={(e) => (e.target.style.borderColor = "rgba(79, 70, 229, 0.18)")}
                 />
               </div>
               <div>
@@ -226,8 +226,8 @@ export default function Contact() {
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   placeholder="your@email.com"
                   style={inputStyle}
-                  onFocus={(e) => (e.target.style.borderColor = "rgba(139, 92, 246, 0.5)")}
-                  onBlur={(e) => (e.target.style.borderColor = "rgba(139, 92, 246, 0.18)")}
+                  onFocus={(e) => (e.target.style.borderColor = "rgba(79, 70, 229, 0.5)")}
+                  onBlur={(e) => (e.target.style.borderColor = "rgba(79, 70, 229, 0.18)")}
                 />
               </div>
               <div>
@@ -241,8 +241,8 @@ export default function Contact() {
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   placeholder="Tell me about the role or project..."
                   style={{ ...inputStyle, resize: "none" }}
-                  onFocus={(e) => (e.target.style.borderColor = "rgba(139, 92, 246, 0.5)")}
-                  onBlur={(e) => (e.target.style.borderColor = "rgba(139, 92, 246, 0.18)")}
+                  onFocus={(e) => (e.target.style.borderColor = "rgba(79, 70, 229, 0.5)")}
+                  onBlur={(e) => (e.target.style.borderColor = "rgba(79, 70, 229, 0.18)")}
                 />
               </div>
               <button type="submit" className="btn-primary" style={{ justifyContent: "center" }}>
@@ -266,18 +266,18 @@ export default function Contact() {
         >
           <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "1.25rem" }}>
             <Calendar size={16} style={{ color: "var(--gold)" }} />
-            <h3 style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontSize: "1.15rem", fontWeight: 700, color: "#F2F5FF", margin: 0, letterSpacing: "-0.01em" }}>
+            <h3 style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontSize: "1.15rem", fontWeight: 700, color: "#14120E", margin: 0, letterSpacing: "-0.01em" }}>
               Book a 15 Minute Call
             </h3>
           </div>
           <div
             className="card-neutral"
-            style={{ padding: "0", overflow: "hidden", border: "1px solid rgba(139,92,246,0.2)" }}
+            style={{ padding: "0", overflow: "hidden", border: "1px solid rgba(79,70,229,0.2)" }}
           >
             <iframe
               src={`${CALENDLY_URL}?hide_gdpr_banner=1&background_color=0d1117&text_color=f5f0e8&primary_color=c9a84c`}
               title="Book a 15 minute call with Mansi Mengde"
-              style={{ width: "100%", height: "660px", border: "none", display: "block", background: "#0B0E22" }}
+              style={{ width: "100%", height: "660px", border: "none", display: "block", background: "#F6F4EE" }}
               loading="lazy"
             />
           </div>
