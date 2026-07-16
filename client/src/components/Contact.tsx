@@ -72,7 +72,7 @@ export default function Contact() {
           transition={{ duration: 0.6 }}
           style={{ marginBottom: "3.5rem" }}
         >
-          <span className="section-label">07. Contact</span>
+          <span className="section-label">08. Contact</span>
           <h2
             style={{
               fontFamily: "'Times New Roman', Times, serif",

@@ -88,7 +88,7 @@ export default function Certifications() {
           transition={{ duration: 0.6 }}
           style={{ marginBottom: "3.5rem" }}
         >
-          <span className="section-label">05. Credentials</span>
+          <span className="section-label">06. Credentials</span>
           <h2
             style={{
               fontFamily: "'Times New Roman', Times, serif",

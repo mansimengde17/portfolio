@@ -79,7 +79,7 @@ export default function Awards() {
           transition={{ duration: 0.6 }}
           style={{ marginBottom: "3.5rem" }}
         >
-          <span className="section-label">06. Recognition</span>
+          <span className="section-label">07. Recognition</span>
           <h2
             style={{
               fontFamily: "'Times New Roman', Times, serif",

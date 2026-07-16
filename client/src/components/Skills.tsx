@@ -142,7 +142,7 @@ export default function Skills() {
           transition={{ duration: 0.6 }}
           style={{ marginBottom: "3rem" }}
         >
-          <span className="section-label">04. Skills</span>
+          <span className="section-label">05. Skills</span>
           <h2
             style={{
               fontFamily: "'Times New Roman', Times, serif",

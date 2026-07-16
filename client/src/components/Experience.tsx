@@ -168,7 +168,7 @@ export default function Experience() {
           transition={{ duration: 0.6 }}
           style={{ marginBottom: "3.5rem" }}
         >
-          <span className="section-label">03. Experience</span>
+          <span className="section-label">02. Experience</span>
           <h2
             style={{
               fontFamily: "'Times New Roman', Times, serif",
