@@ -45,7 +45,7 @@ export default function Footer() {
             </span>
           </div>
           <p style={{ fontFamily: "'Courier New', monospace", fontSize: "0.62rem", letterSpacing: "0.1em", color: "var(--slate)", opacity: 0.5, margin: 0 }}>
-            2026 — All rights reserved
+            2026. All rights reserved
           </p>
         </div>
       </div>

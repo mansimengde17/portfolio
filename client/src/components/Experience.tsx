@@ -9,26 +9,26 @@ import { ChevronDown, MapPin } from "lucide-react";
 
 const EXPERIENCES = [
   {
-    title: "Cloud Data Engineer",
+    title: "Research Assistant, AI Systems and Agentic Workflows",
     company: "California State University, Long Beach",
     companyShort: "CSULB",
-    period: "Sep 2024 — May 2026",
+    period: "Sep 2024 to May 2026",
     location: "Long Beach, CA",
     logoColor: "#003DA5",
     logoBg: "#003DA515",
-    logoImg: "/manus-storage/logo-csulb-official_58b580b1.png",
+    logoImg: "assets/logo-csulb-official_58b580b1.png",
     highlights: [
-      "Optimized SQL data models and ETL workflows across 10+ datasets, reducing dashboard latency by 45% and achieving 99.9% data accuracy delivering near real time student performance insights to 12 academic departments and 300+ faculty advisors.",
-      "Designed and deployed a Power BI and PostgreSQL analytics platform with RBAC, encryption, and FERPA/PII compliance controls, enabling self service data access for 150+ institutional users across student affairs and academic planning teams.",
-      "Built automated ETL pipelines eliminating approximately 15 hours per week of manual data preparation across student engagement and performance reporting workflows, freeing analysts for higher order analysis.",
+      "Owned full data platform architecture for institutional analytics, designing BI oriented schemas, ETL pipelines and warehouse structures in Python, SQL and PostgreSQL, standardizing raw admissions, financial aid and academic records pulled from Excel exports, PDF reports and 25 upstream source systems into trusted, audit ready datasets for 2K+ non technical stakeholders, cutting analyst turnaround from 5 days to same day.",
+      "Established data governance, integrity and standardization framework tracking schema drift, pipeline freshness and data quality across 25 source systems, implemented GitHub Actions CI/CD with automated test gates as deployment blockers before data reached production, and drove tool selection decisions that raised platform reliability to 99.9% accuracy across 3 reporting cycles.",
+      "Built end to end data ingestion and structuring pipeline converting unstructured PDF records and raw text into queryable, governed datasets using automated extraction and validation, achieving 99.2% F1 score on PII redaction and improving downstream data accuracy from 61% to 89% through structured testing across 3 staged production releases.",
     ],
-    skills: ["Power BI", "PostgreSQL", "ETL Pipelines", "FERPA Compliance", "KPI Dashboards"],
+    skills: ["Python", "SQL", "PostgreSQL", "ETL Pipelines", "GitHub Actions CI/CD", "Data Governance"],
   },
   {
-    title: "Data and ML Pipeline Engineer",
+    title: "Data & ML Pipeline Engineer",
     company: "Amazon Web Services (AWS)",
     companyShort: "AWS",
-    period: "May 2025 — Jun 2025",
+    period: "May 2025 to Jun 2025",
     location: "Philadelphia, PA",
     logoColor: "#FF9900",
     logoBg: "#FF990015",
@@ -37,69 +37,70 @@ const EXPERIENCES = [
       "Deployed a serverless data pipeline using AWS Lambda and CloudWatch that automated end to end incident response workflows, reducing mitigation triage time by 40%. Selected as one of approximately 50 early career engineers nationally for the All Builders Welcome Grant.",
       "Built an AI augmented anomaly detection model on Amazon SageMaker and Bedrock, applying distributed ML inference to security event streams within a zero trust, compliance first cloud architecture.",
     ],
-    skills: ["Cloud Security", "Amazon Web Services", "Amazon SageMaker", "AWS Lambda"],
+    skills: ["AWS Lambda", "CloudWatch", "Amazon SageMaker", "Amazon Bedrock", "Cloud Security"],
   },
   {
-    title: "Data and Analytics Fellow",
-    company: "McKinsey and Company",
+    title: "Data & Analytics Fellow",
+    company: "McKinsey & Company",
     companyShort: "McK",
-    period: "Apr 2025 — Jun 2025",
-    location: "United States",
+    period: "Apr 2025 to Jun 2025",
+    location: "United States, Remote",
     logoColor: "#4A90D9",
     logoBg: "#4A90D920",
-    logoImg: "/manus-storage/logo-atkins-official_2a2e6283.png",
+    logoImg: "assets/logo-atkins-official_2a2e6283.png",
     highlights: [
       "Applied structured problem solving frameworks to a digital transformation case study in financial services operations, collaborating with a cross functional team of 6 to deliver data backed recommendations.",
     ],
     skills: ["Data Analytics", "Problem Solving", "Digital Transformation"],
   },
   {
-    title: "Data Engineer",
+    title: "Software Development Engineer I",
     company: "AtkinsRéalis",
     companyShort: "AR",
-    period: "Nov 2023 — May 2024",
-    location: "Pimpri Chinchwad, India",
+    period: "Nov 2023 to May 2024",
+    location: "Core Team: Mission Critical Asset Automation Group",
     logoColor: "#E31837",
     logoBg: "#E3183715",
-    logoImg: "/manus-storage/logo-mckinsey-official_9ac08f6c.png",
+    logoImg: "assets/logo-mckinsey-official_9ac08f6c.png",
     highlights: [
-      "Built and automated Python and SQL data pipelines ingesting 5M+ telemetry events per day, reducing false positive alerts by 35% and cutting SOC triage time by 30% through Grafana dashboards and AWS CloudWatch alerting.",
-      "Designed an event driven AWS Lambda and API Gateway ingestion framework aligned to NIST and CIS benchmarks, improving incident response visibility across 15+ data sources and 3 production service environments.",
-      "Implemented data quality validation and anomaly detection workflows across production pipeline infrastructure, saving the SOC team approximately 20 hours per week in manual investigation overhead.",
+      "Architected and owned scalable data platform and ETL pipeline orchestration using PySpark on Databricks and AWS S3, ingesting 5M+ sensor readings per day from 20 source systems, driving schema design, data modeling and partition tuning decisions that cut pipeline runtime by 40% and sustained zero data outages over 6 months across nuclear and energy infrastructure reporting.",
+      "Modernized data observability and quality standards for asset pipelines using Prometheus and Grafana, implemented anomaly detection via Isolation Forest over PySpark cutting false alerts by 28%, and provisioned pipeline infrastructure as code via Terraform and Jenkins CI/CD, enforcing governance gates across distributed engineering teams transitioning legacy systems to owned infrastructure.",
+      "Optimized SQL query performance and relational data access layers via Hibernate, JPA and advanced indexing for enterprise asset management, cutting API latency by 24%, and built data structuring pipeline for unstructured logs that ingested raw text into standardized formats, cutting reporting time from 48 hours to under 1 hour.",
     ],
-    skills: ["AWS", "Amazon RDS", "Grafana", "Python", "SQL", "NIST"],
+    skills: ["PySpark", "Databricks", "AWS S3", "Prometheus", "Grafana", "Terraform", "Jenkins CI/CD"],
   },
   {
-    title: "Data Engineer, ML Pipelines",
+    title: "Software Development Engineer Intern & Co-op",
+    company: "AtkinsRéalis",
+    companyShort: "AR",
+    period: "Nov 2022 to Nov 2023",
+    location: "Hybrid",
+    logoColor: "#E31837",
+    logoBg: "#E3183715",
+    logoImg: "assets/logo-mckinsey-official_9ac08f6c.png",
+    highlights: [
+      "Pioneered data quality and observability standards for global asset pipelines, partnering with senior engineers to deploy machine learning driven anomaly detection via Isolation Forest over PySpark, successfully mitigating false telemetry alerts by 28%.",
+      "Provisioned and managed distributed pipeline environments using Terraform and Jenkins CI/CD, establishing strict automated validation gates that served as compliance blockers for international deployment squads.",
+      "Optimized relational data access layers and complex SQL database schemas using Hibernate and JPA for the core asset management system, successfully decreasing API response latency by 24% for concurrent international clients.",
+    ],
+    skills: ["PySpark", "Terraform", "Jenkins CI/CD", "Hibernate", "JPA", "SQL"],
+  },
+  {
+    title: "Data Engineer Intern",
     company: "AlgoSec",
     companyShort: "AS",
-    period: "Dec 2022 — Aug 2023",
+    period: "Aug 2022 to Nov 2022",
     location: "Pune, India",
     logoColor: "#0066CC",
     logoBg: "#0066CC15",
-    logoImg: "/manus-storage/logo-algosec-official_35c93e9f.png",
+    logoImg: "assets/logo-algosec-official_35c93e9f.png",
     highlights: [
-      "Designed real time telemetry pipelines with Grafana to monitor model drift and inference performance across 1.2M+ user behavior logs, cutting drift detection latency from 24 hours to 2 minutes.",
-      "Built and deployed Python and scikit learn ML models for churn prediction and anomaly detection at 86% accuracy, flagging approximately 2,500 at risk accounts per month and directly informing retention outreach by the customer success team.",
-      "Automated incremental data ingestion and model retraining workflows, reducing compute costs by 25% while scaling pipeline throughput from 1.2M to 2M+ monthly log ingestion without infrastructure changes.",
+      "Flagship Platform Ownership: Single handedly architected and managed the core data engine underpinning AlgoSec Horizon, serving as the sole engineer scaling real time application dependency mapping and zero touch security policy automation across 500+ global enterprise client environments.",
+      "High Throughput Streaming Engine: Independently engineered a high velocity event streaming pipeline using Apache Kafka to ingest and process 1.2M+ multi cloud firewall and network security events daily, slashing micro segmentation analytical latency from 48 hours to under 60 seconds.",
+      "GenAI Ready Orchestration: Built and managed an end to end self healing ingestion framework using Python, dbt, and Apache Airflow to structure raw multi format security policies into unified, AI consumable PostgreSQL schemas at a flawless 99.9% pipeline runtime.",
+      "SaaS Revenue Impact: Acted as the sole technical decision maker for database schema strategies and feature engineering, enabling instant extraction of tenant behavioral signals that surfaced risk anomalies 3 weeks ahead of schedule to drive a 15% increase in enterprise SaaS contract retention.",
     ],
-    skills: ["Machine Learning", "Data Science", "Python", "scikit-learn", "Grafana"],
-  },
-  {
-    title: "Data Engineer, Industrial Analytics",
-    company: "HYT Engineering Company",
-    companyShort: "HYT",
-    period: "Jun 2021 — Nov 2022",
-    location: "Pimpri Chinchwad, India",
-    logoColor: "#2D6A4F",
-    logoBg: "#2D6A4F15",
-    faviconDomain: "hytengineering.com",
-    highlights: [
-      "Integrated IoT telemetry from legacy CNC systems across 4 manufacturing plants into unified data pipelines, enabling real time fault detection that increased machine uptime by 35% and reduced unplanned downtime by 25%.",
-      "Built predictive Tableau dashboards processing equipment telemetry from 80+ CNC machines and 200+ sensors, cutting anomaly investigation time by 20% for operations and maintenance teams across all sites.",
-      "Designed SQL based alerting thresholds and automated maintenance triggers, eliminating approximately 30 hours per week of manual monitoring across the plant network and standardizing fault analysis workflows across 4 sites.",
-    ],
-    skills: ["Python", "Tableau", "SQL", "IoT Analytics", "Predictive Maintenance"],
+    skills: ["Apache Kafka", "Python", "dbt", "Apache Airflow", "PostgreSQL"],
   },
 ];
 
@@ -167,7 +168,7 @@ export default function Experience() {
           transition={{ duration: 0.6 }}
           style={{ marginBottom: "3.5rem" }}
         >
-          <span className="section-label">03. Experience</span>
+          <span className="section-label">02. Experience</span>
           <h2
             style={{
               fontFamily: "'Times New Roman', Times, serif",
@@ -178,8 +179,8 @@ export default function Experience() {
               letterSpacing: "-0.02em",
             }}
           >
-            Professional{" "}
-            <span className="gradient-text">Journey</span>
+            Work{" "}
+            <span className="gradient-text">Experience</span>
           </h2>
         </motion.div>
 

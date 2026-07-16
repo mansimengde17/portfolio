@@ -8,7 +8,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { ArrowDown, Github, Linkedin, Mail, MapPin, Download } from "lucide-react";
 
-const ROLES = ["Data Engineer", "Cloud Architect", "Software Engineer"];
+const ROLES = ["AI Systems Engineer", "Data Engineer", "Software Engineer"];
 
 function useTypewriter(words: string[], speed = 80, pause = 2000) {
   const [display, setDisplay] = useState("");
@@ -37,10 +37,10 @@ function useTypewriter(words: string[], speed = 80, pause = 2000) {
 }
 
 const STATS = [
-  { value: "5M+", label: "Events Processed Daily" },
-  { value: "99.9%", label: "Pipeline Uptime" },
-  { value: "2x", label: "Hackathon Winner" },
-  { value: "AWS", label: "Certified Architect" },
+  { value: "99.2%", label: "F1 Score on Production PII Redaction AI" },
+  { value: "5M+", label: "Sensor Readings Ingested Every Day" },
+  { value: "60s", label: "Security Event Latency, Down From 48 Hours" },
+  { value: "500+", label: "Enterprise Environments Served Solo" },
 ];
 
 /* Floating sparkle particle */
@@ -198,9 +198,10 @@ export default function Hero() {
                 margin: "0 0 2.5rem",
               }}
             >
-              Four years designing data systems that process millions of events daily.
-              AWS Certified Solutions Architect. I build infrastructure that operations
-              teams, security analysts, and executives rely on.
+              One package of AI, Data and Software Engineering. Four years building
+              agentic AI workflows, streaming data platforms and production software
+              that enterprises, analysts and executives rely on every day.
+              AWS Certified Solutions Architect.
             </motion.p>
 
             {/* CTA buttons */}
@@ -225,7 +226,7 @@ export default function Hero() {
                 View Work
               </a>
               <a
-                href="/manus-storage/mansi-mengde-resume_113f1d54.pdf"
+                href="assets/Mansi_Mengde_Resume.pdf"
                 download="Mansi_Mengde_Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -317,8 +318,8 @@ export default function Hero() {
               }}
             >
               <img
-                src="/manus-storage/graduation-hero_d7b38a9a.webp"
-                alt="Mansi Mengde at CSULB graduation — M.S. Information Systems"
+                src="assets/graduation-hero_d7b38a9a.webp"
+                alt="Mansi Mengde at CSULB graduation, M.S. Information Systems"
                 style={{ width: "100%", height: "auto", display: "block", objectFit: "contain" }}
               />
               <div

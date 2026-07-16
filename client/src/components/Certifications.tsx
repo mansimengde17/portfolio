@@ -10,21 +10,21 @@ import { ExternalLink } from "lucide-react";
 
 const CERTIFICATIONS = [
   {
-    name: "AWS Certified Solutions Architect — Professional (SAP-C02)",
+    name: "AWS Certified Solutions Architect Professional (SAP-C02)",
     issuer: "Amazon Web Services (AWS)",
     issued: "May 2026",
     expires: "May 2029",
-    badge: "/manus-storage/aws-sap-badge_926e6c51.png",
+    badge: "assets/aws-sap-badge_926e6c51.png",
     credlyUrl: "https://www.credly.com/badges/d74ecdc0-447f-4c88-94aa-ffa3ba935694/public_url",
     color: "#FF9900",
     highlight: true,
   },
   {
-    name: "AWS Certified Solutions Architect — Associate",
+    name: "AWS Certified Solutions Architect Associate",
     issuer: "Amazon Web Services (AWS)",
     issued: "Oct 2025",
     expires: "Oct 2028",
-    badge: "/manus-storage/aws-saa-badge-user_eb425035.png",
+    badge: "assets/aws-saa-badge-user_eb425035.png",
     credlyUrl: "https://www.credly.com/badges/a85800f5-df2a-40dd-b51d-adabb07368f2/linked_in",
     color: "#FF9900",
     highlight: true,
@@ -88,7 +88,7 @@ export default function Certifications() {
           transition={{ duration: 0.6 }}
           style={{ marginBottom: "3.5rem" }}
         >
-          <span className="section-label">05. Credentials</span>
+          <span className="section-label">06. Credentials</span>
           <h2
             style={{
               fontFamily: "'Times New Roman', Times, serif",

@@ -16,9 +16,8 @@ import EntryScreen from "./components/EntryScreen";
 function Router() {
   return (
     <Switch>
-      <Route path={"/"} component={Home} />
       <Route path={"/404"} component={NotFound} />
-      <Route component={NotFound} />
+      <Route component={Home} />
     </Switch>
   );
 }
