@@ -1,273 +1,264 @@
 /*
- * PORTFOLIO — Entry Screen
- * Cinematic: paper plane flies in trailing sparkles, lands on name, bursts into gold particles
- * Then "Enter Portfolio" button fades in
+ * PORTFOLIO — 3D Entry Screen
+ * Thousands of gold particles swirl in from deep space and assemble into the name.
+ * WebGL via three.js / react-three-fiber. No emojis.
  */
-import { useEffect, useRef, useState } from "react";
-import { motion, useAnimation, AnimatePresence } from "framer-motion";
+import { useMemo, useRef, useState, useEffect } from "react";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import * as THREE from "three";
+import { motion, AnimatePresence } from "framer-motion";
 
-function rand(min: number, max: number) {
-  return Math.random() * (max - min) + min;
+/* Sample "MANSI MENGDE" text pixels into 3D target positions */
+function sampleTextPoints(text: string, count: number): Float32Array {
+  const canvas = document.createElement("canvas");
+  const W = 900;
+  const H = 220;
+  canvas.width = W;
+  canvas.height = H;
+  const ctx = canvas.getContext("2d")!;
+  ctx.fillStyle = "#000";
+  ctx.fillRect(0, 0, W, H);
+  ctx.fillStyle = "#fff";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.font = "700 120px 'Times New Roman', serif";
+  const measured = ctx.measureText(text).width;
+  const fontSize = Math.floor(120 * Math.min(1, (W * 0.94) / measured));
+  ctx.font = `700 ${fontSize}px 'Times New Roman', serif`;
+  ctx.fillText(text, W / 2, H / 2);
+  const data = ctx.getImageData(0, 0, W, H).data;
+  const pts: number[] = [];
+  for (let y = 0; y < H; y += 2) {
+    for (let x = 0; x < W; x += 2) {
+      if (data[(y * W + x) * 4] > 128) pts.push(x, y);
+    }
+  }
+  const out = new Float32Array(count * 3);
+  const scale = 0.045;
+  for (let i = 0; i < count; i++) {
+    const j = (Math.floor(Math.random() * (pts.length / 2)) * 2) % pts.length;
+    out[i * 3] = (pts[j] - W / 2) * scale;
+    out[i * 3 + 1] = -(pts[j + 1] - H / 2) * scale;
+    out[i * 3 + 2] = (Math.random() - 0.5) * 0.6;
+  }
+  return out;
 }
 
-function PaperPlane({ style }: { style?: React.CSSProperties }) {
-  return (
-    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "52px", height: "52px", ...style }}>
-      <polygon points="4,32 60,4 44,60" fill="#C9A84C" opacity="0.95" />
-      <polygon points="4,32 44,60 32,38" fill="#8A6A20" opacity="0.7" />
-      <line x1="4" y1="32" x2="60" y2="4" stroke="#F5F0E8" strokeWidth="1.2" opacity="0.5" />
-    </svg>
-  );
-}
+function ParticleName({ onFormed }: { onFormed: () => void }) {
+  const COUNT = 6500;
+  const ref = useRef<THREE.Points>(null);
+  const group = useRef<THREE.Group>(null);
+  const progress = useRef(0);
+  const formed = useRef(false);
+  const { pointer } = useThree();
 
-interface TrailParticle {
-  id: number;
-  x: number;
-  y: number;
-  size: number;
-}
-
-interface BurstParticle {
-  id: number;
-  angle: number;
-  distance: number;
-  size: number;
-}
-
-interface EntryScreenProps {
-  onEnter: () => void;
-}
-
-export default function EntryScreen({ onEnter }: EntryScreenProps) {
-  const [phase, setPhase] = useState<"idle" | "flying" | "burst" | "ready">("idle");
-  const [trail, setTrail] = useState<TrailParticle[]>([]);
-  const [burst, setBurst] = useState<BurstParticle[]>([]);
-  const planeControls = useAnimation();
-  const nameControls = useAnimation();
-  const btnControls = useAnimation();
-  const trailTimer = useRef<ReturnType<typeof setInterval> | null>(null);
-  const particleId = useRef(0);
-
-  const generateBurst = () => {
-    const particles: BurstParticle[] = Array.from({ length: 28 }, (_, i) => ({
-      id: i,
-      angle: (i / 28) * 360 + rand(-8, 8),
-      distance: rand(60, 160),
-      size: rand(3, 7),
-    }));
-    setBurst(particles);
-  };
-
-  useEffect(() => {
-    const startDelay = setTimeout(() => setPhase("flying"), 600);
-    return () => clearTimeout(startDelay);
+  const { start, target, seeds } = useMemo(() => {
+    const target = sampleTextPoints("MANSI MENGDE", COUNT);
+    const start = new Float32Array(COUNT * 3);
+    const seeds = new Float32Array(COUNT);
+    for (let i = 0; i < COUNT; i++) {
+      const r = 45 + Math.random() * 55;
+      const theta = Math.random() * Math.PI * 2;
+      const phi = Math.acos(2 * Math.random() - 1);
+      start[i * 3] = r * Math.sin(phi) * Math.cos(theta);
+      start[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
+      start[i * 3 + 2] = r * Math.cos(phi) - 30;
+      seeds[i] = Math.random();
+    }
+    return { start, target, seeds };
   }, []);
 
-  useEffect(() => {
-    if (phase !== "flying") return;
+  const positions = useMemo(() => new Float32Array(start), [start]);
+  const colors = useMemo(() => {
+    const c = new Float32Array(COUNT * 3);
+    const gold = new THREE.Color("#C9A84C");
+    const cream = new THREE.Color("#F5F0E8");
+    const amber = new THREE.Color("#E8C97A");
+    for (let i = 0; i < COUNT; i++) {
+      const pick = seeds[i] < 0.72 ? gold : seeds[i] < 0.92 ? amber : cream;
+      c[i * 3] = pick.r;
+      c[i * 3 + 1] = pick.g;
+      c[i * 3 + 2] = pick.b;
+    }
+    return c;
+  }, [seeds]);
 
-    trailTimer.current = setInterval(() => {
-      setTrail((prev) => [
-        ...prev.slice(-30),
-        { id: particleId.current++, x: rand(20, 80), y: rand(20, 70), size: rand(2, 5) },
-      ]);
-    }, 80);
-
-    planeControls.start({
-      x: [300, 160, 60, 0],
-      y: [-120, -60, 20, 0],
-      rotate: ["-30deg", "-20deg", "-10deg", "0deg"],
-      scale: [0.5, 0.8, 1.1, 1],
-      opacity: [0, 1, 1, 1],
-      transition: { duration: 1.8, ease: [0.22, 1, 0.36, 1] },
-    }).then(() => {
-      planeControls.start({
-        scale: [1, 1.25, 0.9, 1.15, 0],
-        opacity: [1, 1, 1, 1, 0],
-        transition: { duration: 0.55, ease: "easeOut" },
-      });
-      if (trailTimer.current) clearInterval(trailTimer.current);
-      setTrail([]);
-      generateBurst();
-      setPhase("burst");
-      nameControls.start({
-        textShadow: [
-          "0 0 0px rgba(201,168,76,0)",
-          "0 0 28px rgba(201,168,76,0.95)",
-          "0 0 8px rgba(201,168,76,0.4)",
-          "0 0 0px rgba(201,168,76,0)",
-        ],
-        transition: { duration: 1.2, ease: "easeOut" },
-      });
-      setTimeout(() => {
-        setBurst([]);
-        setPhase("ready");
-        btnControls.start({ opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } });
-      }, 1000);
-    });
-
-    return () => { if (trailTimer.current) clearInterval(trailTimer.current); };
-  }, [phase, planeControls, nameControls, btnControls]);
-
-  const handleEnter = () => {
-    if (phase !== "ready") return;
-    onEnter();
-  };
-
-  useEffect(() => {
-    const onKey = () => handleEnter();
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+  useFrame((state, delta) => {
+    if (!ref.current) return;
+    const t = state.clock.elapsedTime;
+    progress.current = Math.min(1, progress.current + delta * (0.12 + progress.current * 0.55));
+    const p = progress.current;
+    const ease = 1 - Math.pow(1 - p, 3);
+    const pos = ref.current.geometry.attributes.position.array as Float32Array;
+    for (let i = 0; i < COUNT; i++) {
+      const i3 = i * 3;
+      const lag = 0.65 + seeds[i] * 0.35;
+      const e = Math.min(1, ease / lag);
+      const swirl = (1 - e) * 6;
+      const a = t * 0.8 + seeds[i] * Math.PI * 2;
+      const wx = Math.sin(a) * swirl;
+      const wy = Math.cos(a * 0.9) * swirl;
+      const jitter = e > 0.995 ? Math.sin(t * 2 + seeds[i] * 20) * 0.06 : 0;
+      pos[i3] = start[i3] + (target[i3] - start[i3]) * e + wx * (1 - e) + jitter;
+      pos[i3 + 1] = start[i3 + 1] + (target[i3 + 1] - start[i3 + 1]) * e + wy * (1 - e) + jitter;
+      pos[i3 + 2] = start[i3 + 2] + (target[i3 + 2] - start[i3 + 2]) * e;
+    }
+    ref.current.geometry.attributes.position.needsUpdate = true;
+    if (group.current) {
+      group.current.rotation.y += (pointer.x * 0.22 - group.current.rotation.y) * 0.05;
+      group.current.rotation.x += (-pointer.y * 0.12 - group.current.rotation.x) * 0.05;
+      const s = Math.min(1, (state.viewport.width * 0.88) / 41);
+      group.current.scale.setScalar(s);
+    }
+    if (!formed.current && p > 0.92) {
+      formed.current = true;
+      onFormed();
+    }
   });
 
   return (
+    <group ref={group}>
+      <points ref={ref}>
+        <bufferGeometry>
+          <bufferAttribute attach="attributes-position" args={[positions, 3]} />
+          <bufferAttribute attach="attributes-color" args={[colors, 3]} />
+        </bufferGeometry>
+        <pointsMaterial
+          size={0.16}
+          vertexColors
+          transparent
+          opacity={0.95}
+          sizeAttenuation
+          depthWrite={false}
+          blending={THREE.AdditiveBlending}
+        />
+      </points>
+    </group>
+  );
+}
+
+/* Slow drifting background dust */
+function Dust() {
+  const ref = useRef<THREE.Points>(null);
+  const positions = useMemo(() => {
+    const n = 700;
+    const arr = new Float32Array(n * 3);
+    for (let i = 0; i < n; i++) {
+      arr[i * 3] = (Math.random() - 0.5) * 120;
+      arr[i * 3 + 1] = (Math.random() - 0.5) * 70;
+      arr[i * 3 + 2] = -20 - Math.random() * 60;
+    }
+    return arr;
+  }, []);
+  useFrame((state) => {
+    if (ref.current) ref.current.rotation.z = state.clock.elapsedTime * 0.012;
+  });
+  return (
+    <points ref={ref}>
+      <bufferGeometry>
+        <bufferAttribute attach="attributes-position" args={[positions, 3]} />
+      </bufferGeometry>
+      <pointsMaterial size={0.09} color="#8A9BB0" transparent opacity={0.35} sizeAttenuation depthWrite={false} />
+    </points>
+  );
+}
+
+export default function EntryScreen({ onEnter }: { onEnter: () => void }) {
+  const [formed, setFormed] = useState(false);
+  const [webglOk, setWebglOk] = useState(true);
+
+  useEffect(() => {
+    try {
+      const c = document.createElement("canvas");
+      if (!c.getContext("webgl2") && !c.getContext("webgl")) setWebglOk(false);
+    } catch {
+      setWebglOk(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!webglOk) setFormed(true);
+  }, [webglOk]);
+
+  return (
     <motion.div
-      key="entry"
-      initial={{ opacity: 1 }}
       exit={{ opacity: 0, scale: 1.04 }}
-      transition={{ duration: 0.6, ease: "easeIn" }}
+      transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
       style={{
         position: "fixed",
         inset: 0,
         background: "#0D1117",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        zIndex: 9999,
+        zIndex: 100,
         overflow: "hidden",
       }}
     >
-      {/* Background grid */}
-      <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(201,168,76,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.025) 1px, transparent 1px)", backgroundSize: "80px 80px", pointerEvents: "none" }} />
-
-      {/* Ambient glow */}
-      <motion.div
-        animate={{ opacity: [0.08, 0.18, 0.08] }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        style={{ position: "absolute", width: "600px", height: "600px", borderRadius: "50%", background: "radial-gradient(circle, rgba(201,168,76,0.18) 0%, transparent 70%)", pointerEvents: "none" }}
-      />
-
-      {/* Ambient twinkling stars */}
-      {Array.from({ length: 18 }).map((_, i) => (
-        <motion.div
-          key={`star-${i}`}
-          style={{ position: "absolute", left: `${rand(5, 95)}%`, top: `${rand(5, 95)}%`, width: `${rand(1.5, 3)}px`, height: `${rand(1.5, 3)}px`, borderRadius: "50%", background: i % 4 === 0 ? "var(--gold)" : "rgba(245,240,232,0.4)", pointerEvents: "none" }}
-          animate={{ opacity: [0.1, rand(0.5, 1), 0.1], scale: [0.8, 1.3, 0.8] }}
-          transition={{ duration: rand(2, 4.5), repeat: Infinity, delay: rand(0, 3), ease: "easeInOut" }}
-        />
-      ))}
-
-      {/* Trail particles */}
-      <AnimatePresence>
-        {trail.map((p) => (
-          <motion.div
-            key={p.id}
-            initial={{ opacity: 0.9, scale: 1 }}
-            animate={{ opacity: 0, scale: 0 }}
-            exit={{}}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-            style={{ position: "absolute", left: `${p.x}%`, top: `${p.y}%`, width: `${p.size}px`, height: `${p.size}px`, borderRadius: "50%", background: "var(--gold)", pointerEvents: "none" }}
-          />
-        ))}
-      </AnimatePresence>
-
-      {/* Burst particles */}
-      <AnimatePresence>
-        {burst.map((p) => (
-          <motion.div
-            key={p.id}
-            initial={{ opacity: 1, scale: 1, x: 0, y: 0 }}
-            animate={{ opacity: 0, scale: 0.3, x: Math.cos((p.angle * Math.PI) / 180) * p.distance, y: Math.sin((p.angle * Math.PI) / 180) * p.distance }}
-            exit={{}}
-            transition={{ duration: 0.85, ease: "easeOut" }}
-            style={{ position: "absolute", width: `${p.size}px`, height: `${p.size}px`, borderRadius: "50%", background: p.id % 3 === 0 ? "#F5F0E8" : "var(--gold)", pointerEvents: "none" }}
-          />
-        ))}
-      </AnimatePresence>
-
-      {/* Center content */}
-      <div style={{ position: "relative", display: "flex", flexDirection: "column", alignItems: "center", gap: "0.5rem" }}>
-
-        {/* Paper plane */}
-        {phase !== "ready" && (
-          <motion.div
-            animate={planeControls}
-            style={{ position: "absolute", top: "-60px", right: "-80px", zIndex: 10, transformOrigin: "center center" }}
-          >
-            <PaperPlane />
-          </motion.div>
-        )}
-
-        {/* Top decorative line */}
-        <motion.div
-          initial={{ scaleY: 0, opacity: 0 }}
-          animate={{ scaleY: 1, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          style={{ width: "1px", height: "60px", background: "linear-gradient(to bottom, transparent, rgba(201,168,76,0.4))", marginBottom: "0.5rem" }}
-        />
-
-        {/* Name */}
-        <motion.h1
-          animate={nameControls}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.3 }}
-          style={{ fontFamily: "'Times New Roman', Times, serif", fontSize: "clamp(2rem, 10vw, 5.5rem)", fontWeight: 700, color: "#F5F0E8", letterSpacing: "-0.03em", lineHeight: 1, textAlign: "center", margin: 0 }}
+      {webglOk ? (
+        <Canvas
+          camera={{ position: [0, 0, 34], fov: 50 }}
+          dpr={[1, 1.8]}
+          gl={{ antialias: false, powerPreference: "high-performance" }}
+          style={{ position: "absolute", inset: 0 }}
         >
-          Mansi Mengde
-        </motion.h1>
+          <Dust />
+          <ParticleName onFormed={() => setFormed(true)} />
+        </Canvas>
+      ) : (
+        <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <h1 style={{ fontFamily: "'Times New Roman', serif", fontSize: "clamp(2rem, 7vw, 4.5rem)", color: "#F5F0E8", fontWeight: 700, letterSpacing: "-0.02em" }}>
+            Mansi Mengde
+          </h1>
+        </div>
+      )}
 
-        {/* Subtitle */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.7, duration: 0.6 }}
-          style={{ fontFamily: "'Courier New', monospace", fontSize: "0.65rem", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--gold)", marginTop: "0.6rem", display: "flex", gap: "0.6rem", alignItems: "center", flexWrap: "wrap", justifyContent: "center" }}
-        >
-          <span>Data Engineer</span>
-          <span style={{ opacity: 0.4 }}>·</span>
-          <span>Cloud Architect</span>
-          <span style={{ opacity: 0.4 }}>·</span>
-          <span>Software Engineer</span>
-        </motion.div>
+      {/* Vignette */}
+      <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 70% 60% at 50% 45%, transparent 50%, rgba(13,17,23,0.9) 100%)", pointerEvents: "none" }} />
 
-        {/* Credential */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.9, duration: 0.5 }}
-          style={{ fontFamily: "'Courier New', monospace", fontSize: "0.6rem", letterSpacing: "0.18em", color: "var(--slate)", textTransform: "uppercase", marginTop: "0.3rem" }}
-        >
-          M.S. Information Systems · CSULB · May 2026
-        </motion.p>
-
-        {/* Bottom decorative line */}
-        <motion.div
-          initial={{ scaleY: 0, opacity: 0 }}
-          animate={{ scaleY: 1, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          style={{ width: "1px", height: "60px", background: "linear-gradient(to bottom, rgba(201,168,76,0.4), transparent)", marginTop: "0.5rem" }}
-        />
-
-        {/* Enter button */}
-        <motion.button
-          initial={{ opacity: 0, y: 16 }}
-          animate={btnControls}
-          onClick={handleEnter}
-          style={{ marginTop: "1.5rem", padding: "0.85rem 2.8rem", background: "var(--gold)", color: "#0D1117", fontFamily: "'Courier New', monospace", fontSize: "0.68rem", letterSpacing: "0.22em", textTransform: "uppercase", fontWeight: 700, border: "none", borderRadius: "1px", cursor: "pointer", position: "relative", overflow: "hidden" }}
-          whileHover={{ scale: 1.04, boxShadow: "0 0 24px rgba(201,168,76,0.45)" }}
-          whileTap={{ scale: 0.97 }}
-        >
-          <motion.span
-            style={{ position: "absolute", inset: 0, background: "linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.25) 50%, transparent 60%)", backgroundSize: "200% 100%" }}
-            animate={{ backgroundPosition: ["200% 0", "-200% 0"] }}
-            transition={{ duration: 2.2, repeat: Infinity, ease: "linear" }}
-          />
-          Enter Portfolio
-        </motion.button>
+      {/* Overlay content */}
+      <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "flex-end", paddingBottom: "13vh", pointerEvents: "none" }}>
+        <AnimatePresence>
+          {formed && (
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, ease: [0.23, 1, 0.32, 1] }}
+              style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "1.6rem", pointerEvents: "auto", textAlign: "center", padding: "0 1.5rem" }}
+            >
+              <div style={{ display: "flex", alignItems: "center", gap: "0.9rem" }}>
+                <span style={{ width: "44px", height: "1px", background: "linear-gradient(to right, transparent, #C9A84C)" }} />
+                <span style={{ fontFamily: "'Courier New', monospace", fontSize: "0.68rem", letterSpacing: "0.3em", textTransform: "uppercase", color: "#C9A84C", whiteSpace: "nowrap" }}>
+                  AI · Data · Software Engineer
+                </span>
+                <span style={{ width: "44px", height: "1px", background: "linear-gradient(to left, transparent, #C9A84C)" }} />
+              </div>
+              <motion.button
+                onClick={onEnter}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.97 }}
+                style={{
+                  fontFamily: "'Courier New', monospace",
+                  fontSize: "0.75rem",
+                  letterSpacing: "0.24em",
+                  textTransform: "uppercase",
+                  color: "#0D1117",
+                  background: "linear-gradient(120deg, #C9A84C, #E8C97A 50%, #C9A84C)",
+                  backgroundSize: "200% 100%",
+                  border: "none",
+                  padding: "0.95rem 2.6rem",
+                  cursor: "pointer",
+                  borderRadius: "2px",
+                  fontWeight: 700,
+                  boxShadow: "0 0 34px rgba(201,168,76,0.35)",
+                  animation: "entryShimmer 2.5s linear infinite",
+                }}
+              >
+                Enter Portfolio
+              </motion.button>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
+
+      <style>{`@keyframes entryShimmer { 0% { background-position: 0% 0; } 100% { background-position: 200% 0; } }`}</style>
     </motion.div>
   );
 }
