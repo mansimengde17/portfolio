@@ -101,13 +101,13 @@ function Constellation() {
         <bufferGeometry>
           <bufferAttribute attach="attributes-position" args={[nodePositions, 3]} />
         </bufferGeometry>
-        <pointsMaterial size={0.22} color="#C9A84C" transparent opacity={0.85} sizeAttenuation depthWrite={false} blending={THREE.AdditiveBlending} />
+        <pointsMaterial size={0.22} color="#8B5CF6" transparent opacity={0.85} sizeAttenuation depthWrite={false} blending={THREE.AdditiveBlending} />
       </points>
       <lineSegments>
         <bufferGeometry>
           <bufferAttribute attach="attributes-position" args={[linePositions, 3]} />
         </bufferGeometry>
-        <lineBasicMaterial color="#C9A84C" transparent opacity={0.1} />
+        <lineBasicMaterial color="#8B5CF6" transparent opacity={0.1} />
       </lineSegments>
       {/* orbiting data packets */}
       <Packets seeds={seeds} />
@@ -138,7 +138,7 @@ function Packets({ seeds }: { seeds: Float32Array }) {
       <bufferGeometry>
         <bufferAttribute attach="attributes-position" args={[positions, 3]} />
       </bufferGeometry>
-      <pointsMaterial size={0.34} color="#F5F0E8" transparent opacity={0.9} sizeAttenuation depthWrite={false} blending={THREE.AdditiveBlending} />
+      <pointsMaterial size={0.34} color="#EEF2FF" transparent opacity={0.9} sizeAttenuation depthWrite={false} blending={THREE.AdditiveBlending} />
     </points>
   );
 }
@@ -204,7 +204,7 @@ export default function Hero() {
       id="about"
       style={{
         minHeight: "100vh",
-        background: "#0D1117",
+        background: "#05060F",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
@@ -216,7 +216,7 @@ export default function Hero() {
     >
       {/* 3D constellation background */}
       <HeroCanvas />
-      <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 75% 65% at 50% 45%, transparent 30%, #0D1117 95%)", pointerEvents: "none" }} />
+      <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 75% 65% at 50% 45%, transparent 30%, #05060F 95%)", pointerEvents: "none" }} />
 
       <div className="container relative" style={{ zIndex: 1 }}>
         {/* Main two-column layout */}
@@ -228,7 +228,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
               style={{
-                fontFamily: "'Courier New', monospace",
+                fontFamily: "'JetBrains Mono', monospace",
                 fontSize: "0.68rem",
                 letterSpacing: "0.22em",
                 textTransform: "uppercase",
@@ -252,10 +252,10 @@ export default function Hero() {
             >
               <h1
                 style={{
-                  fontFamily: "'Times New Roman', Times, serif",
+                  fontFamily: "'Space Grotesk', system-ui, sans-serif",
                   fontSize: "clamp(2.4rem, 5vw, 4.5rem)",
                   fontWeight: 700,
-                  color: "#F5F0E8",
+                  color: "#EEF2FF",
                   letterSpacing: "-0.03em",
                   lineHeight: 1.08,
                   margin: 0,
@@ -286,7 +286,7 @@ export default function Hero() {
             >
               <span
                 style={{
-                  fontFamily: "'Times New Roman', Times, serif",
+                  fontFamily: "'Space Grotesk', system-ui, sans-serif",
                   fontSize: "clamp(1.1rem, 2.2vw, 1.6rem)",
                   fontStyle: "italic",
                   color: "var(--gold)",
@@ -306,8 +306,8 @@ export default function Hero() {
               transition={{ delay: 0.7, duration: 0.6 }}
               style={{
                 maxWidth: "520px",
-                color: "#B8C8D8",
-                fontFamily: "'Georgia', serif",
+                color: "#A5B4D4",
+                fontFamily: "'Inter', system-ui, sans-serif",
                 fontSize: "1rem",
                 lineHeight: 1.8,
                 margin: "0 0 2.5rem",
@@ -350,24 +350,24 @@ export default function Hero() {
                   alignItems: "center",
                   gap: "0.45rem",
                   padding: "0.65rem 1.4rem",
-                  fontFamily: "'Courier New', monospace",
+                  fontFamily: "'JetBrains Mono', monospace",
                   fontSize: "0.68rem",
                   letterSpacing: "0.14em",
                   textTransform: "uppercase",
                   color: "var(--gold)",
-                  border: "1px solid rgba(201,168,76,0.4)",
-                  borderRadius: "1px",
+                  border: "1px solid rgba(139,92,246,0.4)",
+                  borderRadius: "10px",
                   textDecoration: "none",
                   transition: "all 180ms ease",
                   background: "transparent",
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = "rgba(201,168,76,0.08)";
-                  e.currentTarget.style.borderColor = "rgba(201,168,76,0.8)";
+                  e.currentTarget.style.background = "rgba(139,92,246,0.08)";
+                  e.currentTarget.style.borderColor = "rgba(139,92,246,0.8)";
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.background = "transparent";
-                  e.currentTarget.style.borderColor = "rgba(201,168,76,0.4)";
+                  e.currentTarget.style.borderColor = "rgba(139,92,246,0.4)";
                 }}
               >
                 <Download size={13} />
@@ -396,7 +396,7 @@ export default function Hero() {
                     display: "flex",
                     alignItems: "center",
                     gap: "0.4rem",
-                    fontFamily: "'Courier New', monospace",
+                    fontFamily: "'JetBrains Mono', monospace",
                     fontSize: "0.68rem",
                     letterSpacing: "0.1em",
                     textTransform: "uppercase",
@@ -426,12 +426,12 @@ export default function Hero() {
               <div
                 style={{
                   width: "280px",
-                  border: "1px solid rgba(201, 168, 76, 0.25)",
-                  borderRadius: "2px",
+                  border: "1px solid rgba(139, 92, 246, 0.25)",
+                  borderRadius: "12px",
                   overflow: "hidden",
                   position: "relative",
-                  background: "#0D1117",
-                  boxShadow: "0 24px 60px rgba(0,0,0,0.5), 0 0 40px rgba(201,168,76,0.08)",
+                  background: "#05060F",
+                  boxShadow: "0 24px 60px rgba(0,0,0,0.5), 0 0 40px rgba(139,92,246,0.08)",
                 }}
               >
                 <img
@@ -442,14 +442,14 @@ export default function Hero() {
                 <div
                   style={{
                     padding: "0.85rem 1rem",
-                    background: "rgba(13,17,23,0.97)",
-                    borderTop: "1px solid rgba(201,168,76,0.18)",
+                    background: "rgba(5,6,15,0.97)",
+                    borderTop: "1px solid rgba(139,92,246,0.18)",
                   }}
                 >
-                  <p style={{ fontFamily: "'Courier New', monospace", fontSize: "0.58rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--gold)", margin: 0 }}>
+                  <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.58rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--gold)", margin: 0 }}>
                     M.S. Information Systems · CSULB
                   </p>
-                  <p style={{ fontFamily: "'Georgia', serif", fontSize: "0.75rem", color: "#F5F0E8", margin: "3px 0 0" }}>
+                  <p style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: "0.75rem", color: "#EEF2FF", margin: "3px 0 0" }}>
                     Graduated May 2026
                   </p>
                 </div>
@@ -469,22 +469,22 @@ export default function Hero() {
             display: "grid",
             gridTemplateColumns: "repeat(4, 1fr)",
             gap: "1px",
-            background: "rgba(201, 168, 76, 0.12)",
-            border: "1px solid rgba(201, 168, 76, 0.12)",
+            background: "rgba(139, 92, 246, 0.12)",
+            border: "1px solid rgba(139, 92, 246, 0.12)",
           }}
         >
           {STATS.map(({ value, label }, i) => (
-            <Tilt key={label} max={7} style={{ background: "#0D1117" }}>
+            <Tilt key={label} max={7} style={{ background: "#05060F" }}>
               <div style={{ padding: "1.5rem", height: "100%" }}>
                 <motion.div
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 1.2 + i * 0.08 }}
                 >
-                  <div style={{ fontFamily: "'Times New Roman', Times, serif", fontSize: "2rem", fontWeight: 700, color: "var(--gold)", lineHeight: 1 }}>
+                  <div style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontSize: "2rem", fontWeight: 700, color: "var(--gold)", lineHeight: 1 }}>
                     {value}
                   </div>
-                  <div style={{ fontFamily: "'Courier New', monospace", fontSize: "0.6rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--slate)", marginTop: "0.4rem" }}>
+                  <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.6rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--slate)", marginTop: "0.4rem" }}>
                     {label}
                   </div>
                 </motion.div>
@@ -513,7 +513,7 @@ export default function Hero() {
         <motion.div animate={{ y: [0, 6, 0] }} transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}>
           <ArrowDown size={14} style={{ color: "var(--slate)" }} />
         </motion.div>
-        <span style={{ fontFamily: "'Courier New', monospace", fontSize: "0.58rem", letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--slate)" }}>
+        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.58rem", letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--slate)" }}>
           Scroll
         </span>
       </motion.div>

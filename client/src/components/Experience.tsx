@@ -113,7 +113,7 @@ function CompanyLogo({ short, color, bg, faviconDomain, logoImg }: { short: stri
       style={{
         width: "44px",
         height: "44px",
-        borderRadius: "4px",
+        borderRadius: "12px",
         background: bg,
         border: `1px solid ${color}30`,
         display: "flex",
@@ -134,7 +134,7 @@ function CompanyLogo({ short, color, bg, faviconDomain, logoImg }: { short: stri
       ) : (
         <span
           style={{
-            fontFamily: "'Courier New', monospace",
+            fontFamily: "'JetBrains Mono', monospace",
             fontSize: short.length > 3 ? "0.5rem" : "0.65rem",
             fontWeight: 700,
             color: color,
@@ -159,7 +159,7 @@ export default function Experience() {
     <section
       id="experience"
       ref={ref}
-      style={{ padding: "6rem 0", background: "#0D1117", position: "relative" }}
+      style={{ padding: "6rem 0", background: "#05060F", position: "relative" }}
     >
       <div className="container">
         <motion.div
@@ -171,10 +171,10 @@ export default function Experience() {
           <span className="section-label">02. Experience</span>
           <h2
             style={{
-              fontFamily: "'Times New Roman', Times, serif",
+              fontFamily: "'Space Grotesk', system-ui, sans-serif",
               fontSize: "clamp(2rem, 4vw, 3rem)",
               fontWeight: 700,
-              color: "#F5F0E8",
+              color: "#EEF2FF",
               marginTop: "0.5rem",
               letterSpacing: "-0.02em",
             }}
@@ -193,7 +193,7 @@ export default function Experience() {
               top: "22px",
               bottom: "22px",
               width: "1px",
-              background: "linear-gradient(to bottom, rgba(201,168,76,0.4) 0%, rgba(201,168,76,0.08) 100%)",
+              background: "linear-gradient(to bottom, rgba(139,92,246,0.4) 0%, rgba(139,92,246,0.08) 100%)",
             }}
           />
 
@@ -220,14 +220,14 @@ export default function Experience() {
                   }}
                 >
                   <motion.div
-                    animate={expanded === i ? { scale: 1.2, backgroundColor: exp.logoColor } : { scale: 1, backgroundColor: "rgba(201,168,76,0.3)" }}
+                    animate={expanded === i ? { scale: 1.2, backgroundColor: exp.logoColor } : { scale: 1, backgroundColor: "rgba(139,92,246,0.3)" }}
                     transition={{ duration: 0.2 }}
                     style={{
                       width: "10px",
                       height: "10px",
                       borderRadius: "50%",
                       border: `1px solid ${exp.logoColor}60`,
-                      background: "rgba(201,168,76,0.3)",
+                      background: "rgba(139,92,246,0.3)",
                     }}
                   />
                 </div>
@@ -264,10 +264,10 @@ export default function Experience() {
                       <div style={{ display: "flex", alignItems: "baseline", gap: "0.5rem", flexWrap: "wrap" }}>
                         <h3
                           style={{
-                            fontFamily: "'Times New Roman', Times, serif",
+                            fontFamily: "'Space Grotesk', system-ui, sans-serif",
                             fontSize: "1rem",
                             fontWeight: 700,
-                            color: "#F5F0E8",
+                            color: "#EEF2FF",
                             margin: 0,
                             letterSpacing: "-0.01em",
                           }}
@@ -278,7 +278,7 @@ export default function Experience() {
                       </div>
                       <p
                         style={{
-                          fontFamily: "'Georgia', serif",
+                          fontFamily: "'Inter', system-ui, sans-serif",
                           fontSize: "0.85rem",
                           color: "var(--slate)",
                           margin: "0.15rem 0 0",
@@ -289,7 +289,7 @@ export default function Experience() {
                       <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginTop: "0.25rem", flexWrap: "wrap" }}>
                         <span
                           style={{
-                            fontFamily: "'Courier New', monospace",
+                            fontFamily: "'JetBrains Mono', monospace",
                             fontSize: "0.6rem",
                             letterSpacing: "0.08em",
                             color: "var(--slate)",
@@ -298,13 +298,13 @@ export default function Experience() {
                         >
                           {exp.period}
                         </span>
-<span style={{ color: "rgba(138,155,176,0.3)", fontSize: "0.6rem" }}>|</span>
+<span style={{ color: "rgba(148,163,196,0.3)", fontSize: "0.6rem" }}>|</span>
                         <span
                           style={{
                             display: "flex",
                             alignItems: "center",
                             gap: "3px",
-                            fontFamily: "'Courier New', monospace",
+                            fontFamily: "'JetBrains Mono', monospace",
                             fontSize: "0.6rem",
                             letterSpacing: "0.08em",
                             color: "var(--slate)",
@@ -359,7 +359,7 @@ export default function Experience() {
                                 />
                                 <p
                                   style={{
-                                    fontFamily: "'Georgia', serif",
+                                    fontFamily: "'Inter', system-ui, sans-serif",
                                     fontSize: "0.88rem",
                                     color: "var(--slate)",
                                     lineHeight: 1.75,
@@ -376,14 +376,14 @@ export default function Experience() {
                               <span
                                 key={s}
                                 style={{
-                                  fontFamily: "'Courier New', monospace",
+                                  fontFamily: "'JetBrains Mono', monospace",
                                   fontSize: "0.58rem",
                                   letterSpacing: "0.08em",
                                   textTransform: "uppercase",
                                   color: exp.logoColor,
                                   border: `1px solid ${exp.logoColor}25`,
                                   padding: "2px 7px",
-                                  borderRadius: "2px",
+                                  borderRadius: "12px",
                                 }}
                               >
                                 {s}

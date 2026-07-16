@@ -53,11 +53,11 @@ export default function Contact() {
   const inputStyle = {
     width: "100%",
     padding: "0.75rem 1rem",
-    background: "rgba(13, 17, 23, 0.8)",
-    border: "1px solid rgba(201, 168, 76, 0.18)",
-    borderRadius: "2px",
-    color: "#F5F0E8",
-    fontFamily: "'Georgia', serif",
+    background: "rgba(5, 6, 15, 0.8)",
+    border: "1px solid rgba(139, 92, 246, 0.18)",
+    borderRadius: "12px",
+    color: "#EEF2FF",
+    fontFamily: "'Inter', system-ui, sans-serif",
     fontSize: "0.9rem",
     outline: "none",
     transition: "border-color 150ms ease",
@@ -75,10 +75,10 @@ export default function Contact() {
           <span className="section-label">08. Contact</span>
           <h2
             style={{
-              fontFamily: "'Times New Roman', Times, serif",
+              fontFamily: "'Space Grotesk', system-ui, sans-serif",
               fontSize: "clamp(2rem, 4vw, 3rem)",
               fontWeight: 700,
-              color: "#F5F0E8",
+              color: "#EEF2FF",
               marginTop: "0.5rem",
               letterSpacing: "-0.02em",
             }}
@@ -86,7 +86,7 @@ export default function Contact() {
             Let's{" "}
             <span className="gradient-text">Get in Touch</span>
           </h2>
-          <p style={{ marginTop: "0.75rem", maxWidth: "520px", color: "var(--slate)", fontFamily: "'Georgia', serif", fontSize: "1rem", lineHeight: 1.75 }}>
+          <p style={{ marginTop: "0.75rem", maxWidth: "520px", color: "var(--slate)", fontFamily: "'Inter', system-ui, sans-serif", fontSize: "1rem", lineHeight: 1.75 }}>
             If you are building AI systems, data platforms or production software at a company
             doing something meaningful, I want to hear about the hard problems. Book 15 minutes
             on the live calendar and let us talk.
@@ -125,9 +125,9 @@ export default function Contact() {
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      background: "rgba(201, 168, 76, 0.08)",
-                      border: "1px solid rgba(201, 168, 76, 0.2)",
-                      borderRadius: "2px",
+                      background: "rgba(139, 92, 246, 0.08)",
+                      border: "1px solid rgba(139, 92, 246, 0.2)",
+                      borderRadius: "12px",
                       color: "var(--gold)",
                       flexShrink: 0,
                     }}
@@ -135,14 +135,14 @@ export default function Contact() {
                     {opt.icon}
                   </div>
                   <div style={{ flex: 1 }}>
-                    <h4 style={{ fontFamily: "'Times New Roman', Times, serif", fontSize: "0.95rem", fontWeight: 700, color: "#F5F0E8", margin: "0 0 0.15rem" }}>
+                    <h4 style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontSize: "0.95rem", fontWeight: 700, color: "#EEF2FF", margin: "0 0 0.15rem" }}>
                       {opt.title}
                     </h4>
-                    <p style={{ fontFamily: "'Georgia', serif", fontSize: "0.82rem", color: "var(--slate)", margin: 0 }}>
+                    <p style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: "0.82rem", color: "var(--slate)", margin: 0 }}>
                       {opt.description}
                     </p>
                   </div>
-                  <div style={{ display: "flex", alignItems: "center", gap: "0.3rem", fontFamily: "'Courier New', monospace", fontSize: "0.62rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--gold)", flexShrink: 0 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: "0.3rem", fontFamily: "'JetBrains Mono', monospace", fontSize: "0.62rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--gold)", flexShrink: 0 }}>
                     {opt.action}
                     <ArrowRight size={12} />
                   </div>
@@ -157,7 +157,7 @@ export default function Contact() {
               style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "1.5rem" }}
             >
               <MapPin size={13} style={{ color: "var(--gold)" }} />
-              <span style={{ fontFamily: "'Courier New', monospace", fontSize: "0.68rem", letterSpacing: "0.1em", color: "var(--slate)" }}>
+              <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.68rem", letterSpacing: "0.1em", color: "var(--slate)" }}>
                 San Francisco Bay Area, CA. Open to Remote and Hybrid
               </span>
             </motion.div>
@@ -195,13 +195,13 @@ export default function Contact() {
             className="card-neutral"
             style={{ padding: "2rem" }}
           >
-            <h3 style={{ fontFamily: "'Times New Roman', Times, serif", fontSize: "1.1rem", fontWeight: 700, color: "#F5F0E8", marginBottom: "1.5rem", letterSpacing: "-0.01em" }}>
+            <h3 style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontSize: "1.1rem", fontWeight: 700, color: "#EEF2FF", marginBottom: "1.5rem", letterSpacing: "-0.01em" }}>
               Send a Message
             </h3>
 
             <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
               <div>
-                <label style={{ display: "block", fontFamily: "'Courier New', monospace", fontSize: "0.62rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--gold)", marginBottom: "0.4rem" }}>
+                <label style={{ display: "block", fontFamily: "'JetBrains Mono', monospace", fontSize: "0.62rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--gold)", marginBottom: "0.4rem" }}>
                   Name
                 </label>
                 <input
@@ -211,12 +211,12 @@ export default function Contact() {
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   placeholder="Your name"
                   style={inputStyle}
-                  onFocus={(e) => (e.target.style.borderColor = "rgba(201, 168, 76, 0.5)")}
-                  onBlur={(e) => (e.target.style.borderColor = "rgba(201, 168, 76, 0.18)")}
+                  onFocus={(e) => (e.target.style.borderColor = "rgba(139, 92, 246, 0.5)")}
+                  onBlur={(e) => (e.target.style.borderColor = "rgba(139, 92, 246, 0.18)")}
                 />
               </div>
               <div>
-                <label style={{ display: "block", fontFamily: "'Courier New', monospace", fontSize: "0.62rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--gold)", marginBottom: "0.4rem" }}>
+                <label style={{ display: "block", fontFamily: "'JetBrains Mono', monospace", fontSize: "0.62rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--gold)", marginBottom: "0.4rem" }}>
                   Email
                 </label>
                 <input
@@ -226,12 +226,12 @@ export default function Contact() {
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   placeholder="your@email.com"
                   style={inputStyle}
-                  onFocus={(e) => (e.target.style.borderColor = "rgba(201, 168, 76, 0.5)")}
-                  onBlur={(e) => (e.target.style.borderColor = "rgba(201, 168, 76, 0.18)")}
+                  onFocus={(e) => (e.target.style.borderColor = "rgba(139, 92, 246, 0.5)")}
+                  onBlur={(e) => (e.target.style.borderColor = "rgba(139, 92, 246, 0.18)")}
                 />
               </div>
               <div>
-                <label style={{ display: "block", fontFamily: "'Courier New', monospace", fontSize: "0.62rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--gold)", marginBottom: "0.4rem" }}>
+                <label style={{ display: "block", fontFamily: "'JetBrains Mono', monospace", fontSize: "0.62rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--gold)", marginBottom: "0.4rem" }}>
                   Message
                 </label>
                 <textarea
@@ -241,8 +241,8 @@ export default function Contact() {
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   placeholder="Tell me about the role or project..."
                   style={{ ...inputStyle, resize: "none" }}
-                  onFocus={(e) => (e.target.style.borderColor = "rgba(201, 168, 76, 0.5)")}
-                  onBlur={(e) => (e.target.style.borderColor = "rgba(201, 168, 76, 0.18)")}
+                  onFocus={(e) => (e.target.style.borderColor = "rgba(139, 92, 246, 0.5)")}
+                  onBlur={(e) => (e.target.style.borderColor = "rgba(139, 92, 246, 0.18)")}
                 />
               </div>
               <button type="submit" className="btn-primary" style={{ justifyContent: "center" }}>
@@ -266,22 +266,22 @@ export default function Contact() {
         >
           <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "1.25rem" }}>
             <Calendar size={16} style={{ color: "var(--gold)" }} />
-            <h3 style={{ fontFamily: "'Times New Roman', Times, serif", fontSize: "1.15rem", fontWeight: 700, color: "#F5F0E8", margin: 0, letterSpacing: "-0.01em" }}>
+            <h3 style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontSize: "1.15rem", fontWeight: 700, color: "#EEF2FF", margin: 0, letterSpacing: "-0.01em" }}>
               Book a 15 Minute Call
             </h3>
           </div>
           <div
             className="card-neutral"
-            style={{ padding: "0", overflow: "hidden", border: "1px solid rgba(201,168,76,0.2)" }}
+            style={{ padding: "0", overflow: "hidden", border: "1px solid rgba(139,92,246,0.2)" }}
           >
             <iframe
               src={`${CALENDLY_URL}?hide_gdpr_banner=1&background_color=0d1117&text_color=f5f0e8&primary_color=c9a84c`}
               title="Book a 15 minute call with Mansi Mengde"
-              style={{ width: "100%", height: "660px", border: "none", display: "block", background: "#0D1117" }}
+              style={{ width: "100%", height: "660px", border: "none", display: "block", background: "#05060F" }}
               loading="lazy"
             />
           </div>
-          <p style={{ fontFamily: "'Georgia', serif", fontSize: "0.8rem", color: "var(--slate)", marginTop: "0.75rem" }}>
+          <p style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: "0.8rem", color: "var(--slate)", marginTop: "0.75rem" }}>
             If the calendar does not load,{" "}
             <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" style={{ color: "var(--gold)" }}>
               open the booking page directly

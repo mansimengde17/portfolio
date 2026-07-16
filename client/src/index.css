@@ -1,7 +1,7 @@
 /*
  * PORTFOLIO — Global Design System
- * Palette: Charcoal #0D1117, Warm Ivory #F5F0E8, Gold #C9A84C, Slate #8A9BB0
- * Typography: Times New Roman (headings), Georgia (body), Courier New (labels/mono)
+ * Palette: Charcoal #05060F, Warm Ivory #EEF2FF, Gold #8B5CF6, Slate #8A9BB0
+ * Typography: Space Grotesk (headings), Inter (body), JetBrains Mono (labels)
  * Aesthetic: Refined Dark Academic — serious, confident, no gimmicks
  */
 
@@ -51,19 +51,22 @@
 
 /* ─── Brand Tokens ─────────────────────────────────────────────────────── */
 :root {
-  /* Core palette */
-  --gold: #C9A84C;
-  --gold-light: #E2C97E;
-  --gold-dim: rgba(201, 168, 76, 0.35);
-  --charcoal: #111820;
-  --ink: #0D1117;
-  --ivory: #F5F0E8;
-  --ivory-dim: rgba(245, 240, 232, 0.80);
-  --slate: #B0BFD0;
-  --slate-dim: rgba(176, 191, 208, 0.35);
+  /* Aurora palette */
+  --gold: #A78BFA;
+  --gold-light: #22D3EE;
+  --gold-dim: rgba(139, 92, 246, 0.35);
+  --violet: #8B5CF6;
+  --cyan: #22D3EE;
+  --pink: #F472B6;
+  --charcoal: #0B0D1A;
+  --ink: #05060F;
+  --ivory: #EEF2FF;
+  --ivory-dim: rgba(238, 242, 255, 0.80);
+  --slate: #9DAEDC;
+  --slate-dim: rgba(157, 174, 220, 0.35);
 
   /* Tailwind theme tokens */
-  --radius: 2px;
+  --radius: 14px;
   --background: oklch(0.09 0.008 240);
   --foreground: oklch(0.96 0.005 80);
   --card: oklch(0.12 0.008 240);
@@ -112,16 +115,21 @@
   }
 
   body {
-    background: #0D1117;
-    color: #F5F0E8;
-    font-family: 'Georgia', 'Times New Roman', serif;
+    background: #05060F;
+    color: #EEF2FF;
+    font-family: 'Inter', system-ui, sans-serif;
     line-height: 1.6;
     overflow-x: hidden;
+    background-image:
+      radial-gradient(ellipse 55% 40% at 15% 0%, rgba(139, 92, 246, 0.10), transparent 60%),
+      radial-gradient(ellipse 50% 38% at 85% 12%, rgba(34, 211, 238, 0.07), transparent 60%),
+      radial-gradient(ellipse 60% 42% at 50% 100%, rgba(244, 114, 182, 0.05), transparent 60%);
+    background-attachment: fixed;
   }
 
   ::selection {
-    background: rgba(201, 168, 76, 0.25);
-    color: #F5F0E8;
+    background: rgba(139, 92, 246, 0.35);
+    color: #EEF2FF;
   }
 
   ::-webkit-scrollbar {
@@ -129,16 +137,16 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #0D1117;
+    background: #05060F;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: rgba(201, 168, 76, 0.3);
-    border-radius: 2px;
+    background: linear-gradient(180deg, #8B5CF6, #22D3EE);
+    border-radius: 4px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(201, 168, 76, 0.5);
+    background: #8B5CF6;
   }
 
   button:not(:disabled),
@@ -184,16 +192,31 @@
 
 /* ─── Typography Utilities ─────────────────────────────────────────────── */
 .section-label {
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 0.65rem;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: var(--gold);
-  display: block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--cyan);
+  padding: 0.35rem 0.9rem;
+  border: 1px solid rgba(34, 211, 238, 0.25);
+  border-radius: 999px;
+  background: rgba(34, 211, 238, 0.06);
+}
+
+.section-label::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #8B5CF6, #22D3EE);
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.8);
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #C9A84C 0%, #E2C97E 50%, #C9A84C 100%);
+  background: linear-gradient(100deg, #A78BFA 0%, #22D3EE 55%, #F472B6 110%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -201,22 +224,29 @@
 
 /* ─── Card Variants ────────────────────────────────────────────────────── */
 .card-neutral {
-  background: rgba(17, 24, 32, 0.8);
-  border: 1px solid rgba(201, 168, 76, 0.1);
-  border-radius: 2px;
-  transition: border-color 200ms ease, transform 200ms ease;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 18px;
+  transition: border-color 250ms ease, transform 250ms ease, box-shadow 250ms ease;
 }
 
 .card-neutral:hover {
-  border-color: rgba(201, 168, 76, 0.28);
+  border-color: rgba(139, 92, 246, 0.35);
+  box-shadow: 0 12px 44px rgba(139, 92, 246, 0.10);
+  transform: translateY(-2px);
 }
 
 .card-gold {
-  background: rgba(17, 24, 32, 0.8);
-  border: 1px solid rgba(201, 168, 76, 0.3);
-  border-radius: 2px;
-  transition: border-color 200ms ease, transform 200ms ease;
+  background: linear-gradient(150deg, rgba(139, 92, 246, 0.09), rgba(255, 255, 255, 0.02) 45%, rgba(34, 211, 238, 0.07));
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(139, 92, 246, 0.30);
+  border-radius: 18px;
+  transition: border-color 250ms ease, transform 250ms ease, box-shadow 250ms ease;
   position: relative;
+  overflow: hidden;
 }
 
 .card-gold::before {
@@ -226,7 +256,12 @@
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.6), transparent);
+  background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.9), rgba(34, 211, 238, 0.9), transparent);
+}
+
+.card-gold:hover {
+  box-shadow: 0 16px 56px rgba(139, 92, 246, 0.16);
+  transform: translateY(-2px);
 }
 
 /* ─── Buttons ──────────────────────────────────────────────────────────── */
@@ -234,24 +269,27 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.65rem 1.5rem;
-  background: var(--gold);
-  color: #0D1117;
-  font-family: 'Courier New', monospace;
+  padding: 0.75rem 1.7rem;
+  background: linear-gradient(100deg, #8B5CF6, #6366F1 50%, #22D3EE 120%);
+  background-size: 160% 100%;
+  color: #FFFFFF;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   text-decoration: none;
   border: none;
-  border-radius: 2px;
+  border-radius: 999px;
   cursor: pointer;
-  transition: background 180ms ease, transform 160ms ease, box-shadow 180ms ease;
+  box-shadow: 0 4px 24px rgba(139, 92, 246, 0.35);
+  transition: background-position 300ms ease, transform 160ms ease, box-shadow 200ms ease;
 }
 
 .btn-primary:hover {
-  background: var(--gold-light);
-  box-shadow: 0 4px 20px rgba(201, 168, 76, 0.25);
+  background-position: 100% 0;
+  box-shadow: 0 6px 36px rgba(139, 92, 246, 0.55);
+  transform: translateY(-1px);
 }
 
 .btn-primary:active {
@@ -262,23 +300,26 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.65rem 1.5rem;
-  background: transparent;
+  padding: 0.75rem 1.7rem;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   color: var(--slate);
-  font-family: 'Courier New', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 0.72rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   text-decoration: none;
-  border: 1px solid rgba(138, 155, 176, 0.25);
-  border-radius: 2px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 999px;
   cursor: pointer;
-  transition: color 180ms ease, border-color 180ms ease, transform 160ms ease;
+  transition: color 180ms ease, border-color 180ms ease, transform 160ms ease, background 180ms ease;
 }
 
 .btn-ghost:hover {
-  color: var(--gold);
-  border-color: rgba(201, 168, 76, 0.4);
+  color: #EEF2FF;
+  border-color: rgba(34, 211, 238, 0.5);
+  background: rgba(34, 211, 238, 0.07);
 }
 
 .btn-ghost:active {
@@ -292,13 +333,13 @@
   top: 0;
   bottom: 0;
   width: 1px;
-  background: linear-gradient(to bottom, transparent, rgba(201, 168, 76, 0.3) 10%, rgba(201, 168, 76, 0.3) 90%, transparent);
+  background: linear-gradient(to bottom, transparent, rgba(139, 92, 246, 0.3) 10%, rgba(139, 92, 246, 0.3) 90%, transparent);
 }
 
 /* ─── Skill Bars ───────────────────────────────────────────────────────── */
 .skill-bar-track {
   height: 2px;
-  background: rgba(201, 168, 76, 0.1);
+  background: rgba(139, 92, 246, 0.1);
   border-radius: 1px;
   overflow: hidden;
 }
@@ -317,7 +358,7 @@
 
 /* ─── Photo Frames ─────────────────────────────────────────────────────── */
 .photo-frame {
-  border: 1px solid rgba(201, 168, 76, 0.2);
+  border: 1px solid rgba(139, 92, 246, 0.2);
   border-radius: 2px;
   overflow: hidden;
   position: relative;
@@ -355,9 +396,10 @@
 }
 
 .navbar.scrolled {
-  background: rgba(13, 17, 23, 0.95);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+  background: rgba(5, 6, 15, 0.75);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(139, 92, 246, 0.18);
 }
 
 /* ─── Awards Grid ─────────────────────────────────────────────────────── */
@@ -378,8 +420,8 @@
 /* ─── Photo Frame ─────────────────────────────────────────────────────── */
 .photo-frame {
   overflow: hidden;
-  border: 1px solid rgba(201, 168, 76, 0.15);
-  border-radius: 2px;
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  border-radius: 16px;
   position: relative;
 }
 
@@ -388,7 +430,7 @@
   position: fixed;
   inset: 0;
   z-index: 9999;
-  background: #0D1117;
+  background: #05060F;
   display: flex;
   align-items: center;
   justify-content: center;
